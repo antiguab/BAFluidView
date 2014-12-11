@@ -3,8 +3,9 @@ Pod::Spec.new do |s|
   s.version          = "0.1.0"
   s.summary          = "UIView that simulates a 2D view of a fluid in motion"
   s.description      = <<-DESC
+                         UIView that simulates a 2D view of a fluid in motion - WIP
                        DESC
-  s.homepage         = "https://github.com/antigtuab/BAFluidView"
+  s.homepage         = "https://github.com/antiguab/BAFluidView"
   # s.screenshots     = "", ""
   s.license          = 'MIT'
   s.author           = { "Bryan Antigua" => "antigua.b@gmail.com" }
