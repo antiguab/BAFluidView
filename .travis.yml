@@ -9,4 +9,4 @@ language: objective-c
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
-- set -o pipefail && xcodebuild test -workspace Example/BAFluidView.xcworkspace -scheme BAFluidView -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- set -o pipefail && xcodebuild test -workspace Example/BAFluidView.xcworkspace -scheme BAFluidView-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
