@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'BAFluidView', :exclusive => true do
+  pod "BAFluidView", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "BAFluidView", :path => "../"
+
+  
+end
