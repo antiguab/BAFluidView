@@ -6,6 +6,8 @@
 [![Platform](https://img.shields.io/cocoapods/p/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
 
 ## Overview
+![example6](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example6.gif)
+![example1](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example1.gif)
 
 This view and it's layer create a 2D fluid animation that can be used to simulate a filling effect.
 
@@ -45,7 +47,7 @@ BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame];
 
 This creates the following view:
 
-***insert example 1 here***
+![example1](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example1.gif)
 
 
 ### Advanced Usage
@@ -59,11 +61,6 @@ If you only want the effect to fill only once (or any specific amount of times) 
 BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
 view.fillRepeatCount = 1;
 ```
-
-This creates the following view:
-
-***insert example 2a here***
-
 #### Animate Only Once (End in new state)
 You can also create the same effect as above, but stay in the filled state by editing the fillAutoReverse property:
 
@@ -75,7 +72,7 @@ view.fillRepeatCount = 1;
 
 This creates the following view:
 
-***insert example 2b here***
+![example2b](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example2b.gif)
 
 #### Fill to specific level
 
@@ -89,7 +86,7 @@ BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame m
 
 This creates the following view:
 
-***insert example 3 here***
+![example3](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example3.gif)
 
 #### Fill Color
 
@@ -102,7 +99,7 @@ view.fillColor = [UIColor blackColor];
 
 This creates the following view:
 
-***insert example 4 here***
+![example4](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example4.gif)
 
 #### Stroke Color
 
@@ -117,7 +114,7 @@ view.strokeColor = [UIColor blackColor];
 
 This creates the following view:
 
-***insert example 5 here***
+![example5](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example5.gif)
 
 #### Use as a Layer 
 
@@ -136,7 +133,8 @@ button.clipsToBounds = YES;
 
 Sweet check it out:
 
-***insert example 6 here***
+![example6](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example6.gif)
+
 
 
 ## Author
