@@ -19,5 +19,8 @@ DerivedData
 *.hmap
 *.ipa
 
+# git
+readmeAssets/
+
 # Bundler
 .bundle

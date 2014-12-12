@@ -32,50 +32,49 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    //    1. with default settings
+    //    1. Basic
     BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame];
     
     
-    //    2. with custom wave settings - reversal and repeating forever
-    //    BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
-    //    view.fillAutoReverse = YES;
-    //    view.fillRepeatCount = HUGE_VALF;
-    //
-    //    2.a. with custom wave settings - no reversal
+    //    2.a Animate Only Once (End in old state)
+//        BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
+//        view.fillRepeatCount = 1;
+    
+    //    2.b. Animate Only Once (End in new state)
     //    BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
     //    view.fillAutoReverse = NO;
     //    view.fillRepeatCount = 1;
     
-    //    3. with only a certain fill settings
-    //    BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
-    //    [view fillTo:0.5];
+    //    3. Fill to specific level
+//        BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
+//        [view fillTo:0.5];
     
-    //    4. with specific fill color
-    //    BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
-    //    view.fillColor = [UIColor blackColor];
+    //    4. Fill Color
+    //        BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
+//        view.fillColor = [UIColor blackColor];
     
     
-    //    5. with specific stroke color
-    //    BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
-    //    view.fillColor = [UIColor clearColor];
-    //    view.strokeColor = [UIColor blackColor];
-    //    [view fillTo:0.0]; //don't move
-    
+    //    5. Stroke Color
+//        BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
+//        view.fillColor = [UIColor clearColor];
+//        view.strokeColor = [UIColor blackColor];
+//        [view fillTo:0.0]; //don't move
+//    
     
     //    6. Using in a button
-    //    UIButton *button = [[UIButton alloc] init];
-    //    button.frame = CGRectMake(self.view.center.x, self.view.center.y, 300, 300);
-    //    button.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    //    button.layer.position = CGPointMake(self.view.center.x, self.view.center.y);
-    //    button.layer.cornerRadius = button.frame.size.height/2;
-    //    button.clipsToBounds = YES;
-    //    [button.layer addSublayer:view.layer];
+//        UIButton *button = [[UIButton alloc] init];
+//        button.frame = CGRectMake(self.view.center.x, self.view.center.y, 300, 300);
+//        button.layer.anchorPoint = CGPointMake(0.5, 0.5);
+//        button.layer.position = CGPointMake(self.view.center.x, self.view.center.y);
+//        button.layer.cornerRadius = button.frame.size.height/2;
+//        button.clipsToBounds = YES;
+//        [button.layer addSublayer:view.layer];
     
     //    For examples 1 - 5 uncomment this line
     [self.view addSubview:view];
     
     //    For examples 6 uncomment this line
-    //    [self.view addSubview:button];
+//        [self.view addSubview:button];
     
 }
 
