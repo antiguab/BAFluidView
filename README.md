@@ -20,7 +20,7 @@ it, simply add the following line to your Podfile:
 
 ## Author
 
-Bryan Antigua, antigua_B@hotmail.com
+Bryan Antigua, antigua_B@gmail.com
 
 ## License
 
