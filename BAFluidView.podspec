@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
                         more info at: [https://github.com/antiguab/BAFluidView](https://github.com/antiguab/BAFluidView)
                        DESC
   s.homepage         = "https://github.com/antiguab/BAFluidView"
-  # s.screenshots     = "", ""
+  # s.screenshots     = "https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/screenshot1.png", "https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/screenshot2.png","https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/screenshot3.png","https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/screenshot4.png"
   s.license          = 'MIT'
   s.author           = { "Bryan Antigua" => "antigua.b@gmail.com" }
   s.source           = { :git => "https://github.com/antiguab/BAFluidView.git", :tag => s.version.to_s }

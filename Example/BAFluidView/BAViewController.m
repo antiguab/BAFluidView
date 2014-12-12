@@ -21,7 +21,7 @@
 //SOFTWARE.
 
 #import "BAViewController.h"
-#import "BAFluidFillView.h"
+#import "BAFluidView.h"
 
 @interface BAViewController ()
 
@@ -33,7 +33,7 @@
     
     [super viewDidLoad];
     //    1. Basic
-    BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame];
+    BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
     
     
     //    2.a Animate Only Once (End in old state)

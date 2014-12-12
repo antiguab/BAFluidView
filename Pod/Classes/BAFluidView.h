@@ -22,7 +22,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BAFluidFillView : UIView
+@interface BAFluidView : UIView
 
 
 //configuratble properties

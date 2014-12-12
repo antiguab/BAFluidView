@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BAFluidView: 59e2adbc3edc6788bbbfcb4e3376bfc10e5d4818
+  BAFluidView: 6fa4f7c255481228ac3af0198e54ab48dbb3a632
 
 COCOAPODS: 0.35.0

@@ -20,10 +20,10 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-#import "BAFluidFillView.h"
+#import "BAFluidView.h"
 #import "Util.h"
 
-@interface BAFluidFillView()
+@interface BAFluidView()
 {
     CAShapeLayer *lineLayer;
     int finalX;
@@ -41,7 +41,7 @@
 }
 @end
 
-@implementation BAFluidFillView
+@implementation BAFluidView
 
 -  (id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement
 {
