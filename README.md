@@ -14,7 +14,7 @@ This view and it's layer create a 2D fluid animation that can be used to simulat
 <br/>
 
 ## Requirements
-* Works on any iOS device, but is limited to iOS 8.0 or higher
+* Works on any iOS device
 
 <br/>
 
