@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "Bryan Antigua" => "antigua.b@gmail.com" }
   s.source           = { :git => "https://github.com/antiguab/BAFluidView.git", :tag => s.version.to_s }
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes'

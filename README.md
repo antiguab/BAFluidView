@@ -38,7 +38,7 @@ pod "BAFluidView"
 
 
 #### Basic
-The simplest way to add a BAFluidView to your app is by adding the line:
+TO add a BAFluidView to your app, add the line:
 
 ```
 BAFluidFillView *view = [[BAFluidFillView alloc] initWithFrame:self.view.frame];
@@ -51,8 +51,7 @@ This creates the following view:
 
 
 ### Advanced Usage
-There are several properties that you can control, and the examples are listed below. They also all use a different initialization method called
-initWithFrame:maxAmplitude:minAmplitude:amplitudeIncrement:. This init method lets you control how high/low you want the wave to go. The increment method helps control the variation between the peaks.
+Listed below are examples of several properties that you can control. You can also use a different initialization method called **initWithFrame:maxAmplitude:minAmplitude:amplitudeIncrement:**, which lets you control how high/low you want the wave to go. The increment method helps control the variation between the peaks..
 
 #### Animate Only Once (End in old state)
 If you only want the effect to fill only once (or any specific amount of times) you can edit the fillRepeatCount property:
@@ -118,7 +117,7 @@ This creates the following view:
 
 #### Use as a Layer 
 
-If you want to add the effect to another view, simply use it's layer. In the example below, we use it on a button!
+If you want to add the effect to another view, use it's layer. In the example below, we use it on a button!
 
 ```
 UIButton *button = [[UIButton alloc] init];
