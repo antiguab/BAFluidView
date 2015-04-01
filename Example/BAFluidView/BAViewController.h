@@ -24,4 +24,7 @@
 
 @interface BAViewController : UIViewController
 
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *TitleLabels;
+@property (strong, nonatomic) IBOutlet UILabel *swipeForNextExampleLabel;
+
 @end
