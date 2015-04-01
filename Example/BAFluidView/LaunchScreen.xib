@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lovelo Black.otf">
+            <string>LoveloBlack</string>
+            <string>LoveloBlack</string>
+        </mutableArray>
+        <mutableArray key="Lovelo Line Light.otf">
+            <string>LoveloLineLight</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="AGt-BP-fh4">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEE-zZ-QQW">
+                    <rect key="frame" x="120" y="400" width="64" height="50"/>
+                    <fontDescription key="fontDescription" name="LoveloBlack" family="Lovelo" pointSize="50"/>
+                    <color key="textColor" red="0.1803921568627451" green="0.20392156862745098" blue="0.23921568627450981" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Cy-nH-JC8">
+                    <rect key="frame" x="326" y="400" width="118" height="50"/>
+                    <fontDescription key="fontDescription" name="LoveloBlack" family="Lovelo" pointSize="50"/>
+                    <color key="textColor" red="0.18039215689999999" green="0.20392156859999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fluid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhe-aV-Gaj" userLabel="Fluid">
+                    <rect key="frame" x="184" y="400" width="142" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="142" id="1NV-II-Yrp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="LoveloLineLight" family="Lovelo" pointSize="50"/>
+                    <color key="textColor" red="0.18039215689999999" green="0.20392156859999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="1NV-II-Yrp"/>
+                        </mask>
+                    </variation>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="sEE-zZ-QQW" secondAttribute="bottom" constant="150" id="04n-yK-eSO"/>
+                <constraint firstItem="8Cy-nH-JC8" firstAttribute="leading" secondItem="Mhe-aV-Gaj" secondAttribute="trailing" id="8JP-LI-SL5"/>
+                <constraint firstAttribute="bottom" secondItem="Mhe-aV-Gaj" secondAttribute="bottom" constant="150" id="Db6-th-kI5"/>
+                <constraint firstItem="AGt-BP-fh4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="J7r-ER-wQT"/>
+                <constraint firstAttribute="centerX" secondItem="Mhe-aV-Gaj" secondAttribute="centerX" constant="45" id="Ntq-Uw-6Iu"/>
+                <constraint firstAttribute="bottom" secondItem="8Cy-nH-JC8" secondAttribute="bottom" constant="150" id="Wl6-Fw-T1e"/>
+                <constraint firstAttribute="centerY" secondItem="AGt-BP-fh4" secondAttribute="centerY" id="XF1-QO-Hjb"/>
+                <constraint firstAttribute="trailing" secondItem="AGt-BP-fh4" secondAttribute="trailing" id="aQs-Nf-68S"/>
+                <constraint firstAttribute="bottom" secondItem="AGt-BP-fh4" secondAttribute="bottom" id="iYl-GO-1ii"/>
+                <constraint firstItem="AGt-BP-fh4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oBI-o4-XVt"/>
+                <constraint firstAttribute="centerX" secondItem="AGt-BP-fh4" secondAttribute="centerX" id="qu6-Ra-gKY"/>
+                <constraint firstItem="Mhe-aV-Gaj" firstAttribute="leading" secondItem="sEE-zZ-QQW" secondAttribute="trailing" id="ziI-Ok-lRE"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="sEE-zZ-QQW"/>
+                    <exclude reference="8Cy-nH-JC8"/>
+                    <exclude reference="Mhe-aV-Gaj"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="background.png" width="600" height="600"/>
+    </resources>
+</document>
