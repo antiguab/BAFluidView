@@ -30,6 +30,8 @@
     UIAttachmentBehavior *attachmentBehavior;
     NSMutableArray *examplesArray;
     UIPanGestureRecognizer *gestureRecognizer;
+    CABasicAnimation *fadeIn;
+    CABasicAnimation *fadeOut;
     UIView *container;
     int currentExample;
     BOOL activity;
@@ -52,6 +54,23 @@
     [self.view insertSubview:container belowSubview:self.swipeForNextExampleLabel];
     [self setUpBackground];
     activity = NO;
+    
+    fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeIn.duration = 2.0;
+    fadeIn.fromValue = @0.0f;
+    fadeIn.toValue = @1.0f;
+    fadeIn.removedOnCompletion = NO;
+    fadeIn.fillMode = kCAFillModeForwards;
+    fadeIn.additive = NO;
+    
+    fadeOut = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeOut.duration = 0.5f;
+    fadeOut.fromValue = @1.0f;
+    fadeOut.toValue = @0.0f;
+    fadeOut.removedOnCompletion = NO;
+    fadeOut.fillMode = kCAFillModeForwards;
+    fadeOut.additive = NO;
+    
     timer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                      target:self
                                    selector:@selector(showSwipeForNextExampleLabel)
@@ -62,19 +81,24 @@
 
 -(void)showSwipeForNextExampleLabel{
     //call to action in case user doesn't swipe
+    if (!activity) {
     [timer invalidate];
     timer = nil;
-    [UIView animateKeyframesWithDuration:2.0 delay:0.0 options:UIViewKeyframeAnimationOptionAutoreverse animations:^{
-        self.swipeForNextExampleLabel.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        self.swipeForNextExampleLabel.alpha = 0.0;
-        timer = [NSTimer scheduledTimerWithTimeInterval:5.0
-                                                 target:self
-                                               selector:@selector(showSwipeForNextExampleLabel)
-                                               userInfo:nil
-                                                repeats:YES];
-    }];
+    [self.swipeForNextExampleLabel.layer removeAllAnimations];
+    [self.swipeForNextExampleLabel.layer addAnimation:fadeIn forKey:@"fadeIn"];
+    }
 
+}
+
+-(void)hideSwipeForNextExampleLabel{
+    [self.swipeForNextExampleLabel.layer removeAllAnimations];
+    [self.swipeForNextExampleLabel.layer addAnimation:fadeOut forKey:@"fadeOut"];
+    timer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                             target:self
+                                           selector:@selector(showSwipeForNextExampleLabel)
+                                           userInfo:nil
+                                            repeats:YES];
+    activity = NO;
 }
 
 -(void) setUpBackground {
@@ -98,6 +122,7 @@
             UIOffset offset = UIOffsetMake(locationInContainer.x - CGRectGetMidX(container.bounds), locationInContainer.y - CGRectGetMidY(container.bounds));
             attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:container offsetFromCenter:offset attachedToAnchor:locationinSuperView];
             [animator addBehavior:attachmentBehavior];
+
         }
     
         else if (gesture.state == UIGestureRecognizerStateChanged) {
@@ -157,6 +182,7 @@
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
             fluidView.fillColor = [UIColor clearColor];
             fluidView.strokeColor = [UIColor whiteColor];
+            fluidView.lineWidth = 5.0f;
             [fluidView fillTo:0.0]; //don't move
             [self changeTitleColor:UIColorFromHex(0x2e353d)];
             return fluidView;
@@ -179,6 +205,7 @@
 -(void)transitionToNextExample{
     
     //This adds the dragging and falling functionality
+    [self hideSwipeForNextExampleLabel];
     activity = NO;
     [animator removeAllBehaviors];
     
