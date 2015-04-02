@@ -82,24 +82,37 @@
 -(void)showSwipeForNextExampleLabel{
     //call to action in case user doesn't swipe
     if (!activity) {
-    [timer invalidate];
-    timer = nil;
-    [self.swipeForNextExampleLabel.layer removeAllAnimations];
-    [self.swipeForNextExampleLabel.layer addAnimation:fadeIn forKey:@"fadeIn"];
+        [self stopTimer];
+        [self.swipeForNextExampleLabel.layer removeAllAnimations];
+        self.swipeForNextExampleLabel.layer.opacity = 1;
+        [self.swipeForNextExampleLabel.layer addAnimation:fadeIn forKey:@"fadeIn"];
     }
 
 }
 
 -(void)hideSwipeForNextExampleLabel{
     [self.swipeForNextExampleLabel.layer removeAllAnimations];
+    self.swipeForNextExampleLabel.layer.opacity = 0;
     [self.swipeForNextExampleLabel.layer addAnimation:fadeOut forKey:@"fadeOut"];
+}
+
+-(void)startTimer{
+    if(timer != nil){
+        [timer invalidate];
+        timer = nil;
+    }
     timer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                              target:self
                                            selector:@selector(showSwipeForNextExampleLabel)
                                            userInfo:nil
                                             repeats:YES];
-    activity = NO;
 }
+
+-(void)stopTimer{
+    [timer invalidate];
+    timer = nil;
+}
+
 
 -(void) setUpBackground {
     //sets up the green background
@@ -182,7 +195,6 @@
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
             fluidView.fillColor = [UIColor clearColor];
             fluidView.strokeColor = [UIColor whiteColor];
-            fluidView.lineWidth = 5.0f;
             [fluidView fillTo:0.0]; //don't move
             [self changeTitleColor:UIColorFromHex(0x2e353d)];
             return fluidView;
@@ -205,7 +217,10 @@
 -(void)transitionToNextExample{
     
     //This adds the dragging and falling functionality
-    [self hideSwipeForNextExampleLabel];
+    if(self.swipeForNextExampleLabel.alpha > 0){
+        [self hideSwipeForNextExampleLabel];
+    }
+    [self startTimer];
     activity = NO;
     [animator removeAllBehaviors];
     
