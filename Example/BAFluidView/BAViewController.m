@@ -179,7 +179,7 @@
         }
             
         case 1://example with a fill of the screen
-            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame];
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.0];
             fluidView.fillColor = UIColorFromHex(0x397ebe);
             [self changeTitleColor:[UIColor whiteColor]];
             return fluidView;
@@ -187,7 +187,7 @@
         case 2://Example with a different color and stationary
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
             fluidView.fillColor = UIColorFromHex(0x2e353d);
-            [fluidView fillTo:0.0]; //don't move
+            [fluidView keepStationary];
             [self changeTitleColor:[UIColor whiteColor]];
             return fluidView;
             
@@ -195,7 +195,7 @@
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
             fluidView.fillColor = [UIColor clearColor];
             fluidView.strokeColor = [UIColor whiteColor];
-            [fluidView fillTo:0.0]; //don't move
+            [fluidView keepStationary];
             [self changeTitleColor:UIColorFromHex(0x2e353d)];
             return fluidView;
         default:
