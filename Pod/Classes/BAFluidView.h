@@ -29,8 +29,12 @@
 @property(nonatomic,strong)UIColor *fillColor;
 @property(nonatomic,strong)UIColor *strokeColor;
 @property(nonatomic,assign)float fillRepeatCount;
+@property(nonatomic,assign)float lineWidth;
 @property(nonatomic,assign)BOOL fillAutoReverse;
 
 - (id)initWithFrame:(CGRect)aRect maxAmplitude:(int)maxAmplitude minAmplitude:(int)minAmplitude amplitudeIncrement:(int)amplitudeIncrement;
+- (id)initWithFrame:(CGRect)aRect startElevation:(NSNumber*)aStartElevation;
+-  (id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement startElevation:(NSNumber*)aStartElevation;
 -(void)fillTo:(float)percentage;
+-(void)keepStationary;
 @end
