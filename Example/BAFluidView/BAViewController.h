@@ -21,10 +21,11 @@
 //SOFTWARE.
 
 #import <UIKit/UIKit.h>
-
+#import "BAFluidView.h"
 @interface BAViewController : UIViewController
 
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *TitleLabels;
 @property (strong, nonatomic) IBOutlet UILabel *swipeForNextExampleLabel;
+@property (strong, nonatomic) IBOutlet BAFluidView *fluidView;
 
 @end

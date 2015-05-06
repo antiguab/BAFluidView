@@ -21,7 +21,7 @@
 //SOFTWARE.
 
 #import "BAFluidView.h"
-#import "Util.h"
+#import "BAUtil.h"
 
 @interface BAFluidView()
 {
@@ -115,8 +115,8 @@
     // create the wave layer and make it blue
     self.clipsToBounds = YES;
     lineLayer = [CAShapeLayer layer];
-    lineLayer.fillColor = [[Util UIColorFromHex:0x6BB9F0] CGColor];
-    lineLayer.strokeColor = [[Util UIColorFromHex:0x6BB9F0] CGColor];
+    lineLayer.fillColor = [[BAUtil UIColorFromHex:0x6BB9F0] CGColor];
+    lineLayer.strokeColor = [[BAUtil UIColorFromHex:0x6BB9F0] CGColor];
     //default wave properties
     self.fillAutoReverse = YES;
     self.fillRepeatCount = HUGE_VALF;
@@ -200,7 +200,6 @@
     
     //add sublayer to view
     [self.layer addSublayer:lineLayer];
-    NSLog(@"%@",NSStringFromCGRect(lineLayer.frame));
 }
 
 -(void)keepStationary{
