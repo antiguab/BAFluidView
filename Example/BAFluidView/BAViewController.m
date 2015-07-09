@@ -34,11 +34,14 @@
     @property (strong,nonatomic) CABasicAnimation *fadeOut;
 
     @property (strong,nonatomic) NSMutableArray *examplesArray;
-    @property (strong,nonatomic) UIView *container;
 
     @property (assign,nonatomic) int currentExample;
     @property (assign,nonatomic) BOOL activity;
     @property (assign,nonatomic) NSTimer *timer;
+
+    @property (assign,nonatomic) BOOL firstTimeLoading;
+
+    @property(assign,nonatomic) CAGradientLayer *gradient;
 
 @end
 
@@ -52,20 +55,17 @@
     [super viewDidLoad];
     
     self.activity = NO;
+    self.firstTimeLoading = YES;
 
     [self setUpBackground];
-
-    self.container = [self nextBAFluidViewExample];
 
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
     self.gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetected:)];
-    [self.container addGestureRecognizer:self.gestureRecognizer];
 
     self.currentExample = 0;
     
-    [self.view insertSubview:self.container belowSubview:self.swipeForNextExampleLabel];
-    
+    //For fading in swipe labels and timing it's appearance
     self.fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
     self.fadeIn.duration = 2.0;
     self.fadeIn.fromValue = @0.0f;
@@ -87,7 +87,17 @@
                                    selector:@selector(showSwipeForNextExampleLabel)
                                    userInfo:nil
                                     repeats:YES];
+}
 
+- (void)viewDidLayoutSubviews {
+    if (self.firstTimeLoading) {
+        self.firstTimeLoading = NO;
+        self.exampleContainerView = [self nextBAFluidViewExample];
+        [self.view insertSubview:self.exampleContainerView belowSubview:self.swipeForNextExampleLabel];
+        [self.exampleContainerView addGestureRecognizer:self.gestureRecognizer];
+    }
+    
+    [self setUpBackground];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,11 +132,10 @@
     CGPoint locationinSuperView = [gesture locationInView:self.view];
     
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        
         //assign the attachment behavior as the view is starting to move
         [self.animator removeAllBehaviors];
-        UIOffset offset = UIOffsetMake(locationInContainer.x - CGRectGetMidX(self.container.bounds), locationInContainer.y - CGRectGetMidY(self.container.bounds));
-        self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:self.container offsetFromCenter:offset attachedToAnchor:locationinSuperView];
+        UIOffset offset = UIOffsetMake(locationInContainer.x - CGRectGetMidX(self.exampleContainerView.bounds), locationInContainer.y - CGRectGetMidY(self.exampleContainerView.bounds));
+        self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:self.exampleContainerView offsetFromCenter:offset attachedToAnchor:locationinSuperView];
         [self.animator addBehavior:self.attachmentBehavior];
         
     }
@@ -141,7 +150,7 @@
     else if (gesture.state == UIGestureRecognizerStateEnded) {
         //transition to the next example if swiped down far enough
         [self.animator removeAllBehaviors];
-        UISnapBehavior *snapBehavior =[[UISnapBehavior alloc] initWithItem:self.container snapToPoint:self.view.center];
+        UISnapBehavior *snapBehavior =[[UISnapBehavior alloc] initWithItem:self.exampleContainerView snapToPoint:self.view.center];
         [self.animator addBehavior:snapBehavior];
         
         if([gesture translationInView:self.view].y > 150 ) {
@@ -172,13 +181,21 @@
 
 - (void)setUpBackground {
     //sets up the green background [for fun - even though there an image :) ]
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.view.bounds;
-    gradient.colors = @[(id)[BAUtil UIColorFromHex:0x53cf84].CGColor,(id)[BAUtil UIColorFromHex:0x53cf84].CGColor, (id)[BAUtil UIColorFromHex:0x2aa581].CGColor, (id)[BAUtil UIColorFromHex:0x1b9680].CGColor];
-    gradient.locations = @[[NSNumber numberWithFloat:0.0f], [NSNumber numberWithFloat:0.5f],[NSNumber numberWithFloat:0.8f], [NSNumber numberWithFloat:1.0f]];
-    gradient.startPoint = CGPointMake(0, 0);
-    gradient.endPoint = CGPointMake(1, 1);
-    [self.view.layer insertSublayer:gradient atIndex:0];
+    if (self.gradient) {
+        [self.gradient removeFromSuperlayer];
+        self.gradient = nil;
+    }
+    
+    //resetting a gradient layer causes the iphone6 simulator to fail (weird bug)
+    CAGradientLayer *tempLayer = [CAGradientLayer layer];
+    tempLayer.frame = self.view.bounds;
+    tempLayer.colors = @[(id)[BAUtil UIColorFromHex:0x53cf84].CGColor,(id)[BAUtil UIColorFromHex:0x53cf84].CGColor, (id)[BAUtil UIColorFromHex:0x2aa581].CGColor, (id)[BAUtil UIColorFromHex:0x1b9680].CGColor];
+    tempLayer.locations = @[[NSNumber numberWithFloat:0.0f], [NSNumber numberWithFloat:0.5f],[NSNumber numberWithFloat:0.8f], [NSNumber numberWithFloat:1.0f]];
+    tempLayer.startPoint = CGPointMake(0, 0);
+    tempLayer.endPoint = CGPointMake(1, 1);
+    
+    self.gradient = tempLayer;
+    [self.backgroundView.layer insertSublayer:self.gradient atIndex:0];
     
 }
 
@@ -186,7 +203,7 @@
 - (void)changeTitleColor:(UIColor*)color {
     
     //better contrast
-    for (UILabel* label in self.TitleLabels) {
+    for (UILabel* label in self.titleLabels) {
         [label setTextColor:color];
     }
 }
@@ -202,17 +219,19 @@
     self.activity = NO;
     [self.animator removeAllBehaviors];
     
-    UIGravityBehavior* gravityBehaviour = [[UIGravityBehavior alloc] initWithItems:@[self.container]];
+    //drop current example
+    UIGravityBehavior* gravityBehaviour = [[UIGravityBehavior alloc] initWithItems:@[self.exampleContainerView]];
     gravityBehaviour.gravityDirection = CGVectorMake(0.0, 10.0);
     [self.animator addBehavior:gravityBehaviour];
     
-    UIDynamicItemBehavior *itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[self.container]];
-    [itemBehaviour addAngularVelocity:-M_PI_2 forItem: self.container];
+    UIDynamicItemBehavior *itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[self.exampleContainerView]];
+    [itemBehaviour addAngularVelocity:-M_PI_2 forItem: self.exampleContainerView];
     [self.animator addBehavior:itemBehaviour];
     
     self.currentExample++;
     
-    UIView *nextFluidViewExample = [self nextBAFluidViewExample];
+    //show new example
+    BAFluidView *nextFluidViewExample = [self nextBAFluidViewExample];
     [nextFluidViewExample addGestureRecognizer:self.gestureRecognizer];
     nextFluidViewExample.alpha = 0.0;
     [self.view insertSubview:nextFluidViewExample belowSubview:self.swipeForNextExampleLabel];
@@ -220,50 +239,58 @@
     [UIView animateWithDuration:0.5 animations:^{
         nextFluidViewExample.alpha = 1.0;
     } completion:^(BOOL finished) {
-        self.container = nextFluidViewExample;
+        self.exampleContainerView = nextFluidViewExample;
     }];
     
 }
 
--(UIView*) nextBAFluidViewExample {
+-(BAFluidView*) nextBAFluidViewExample {
     BAFluidView *fluidView;
 
     switch (self.currentExample) {
         case 0://Example with a mask
         {
-            //TO DO add feature to pic a starting elevation
-            CGRect frame = self.view.frame;
-            frame.origin .y += 40;
-            fluidView = [[BAFluidView alloc] initWithFrame:frame];
+
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
+            
             fluidView.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+            [fluidView fillTo:@0.9];
+            [fluidView startAnimation];
+            
             UIImage *maskingImage = [UIImage imageNamed:@"icon"];
             CALayer *maskingLayer = [CALayer layer];
-         
             maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
             [maskingLayer setContents:(id)[maskingImage CGImage]];
             [fluidView.layer setMask:maskingLayer];
+
             [self changeTitleColor:[BAUtil UIColorFromHex:0x2e353d]];
+            
             return fluidView;
         }
             
         case 1://example with a fill of the screen
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.0];
             fluidView.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+            [fluidView fillTo:@1.0];
+            [fluidView startAnimation];
             [self changeTitleColor:[UIColor whiteColor]];
             return fluidView;
             
         case 2://Example with a different color and stationary
-            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
+            fluidView.strokeColor = [UIColor whiteColor];
             fluidView.fillColor = [BAUtil UIColorFromHex:0x2e353d];
             [fluidView keepStationary];
+            [fluidView startAnimation];
             [self changeTitleColor:[UIColor whiteColor]];
             return fluidView;
             
         case 3://Example with clear fill color
-            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             fluidView.fillColor = [UIColor clearColor];
             fluidView.strokeColor = [UIColor whiteColor];
             [fluidView keepStationary];
+            [fluidView startAnimation];
             [self changeTitleColor:[BAUtil UIColorFromHex:0x2e353d]];
             return fluidView;
         default:

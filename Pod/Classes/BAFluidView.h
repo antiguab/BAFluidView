@@ -25,16 +25,100 @@
 @interface BAFluidView : UIView
 
 
-//configuratble properties
-@property(nonatomic,strong)UIColor *fillColor;
-@property(nonatomic,strong)UIColor *strokeColor;
-@property(nonatomic,assign)float fillRepeatCount;
-@property(nonatomic,assign)float lineWidth;
-@property(nonatomic,assign)BOOL fillAutoReverse;
+/**
+Changes the fill color of the wave animation
+ */
+@property(strong,nonatomic) UIColor *fillColor;
 
+/**
+ Changes the stroke color of the wave animation
+ */
+@property(strong,nonatomic) UIColor *strokeColor;
+
+/**
+ Changes how frequently the vertical fill animation will happen
+ */
+@property(assign,nonatomic) CGFloat fillRepeatCount;
+
+/**
+ Provides a way to increase or decrese the side of the stroke around the wave animation
+ */
+@property(assign,nonatomic) CGFloat lineWidth;
+
+/**
+ Boolean to determine whether you want the fill animation to return to it's initial state
+ */
+@property(assign,nonatomic) BOOL fillAutoReverse;
+
+/**
+ Provides a way to start the wave at a different elevation
+ */
+@property(assign,nonatomic) NSNumber *startElavation;
+
+/**
+ Returns an object that can create the fluid animation with the given wave properties. This init function lets you adjust the wave crest properties.
+ 
+ @param aRect
+ Frame for the fluid object to fill
+ @param maxAmplitude
+ Max wave crest
+ @param minAmplitude
+ Min wave crest
+ @param amplitudeIncrement
+ Lets you chose the interval between Max and Min the random function will use
+ @return a fluid view object with the properties defined
+ */
 - (id)initWithFrame:(CGRect)aRect maxAmplitude:(int)maxAmplitude minAmplitude:(int)minAmplitude amplitudeIncrement:(int)amplitudeIncrement;
+
+/**
+ Returns an object that can create the fluid animation with the given wave properties. This init function lets you adjust starting elevation. The other parameters have default values.
+ 
+ @param aRect
+ Frame for the fluid object to fill
+ @param startElevation
+ The starting point of the fluid animation
+ @return a fluid view object with the properties defined
+ */
 - (id)initWithFrame:(CGRect)aRect startElevation:(NSNumber*)aStartElevation;
--  (id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement startElevation:(NSNumber*)aStartElevation;
--(void)fillTo:(float)percentage;
--(void)keepStationary;
+
+/**
+ Returns an object that can create the fluid animation with the given wave properties. This init function lets you adjust all the wave crest and fluid properties.
+ 
+ @param aRect
+ Frame for the fluid object to fill
+ @param maxAmplitude
+ Max wave crest
+ @param minAmplitude
+ Min wave crest
+ @param amplitudeIncrement
+ Lets you chose the interval between Max and Min the random function will use
+ @param startElevation
+ The starting point of the fluid animation
+ @return a fluid view object with the properties defined
+ */
+- (id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement startElevation:(NSNumber*)aStartElevation;
+
+/**
+This method lets you choose to what level you want the fluidVIew to increase or decrease to (based on starting elevation)
+ @param fillPercentage
+ Determines the percentage to fill to (decimal number)
+ */
+- (void)fillTo:(NSNumber*)fillPercentage;
+
+/**
+ This method lets you keep the fluid view at it's starting elevation, but creates the wave crest animation
+ */
+- (void)keepStationary;
+
+/**
+ This methods starts all the desired animations
+ */
+- (void)startAnimation;
+
+/**
+This method can set all the default values prior to start of animation
+ */
+- (void)initialize;
+
+
 @end
