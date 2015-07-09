@@ -110,7 +110,7 @@ fluidView.fillColor = [BAUtil UIColorFromHex:0x2e353d];
 [fluidView keepStationary];
 [fluidView startAnimation];
 ```
-
+**Note: **keepStationary** keeps the fluid at the starting level!
 This creates the following view:
 
 ![example4](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example4.gif)
