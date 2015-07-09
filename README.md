@@ -38,7 +38,7 @@ pod "BAFluidView"
 
 
 #### Basic
-TO add a BAFluidView to your app, add the line:
+To add a BAFluidView to your app, add the line:
 
 ```
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
@@ -133,7 +133,7 @@ This creates the following view:
 
 #### Use as a Layer 
 
-If you want to add the effect to another view, use it's layer. In the example below, we use it on a button!
+If you want to add the effect to another view, use it's layer!
 
 ```
 BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
