@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "BAFluidView"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "UIView that simulates a 2D view of a fluid in motion"
   s.description      = <<-DESC
                         This view and it's layer create a 2D fluid animation that can be used to simulate a filling effect.
