@@ -38,9 +38,9 @@ pod "BAFluidView"
 
 
 #### Basic
-To add a BAFluidView to your app, add the line:
+To add a `BAFluidView` to your app, add the line:
 
-```
+```objc
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
 [view fillTo:@1.0];
 view.fillColor = [BAUtil UIColorFromHex:0x397ebe];
@@ -56,13 +56,13 @@ This creates the following view:
 Listed below are examples of several properties that you can control. 
 
 #### Init
-You can use **initWithFrame:maxAmplitude:minAmplitude:amplitudeIncrement:** to control how high/low you want the wave to go. The increment method helps control the variation between the peaks. If you're only concerned is where the fluid starts, **initWithFrame:(CGRect)aRect startElevation:(NSNumber*)aStartElevation** creates a fluid view with default values, but lets you choose the starting elevation. To control all init values, use the method **(id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement startElevation:(NSNumber*)aStartElevation** which is a combination of the two above.
+You can use `initWithFrame:maxAmplitude:minAmplitude:amplitudeIncrement:` to control how high/low you want the wave to go. The increment method helps control the variation between the peaks. If you're only concerned is where the fluid starts, `initWithFrame:(CGRect)aRect startElevation:(NSNumber*)aStartElevation` creates a fluid view with default values, but lets you choose the starting elevation. To control all init values, use the method `(id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement startElevation:(NSNumber*)aStartElevation` which is a combination of the two above.
 
 
 #### Animate Only Once (End in old state)
 If you only want the effect to fill only once (or any specific amount of times) you can edit the fillRepeatCount property:
 
-```
+```objc
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
 view.fillRepeatCount = 1;
 [view fillTo:@1.0];
@@ -72,7 +72,7 @@ view.fillColor = [BAUtil UIColorFromHex:0x397ebe];
 #### Animate Only Once (End in new state)
 You can also create the same effect as above, but stay in the filled state by editing the fillAutoReverse property:
 
-```
+```objc
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
 view.fillColor = [BAUtil UIColorFromHex:0x397ebe];
 view.fillAutoReverse = NO;
@@ -87,9 +87,9 @@ This creates the following view:
 
 #### Fill to specific level
 
-By default, the animation goes to the top of the view. If you don't want it to go the entire distance, you can use the **fillTo:** method by giving it a percentage of the distance you want it to travel:
+By default, the animation goes to the top of the view. If you don't want it to go the entire distance, you can use the `fillTo:` method by giving it a percentage of the distance you want it to travel:
 
-```
+```objc
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
 [view fillTo:@0.5];
 view.fillColor = [BAUtil UIColorFromHex:0x397ebe];
@@ -103,23 +103,23 @@ This creates the following view:
 
 By editing the fillColor property, you can give the fluid any color:
 
-```
+```objc
 BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
 fluidView.strokeColor = [UIColor whiteColor];
 fluidView.fillColor = [BAUtil UIColorFromHex:0x2e353d];
 [fluidView keepStationary];
 [fluidView startAnimation];
 ```
-**Note: **keepStationary** keeps the fluid at the starting level!
+**Note: `keepStationary` keeps the fluid at the starting level!**
 This creates the following view:
 
 ![example4](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example4.gif)
 
 #### Stroke Color
 
-Similiarly, you can alter the stroke property. With a clear fillColor you get a wave effect like below:
+Similiarly, you can alter the stroke property. With a clear `fillColor` you get a wave effect like below:
 
-```
+```objc
 BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
 fluidView.fillColor = [UIColor clearColor];
 fluidView.strokeColor = [UIColor whiteColor];
@@ -135,7 +135,7 @@ This creates the following view:
 
 If you want to add the effect to another view, use it's layer!
 
-```
+```objc
 BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
 fluidView.fillColor = [BAUtil UIColorFromHex:0x397ebe];
 [fluidView fillTo:@0.9];
