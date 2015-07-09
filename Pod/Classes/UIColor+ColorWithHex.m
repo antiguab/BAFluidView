@@ -1,6 +1,6 @@
 //The MIT License (MIT)
 //
-//Copyright (c) 2014 Bryan Antigua <antigua.b@gmail.com>
+//Copyright (c) 2014 Bryan Antigua <antigua.b@gmail.com> Sam Stone <stonesam92@gmail.com>
 //
 //Permission is hereby granted, free of charge, to any person obtaining a copy
 //of this software and associated documentation files (the "Software"), to deal
@@ -20,15 +20,15 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-#import "BAUtil.h"
+#import "UIColor+ColorWithHex.h"
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@implementation BAUtil
+@implementation UIColor (ColorFromHex)
 
-+(UIColor*)UIColorFromHex:(int)hex
++(UIColor*)colorWithHex:(int)hex
 {
     return UIColorFromRGB(hex);
 }

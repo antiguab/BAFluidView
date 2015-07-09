@@ -22,7 +22,7 @@
 
 #import "BAViewController.h"
 #import "BAFluidView.h"
-#import "BAUtil.h"
+#import "UIColor+ColorWithHex.h"
 
 @interface BAViewController ()
 
@@ -189,7 +189,7 @@
     //resetting a gradient layer causes the iphone6 simulator to fail (weird bug)
     CAGradientLayer *tempLayer = [CAGradientLayer layer];
     tempLayer.frame = self.view.bounds;
-    tempLayer.colors = @[(id)[BAUtil UIColorFromHex:0x53cf84].CGColor,(id)[BAUtil UIColorFromHex:0x53cf84].CGColor, (id)[BAUtil UIColorFromHex:0x2aa581].CGColor, (id)[BAUtil UIColorFromHex:0x1b9680].CGColor];
+    tempLayer.colors = @[(id)[UIColor colorWithHex:0x53cf84].CGColor,(id)[UIColor colorWithHex:0x53cf84].CGColor, (id)[UIColor colorWithHex:0x2aa581].CGColor, (id)[UIColor colorWithHex:0x1b9680].CGColor];
     tempLayer.locations = @[[NSNumber numberWithFloat:0.0f], [NSNumber numberWithFloat:0.5f],[NSNumber numberWithFloat:0.8f], [NSNumber numberWithFloat:1.0f]];
     tempLayer.startPoint = CGPointMake(0, 0);
     tempLayer.endPoint = CGPointMake(1, 1);
@@ -253,7 +253,7 @@
 
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
             
-            fluidView.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+            fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
             [fluidView fillTo:@0.9];
             [fluidView startAnimation];
             
@@ -263,7 +263,7 @@
             [maskingLayer setContents:(id)[maskingImage CGImage]];
             [fluidView.layer setMask:maskingLayer];
 
-            [self changeTitleColor:[BAUtil UIColorFromHex:0x2e353d]];
+            [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
             
             return fluidView;
         }
@@ -271,7 +271,7 @@
         case 1://example with a fill of the screen
         {
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.0];
-            fluidView.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+            fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
             [fluidView fillTo:@1.0];
             [fluidView startAnimation];
             [self changeTitleColor:[UIColor whiteColor]];
@@ -282,7 +282,7 @@
         {
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             fluidView.strokeColor = [UIColor whiteColor];
-            fluidView.fillColor = [BAUtil UIColorFromHex:0x2e353d];
+            fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
             [fluidView keepStationary];
             [fluidView startAnimation];
             [self changeTitleColor:[UIColor whiteColor]];
@@ -296,7 +296,7 @@
             fluidView.strokeColor = [UIColor whiteColor];
             [fluidView keepStationary];
             [fluidView startAnimation];
-            [self changeTitleColor:[BAUtil UIColorFromHex:0x2e353d]];
+            [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
             return fluidView;
         }
         default:

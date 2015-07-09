@@ -21,7 +21,7 @@
 //SOFTWARE.
 
 #import "BAFluidView.h"
-#import "BAUtil.h"
+#import "UIColor+ColorWithHex.h"
 
 @interface BAFluidView()
 
@@ -173,8 +173,8 @@
     // create the wave layer and make it blue
     self.clipsToBounds = YES;
     self.lineLayer = [CAShapeLayer layer];
-    self.lineLayer.fillColor = [BAUtil UIColorFromHex:0x6BB9F0].CGColor;
-    self.lineLayer.strokeColor = [BAUtil UIColorFromHex:0x6BB9F0].CGColor;
+    self.lineLayer.fillColor = [UIColor colorWithHex:0x6BB9F0].CGColor;
+    self.lineLayer.strokeColor = [UIColor colorWithHex:0x6BB9F0].CGColor;
     
     //default wave properties
     self.fillAutoReverse = YES;
