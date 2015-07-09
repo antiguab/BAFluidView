@@ -269,14 +269,17 @@
         }
             
         case 1://example with a fill of the screen
+        {
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.0];
             fluidView.fillColor = [BAUtil UIColorFromHex:0x397ebe];
             [fluidView fillTo:@1.0];
             [fluidView startAnimation];
             [self changeTitleColor:[UIColor whiteColor]];
             return fluidView;
+        }
             
         case 2://Example with a different color and stationary
+        {
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             fluidView.strokeColor = [UIColor whiteColor];
             fluidView.fillColor = [BAUtil UIColorFromHex:0x2e353d];
@@ -284,8 +287,10 @@
             [fluidView startAnimation];
             [self changeTitleColor:[UIColor whiteColor]];
             return fluidView;
+        }
             
         case 3://Example with clear fill color
+        {
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             fluidView.fillColor = [UIColor clearColor];
             fluidView.strokeColor = [UIColor whiteColor];
@@ -293,9 +298,12 @@
             [fluidView startAnimation];
             [self changeTitleColor:[BAUtil UIColorFromHex:0x2e353d]];
             return fluidView;
+        }
         default:
+        {
             self.currentExample = 0;
             return [self nextBAFluidViewExample];
+        }
     }
     
     return nil;
