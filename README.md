@@ -43,7 +43,7 @@ To add a BAFluidView to your app, add the line:
 ```
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
 [view fillTo:@1.0];
-view.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
 ```
 
@@ -66,7 +66,7 @@ If you only want the effect to fill only once (or any specific amount of times) 
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
 view.fillRepeatCount = 1;
 [view fillTo:@1.0];
-view.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
 ```
 #### Animate Only Once (End in new state)
@@ -74,7 +74,7 @@ You can also create the same effect as above, but stay in the filled state by ed
 
 ```
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
-view.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+view.fillColor = [UIColor colorWithHex:0x397ebe];
 view.fillAutoReverse = NO;
 view.fillRepeatCount = 1;
 [view fillTo:@1.0];
@@ -92,7 +92,7 @@ By default, the animation goes to the top of the view. If you don't want it to g
 ```
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
 [view fillTo:@0.5];
-view.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
 ```
 This creates the following view:
@@ -106,7 +106,7 @@ By editing the fillColor property, you can give the fluid any color:
 ```
 BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
 fluidView.strokeColor = [UIColor whiteColor];
-fluidView.fillColor = [BAUtil UIColorFromHex:0x2e353d];
+fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
 [fluidView keepStationary];
 [fluidView startAnimation];
 ```
@@ -137,7 +137,7 @@ If you want to add the effect to another view, use it's layer!
 
 ```
 BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
-fluidView.fillColor = [BAUtil UIColorFromHex:0x397ebe];
+fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
 [fluidView fillTo:@0.9];
 [fluidView startAnimation];
 

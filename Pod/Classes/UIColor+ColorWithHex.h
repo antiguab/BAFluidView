@@ -1,6 +1,6 @@
 //The MIT License (MIT)
 //
-//Copyright (c) 2014 Bryan Antigua <antigua.b@gmail.com>
+//Copyright (c) 2014 Bryan Antigua <antigua.b@gmail.com> Sam Stone <stonesam92@gmail.com>
 //
 //Permission is hereby granted, free of charge, to any person obtaining a copy
 //of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BAUtil : NSObject
+@interface UIColor (ColorFromHex)
 
-+(UIColor*)UIColorFromHex:(int)hex;
++(UIColor*)colorWithHex:(int)hex;
 
 @end
