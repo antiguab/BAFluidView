@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Util : NSObject
+@interface BAUtil : NSObject
 
 +(UIColor*)UIColorFromHex:(int)hex;
 

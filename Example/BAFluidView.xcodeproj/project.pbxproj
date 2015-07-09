@@ -27,7 +27,6 @@
 		D05FEF361ACB9FC0009FD340 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D05FEF351ACB9FC0009FD340 /* icon.png */; };
 		D05FEF391ACBAD91009FD340 /* Lovelo Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D05FEF371ACBAD91009FD340 /* Lovelo Black.otf */; };
 		D05FEF3A1ACBAD91009FD340 /* Lovelo Line Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D05FEF381ACBAD91009FD340 /* Lovelo Line Light.otf */; };
-		D05FEF3C1ACBAE26009FD340 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D05FEF3B1ACBAE26009FD340 /* background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +72,6 @@
 		D05FEF351ACB9FC0009FD340 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D05FEF371ACBAD91009FD340 /* Lovelo Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Black.otf"; sourceTree = "<group>"; };
 		D05FEF381ACBAD91009FD340 /* Lovelo Line Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Light.otf"; sourceTree = "<group>"; };
-		D05FEF3B1ACBAE26009FD340 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		EDEA307726DE4A9E87967039 /* Pods-BAFluidView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BAFluidView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BAFluidView/Pods-BAFluidView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,11 +144,7 @@
 				6003F5A6195388D20070C39A /* BAViewController.m */,
 				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
 				D0342DF41ACA627B0019824E /* LaunchScreen.xib */,
-				D05FEF371ACBAD91009FD340 /* Lovelo Black.otf */,
-				D05FEF351ACB9FC0009FD340 /* icon.png */,
-				D05FEF3B1ACBAE26009FD340 /* background.png */,
-				D05FEF381ACBAD91009FD340 /* Lovelo Line Light.otf */,
-				6003F5A8195388D20070C39A /* Images.xcassets */,
+				D09838B01AFAC59A00EF1798 /* Resources */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			path = BAFluidView;
@@ -205,6 +199,25 @@
 				A14F30B31005B1BB8762AE07 /* Pods-Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D09838B01AFAC59A00EF1798 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D09838B11AFAC5A900EF1798 /* Fonts */,
+				D05FEF351ACB9FC0009FD340 /* icon.png */,
+				6003F5A8195388D20070C39A /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D09838B11AFAC5A900EF1798 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D05FEF371ACBAD91009FD340 /* Lovelo Black.otf */,
+				D05FEF381ACBAD91009FD340 /* Lovelo Line Light.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,7 +307,6 @@
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				D05FEF3A1ACBAD91009FD340 /* Lovelo Line Light.otf in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
-				D05FEF3C1ACBAE26009FD340 /* background.png in Resources */,
 				D05FEF391ACBAD91009FD340 /* Lovelo Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
