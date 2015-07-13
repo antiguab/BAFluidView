@@ -56,6 +56,11 @@ Changes the fill color of the wave animation
 @property(assign,nonatomic) NSNumber *startElavation;
 
 /**
+ Changes the interval between Max and Min the random function will use
+ */
+@property (assign,nonatomic) int amplitudeIncrement;
+
+/**
  Changes the maximum wave crest
  */
 @property (assign,nonatomic) int maxAmplitude;
