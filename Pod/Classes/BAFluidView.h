@@ -56,6 +56,16 @@ Changes the fill color of the wave animation
 @property(assign,nonatomic) NSNumber *startElavation;
 
 /**
+ Changes the maximum wave crest
+ */
+@property (assign,nonatomic) int maxAmplitude;
+
+/**
+ Changes the minimum wave crest
+ */
+@property (assign,nonatomic) int minAmplitude;
+
+/**
  Returns an object that can create the fluid animation with the given wave properties. This init function lets you adjust the wave crest properties.
  
  @param aRect

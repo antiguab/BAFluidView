@@ -32,8 +32,6 @@
 @property (strong,nonatomic) NSArray *amplitudeArray;
 @property (assign,nonatomic) int startingAmplitude;
 @property (assign,nonatomic) int amplitudeIncrement;
-@property (assign,nonatomic) int maxAmplitude;
-@property (assign,nonatomic) int minAmplitude;
 
 @property (strong,nonatomic) NSNumber* startElevation;
 @property (strong,nonatomic) NSNumber* fillLevel;
