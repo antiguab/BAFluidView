@@ -87,6 +87,28 @@
                                    selector:@selector(showSwipeForNextExampleLabel)
                                    userInfo:nil
                                     repeats:YES];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(stopAnimation)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(startAnimation)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+}
+
+- (void)stopAnimation {
+    if ([self.exampleContainerView isKindOfClass:[BAFluidView class]]) {
+        [(BAFluidView *)self.exampleContainerView stopAnimation];
+    }
+}
+
+- (void)startAnimation {
+    if ([self.exampleContainerView isKindOfClass:[BAFluidView class]]) {
+        [(BAFluidView *)self.exampleContainerView startAnimation];
+    }
 }
 
 - (void)viewDidLayoutSubviews {

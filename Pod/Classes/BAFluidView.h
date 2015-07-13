@@ -131,9 +131,13 @@ This method lets you choose to what level you want the fluidVIew to increase or 
 - (void)startAnimation;
 
 /**
+ This methods stops all the desired animations
+ */
+- (void)stopAnimation;
+
+/**
 This method can set all the default values prior to start of animation
  */
 - (void)initialize;
-
 
 @end
