@@ -31,9 +31,6 @@
 
 @property (strong,nonatomic) NSArray *amplitudeArray;
 @property (assign,nonatomic) int startingAmplitude;
-@property (assign,nonatomic) int amplitudeIncrement;
-@property (assign,nonatomic) int maxAmplitude;
-@property (assign,nonatomic) int minAmplitude;
 
 @property (strong,nonatomic) NSNumber* startElevation;
 @property (strong,nonatomic) NSNumber* fillLevel;
@@ -154,7 +151,21 @@
     CGRect frame = self.lineLayer.frame;
     frame.origin.y = CGRectGetHeight(self.rootView.frame)*((1-[_startElavation floatValue]));
     self.lineLayer.frame = frame;
-    
+}
+
+- (void)setMaxAmplitude:(int)maxAmplitude {
+    _maxAmplitude = maxAmplitude;
+    self.amplitudeArray = [self createAmplitudeOptions];
+}
+
+- (void)setMinAmplitude:(int)minAmplitude {
+    _minAmplitude = minAmplitude;
+    self.amplitudeArray = [self createAmplitudeOptions];
+}
+
+- (void)setAmplitudeIncrement:(int)amplitudeIncrement {
+    _amplitudeIncrement = amplitudeIncrement;
+    self.amplitudeArray = [self createAmplitudeOptions];
 }
 
 #pragma mark - Public
