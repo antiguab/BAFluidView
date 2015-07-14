@@ -1,0 +1,55 @@
+5896123 (HEAD, origin/master, origin/HEAD, master) Merge pull request #16 from antiguab/fix_tab_glitch
+c8d35ae (origin/fix_tab_glitch) moved notifications and added wllMoveToWindow method
+23c7f86 Merge pull request #15 from andreamazz/fix-background-glitch
+ef8823a Merge pull request #13 from andreamazz/master
+44231e4 Fix #14
+eff52c1 Expose amplitudeIncrement
+a3b05ef Expose max and min amplitude
+7dea3d0 Merge pull request #11 from antiguab/updated_demo_pod_version
+7caabfe updated to 0.1.3
+372d85a (tag: 0.1.3) Merge pull request #9 from antiguab/update_podspec
+0a5649e (origin/update_podspec) updated podspec
+c1442d3 Merge pull request #7 from stonesam92/master
+f119ab8 Merge pull request #6 from andreamazz/master
+bf912e6 Actually include UIColor category header for example project
+9993f36 Update project file list for removed BAUtil files
+7b07975 Replaced BAUtil class with a category on UIColor
+5f6d3c5 Improve readme
+24defb9 (tag: 0.1.2) Merge pull request #5 from antiguab/update_version
+90ef534 (origin/update_version) upped to 0.1.2
+6cc4221 Update README.md
+d989107 Merge pull request #4 from antiguab/update_readme
+bcac634 (origin/update_readme) added readme assets
+cdf9115 updated readme assets
+29b7422 Update README.md
+5a4ffa7 updated readme pt1
+bc671df added e1 and e6
+2eeb6f7 Merge pull request #3 from antiguab/clean_up_and_add_line_layer_frame
+532ebfd (origin/clean_up_and_add_line_layer_frame) updated code, added elevation logic, added line layer prop
+fe320c0 cleaned up demo code
+cee0fb6 (tag: 0.1.1) Merge pull request #2 from antiguab/update_demo_and_add_features
+ed01edd (origin/update_demo_and_add_features) missed header update
+08db150 added new init methods, elevation features, and updated fillTo
+648209b updated timer functions for swipe label
+81b5ea5 added ability to change lineWidth
+2cb510d Merge pull request #1 from antiguab/update_demo
+22f161b (origin/update_demo) Release 0.1.1 - updated demo
+3e33a4b Update README.md
+00d1f7b updated podspec
+18bfb24 (tag: 0.1.0) renamed main lib files
+cb67db0 added screenshots
+642fab3 forgot example 4
+047c1dc forgot example 4
+a3a6ec7 Update README.md
+8819930 added readme assets
+02fd645 updated metadata and examples
+54e1a99 Update README.md
+1105afd Update README.md
+24decad edit travis test
+5a8cf18 edit travis.xml and hid other scheme
+7180282 made scheme sharable
+d94648e Update BAFluidView.podspec
+717bfd0 updated pod spec for validation
+ae23510 init commit
+139cd44 Update LICENSE
+6933953 Initial commit

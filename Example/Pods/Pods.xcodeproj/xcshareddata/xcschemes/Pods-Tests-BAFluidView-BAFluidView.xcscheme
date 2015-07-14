@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14558D09DDEE1D97F4F72419"
+               BlueprintIdentifier = "9D9DB4F74B5735A5610E0354"
                BuildableName = "BAFluidView.bundle"
                BlueprintName = "Pods-Tests-BAFluidView-BAFluidView"
                ReferencedContainer = "container:Pods.xcodeproj">
