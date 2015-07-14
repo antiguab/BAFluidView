@@ -36,6 +36,7 @@
 @property (strong,nonatomic) NSNumber* fillLevel;
 @property (assign,nonatomic) BOOL initialFill;
 
+@property (assign,nonatomic) BOOL animating;
 
 @property (assign,nonatomic) int waveLength;//** 2 UIBezierPaths = 1 wavelength
 @property (assign,nonatomic) int finalX;
@@ -212,28 +213,40 @@
 }
 
 - (void)startAnimation {
-    self.startingAmplitude = self.maxAmplitude;
-    
-    //Phase Shift Animation
-    CAKeyframeAnimation *horizontalAnimation =
-    [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
-    horizontalAnimation.values = @[@(self.lineLayer.position.x),@(-self.finalX + self.waveLength)];
-    horizontalAnimation.duration = 1.0;
-    horizontalAnimation.repeatCount = HUGE;
-    [self.lineLayer addAnimation:horizontalAnimation forKey:@"horizontalAnimation"];
-    
-    //Wave Crest Animations
-    self.waveCrestAnimation = [CAKeyframeAnimation animationWithKeyPath:@"path"];
-    self.waveCrestAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    self.waveCrestAnimation.values = [self getBezierPathValues];
-    self.waveCrestAnimation.duration = 0.5;
-    self.waveCrestAnimation.removedOnCompletion = NO;
-    self.waveCrestAnimation.fillMode = kCAFillModeForwards;
-    self.waveCrestAnimation.delegate = self;
-    [self updateWaveSegmentAnimation];
+    if (!self.animating) {
+        self.startingAmplitude = self.maxAmplitude;
 
-    //add sublayer to view
-    [self.layer addSublayer:self.lineLayer];
+        //Phase Shift Animation
+        CAKeyframeAnimation *horizontalAnimation =
+        [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
+        horizontalAnimation.values = @[@(self.lineLayer.position.x),@(-self.finalX + self.waveLength)];
+        horizontalAnimation.duration = 1.0;
+        horizontalAnimation.repeatCount = HUGE;
+        [self.lineLayer addAnimation:horizontalAnimation forKey:@"horizontalAnimation"];
+
+        //Wave Crest Animations
+        self.waveCrestAnimation = [CAKeyframeAnimation animationWithKeyPath:@"path"];
+        self.waveCrestAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        self.waveCrestAnimation.values = [self getBezierPathValues];
+        self.waveCrestAnimation.duration = 0.5;
+        self.waveCrestAnimation.removedOnCompletion = NO;
+        self.waveCrestAnimation.fillMode = kCAFillModeForwards;
+        self.waveCrestAnimation.delegate = self;
+        [self updateWaveSegmentAnimation];
+
+        //add sublayer to view
+        [self.layer addSublayer:self.lineLayer];
+        
+        self.animating = YES;
+    }
+}
+
+- (void)stopAnimation {
+    [self.lineLayer removeAnimationForKey:@"horizontalAnimation"];
+    [self.lineLayer removeAnimationForKey:@"waveSegmentAnimation"];
+    self.waveCrestAnimation =  nil;
+
+    self.animating = NO;
 }
 
 - (void)keepStationary {
@@ -284,7 +297,10 @@
     self.waveCrestAnimation.values = [self getBezierPathValues];
     [CATransaction setCompletionBlock:^{
         //keeps it repeating but also changing in wave size
-        [self updateWaveSegmentAnimation];
+        if (self.animating) {
+            [self updateWaveSegmentAnimation];
+        }
+
     }];
     [self.lineLayer addAnimation:self.waveCrestAnimation forKey:@"waveSegmentAnimation"];
     [CATransaction commit];
