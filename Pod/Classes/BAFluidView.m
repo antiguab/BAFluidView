@@ -121,6 +121,16 @@
     return self;
 }
 
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    if(newWindow == nil){
+        //the view is being removed
+        [self stopAnimation];
+        return;
+    }
+    
+    //the view is being added
+    [self startAnimation];
+}
 
 #pragma mark - Custom Accessors
 
@@ -210,6 +220,17 @@
     //fill level
     self.initialFill = YES;
     self.fillLevel = @0.0;
+    
+    //adding notification for when the app enters the foreground/background
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(stopAnimation)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(startAnimation)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
 }
 
 - (void)startAnimation {
