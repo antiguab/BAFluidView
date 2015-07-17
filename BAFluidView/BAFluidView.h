@@ -15,5 +15,4 @@ FOUNDATION_EXPORT double BAFluidViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char BAFluidViewVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <BAFluidView/PublicHeader.h>
-
 #import <BAFluidView/BAFluidView.h>

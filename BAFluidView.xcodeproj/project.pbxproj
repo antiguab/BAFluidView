@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		659E9E001B58E7E70029FE32 /* BAFluidView.h in Headers */ = {isa = PBXBuildFile; fileRef = 659E9DFF1B58E7E70029FE32 /* BAFluidView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		659E9E421B58E8ED0029FE32 /* BAFluidView.h in Headers */ = {isa = PBXBuildFile; fileRef = 659E9E3E1B58E8ED0029FE32 /* BAFluidView.h */; };
+		659E9E421B58E8ED0029FE32 /* BAFluidView.h in Headers */ = {isa = PBXBuildFile; fileRef = 659E9E3E1B58E8ED0029FE32 /* BAFluidView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		659E9E431B58E8ED0029FE32 /* BAFluidView.m in Sources */ = {isa = PBXBuildFile; fileRef = 659E9E3F1B58E8ED0029FE32 /* BAFluidView.m */; };
 		659E9E441B58E8ED0029FE32 /* UIColor+ColorWithHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 659E9E401B58E8ED0029FE32 /* UIColor+ColorWithHex.h */; };
 		659E9E451B58E8ED0029FE32 /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 659E9E411B58E8ED0029FE32 /* UIColor+ColorWithHex.m */; };

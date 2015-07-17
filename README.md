@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
 [![License](https://img.shields.io/cocoapods/l/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
 [![Platform](https://img.shields.io/cocoapods/p/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Overview
 ![example6](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example6.gif)
