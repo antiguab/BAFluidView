@@ -4,12 +4,13 @@
 [![Version](https://img.shields.io/cocoapods/v/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
 [![License](https://img.shields.io/cocoapods/l/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
 [![Platform](https://img.shields.io/cocoapods/p/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Overview
 ![example6](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example6.gif)
 ![example1](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example1.gif)
 
-This view and it's layer create a 2D fluid animation that can be used to simulate a filling effect.
+This view and its layer create a 2D fluid animation that can be used to simulate a filling effect.
 
 <br/>
 
@@ -133,7 +134,7 @@ This creates the following view:
 
 #### Use as a Layer 
 
-If you want to add the effect to another view, use it's layer!
+If you want to add the effect to another view, use its layer!
 
 ```objc
 BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
