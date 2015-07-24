@@ -61,7 +61,7 @@ You can use `initWithFrame:maxAmplitude:minAmplitude:amplitudeIncrement:` to con
 
 
 #### Animate Only Once (End in old state)
-If you only want the effect to fill only once (or any specific amount of times) you can edit the fillRepeatCount property:
+If you only want the effect to fill only once (or any specific amount of times) you can edit the `fillRepeatCount` property:
 
 ```objc
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
@@ -71,7 +71,7 @@ view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
 ```
 #### Animate Only Once (End in new state)
-You can also create the same effect as above, but stay in the filled state by editing the fillAutoReverse property:
+You can also create the same effect as above, but stay in the filled state by editing the `fillAutoReverse` property:
 
 ```objc
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame maxAmplitude:40 minAmplitude:5 amplitudeIncrement:5];
@@ -100,9 +100,24 @@ This creates the following view:
 
 ![example3](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example3.gif)
 
+#### Fill Duration
+
+You can set the duration of a fill with the `fillDuration` property. The duration will be the amount of time it takes for the fill to go from 0% - 100%. Adding it to the example above, we get :
+
+```objc
+BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
+view.fillDuration = 5.0; 
+[view fillTo:@0.5];
+view.fillColor = [UIColor colorWithHex:0x397ebe];
+[view startAnimation];
+```
+**Note: `fillDuration` needs to be set before you call `fillTo:` method!**
+This creates the following view:
+
+![example3b](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example3b.gif)
 #### Fill Color
 
-By editing the fillColor property, you can give the fluid any color:
+By editing the `fillColor` property, you can give the fluid any color:
 
 ```objc
 BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
@@ -132,7 +147,7 @@ This creates the following view:
 
 ![example5](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example5.gif)
 
-#### Use as a Layer 
+#### Use as a Layer
 
 If you want to add the effect to another view, use its layer!
 
@@ -157,7 +172,7 @@ Sweet! check it out:
 
 ## Author
 
-Bryan Antigua, antigua.B@gmail.com
+Bryan Antigua, antigua.B@gmail.com - [bryanantigua.com](bryanantigua.com)
 
 
 ## License
