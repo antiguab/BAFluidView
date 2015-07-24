@@ -26,22 +26,22 @@
 
 @interface BAViewController ()
 
-    @property (strong,nonatomic) UIDynamicAnimator *animator;
-    @property (strong,nonatomic) UIAttachmentBehavior *attachmentBehavior;
+@property (strong,nonatomic) UIDynamicAnimator *animator;
+@property (strong,nonatomic) UIAttachmentBehavior *attachmentBehavior;
 
-    @property (strong,nonatomic) UIPanGestureRecognizer *gestureRecognizer;
-    @property (strong,nonatomic) CABasicAnimation *fadeIn;
-    @property (strong,nonatomic) CABasicAnimation *fadeOut;
+@property (strong,nonatomic) UIPanGestureRecognizer *gestureRecognizer;
+@property (strong,nonatomic) CABasicAnimation *fadeIn;
+@property (strong,nonatomic) CABasicAnimation *fadeOut;
 
-    @property (strong,nonatomic) NSMutableArray *examplesArray;
+@property (strong,nonatomic) NSMutableArray *examplesArray;
 
-    @property (assign,nonatomic) int currentExample;
-    @property (assign,nonatomic) BOOL activity;
-    @property (assign,nonatomic) NSTimer *timer;
+@property (assign,nonatomic) int currentExample;
+@property (assign,nonatomic) BOOL activity;
+@property (assign,nonatomic) NSTimer *timer;
 
-    @property (assign,nonatomic) BOOL firstTimeLoading;
+@property (assign,nonatomic) BOOL firstTimeLoading;
 
-    @property(assign,nonatomic) CAGradientLayer *gradient;
+@property(assign,nonatomic) CAGradientLayer *gradient;
 
 @end
 
@@ -56,13 +56,13 @@
     
     self.activity = NO;
     self.firstTimeLoading = YES;
-
+    
     [self setUpBackground];
-
+    
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
     self.gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetected:)];
-
+    
     self.currentExample = 0;
     
     //For fading in swipe labels and timing it's appearance
@@ -83,14 +83,15 @@
     self.fadeOut.additive = NO;
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0
-                                     target:self
-                                   selector:@selector(showSwipeForNextExampleLabel)
-                                   userInfo:nil
-                                    repeats:YES];
-
+                                                  target:self
+                                                selector:@selector(showSwipeForNextExampleLabel)
+                                                userInfo:nil
+                                                 repeats:YES];
+    
 }
 
 - (void)viewDidLayoutSubviews {
+    
     if (self.firstTimeLoading) {
         self.firstTimeLoading = NO;
         self.exampleContainerView = [self nextBAFluidViewExample];
@@ -170,7 +171,7 @@
         self.swipeForNextExampleLabel.layer.opacity = 1;
         [self.swipeForNextExampleLabel.layer addAnimation:self.fadeIn forKey:@"fadeIn"];
     }
-
+    
 }
 
 - (void)hideSwipeForNextExampleLabel {
@@ -240,6 +241,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         nextFluidViewExample.alpha = 1.0;
     } completion:^(BOOL finished) {
+        [self.exampleContainerView removeFromSuperview];
         self.exampleContainerView = nextFluidViewExample;
     }];
     
@@ -247,11 +249,11 @@
 
 -(BAFluidView*) nextBAFluidViewExample {
     BAFluidView *fluidView;
-
+    
     switch (self.currentExample) {
         case 0://Example with a mask
         {
-
+            
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
             
             fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
@@ -263,7 +265,7 @@
             maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
             [maskingLayer setContents:(id)[maskingImage CGImage]];
             [fluidView.layer setMask:maskingLayer];
-
+            
             [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
             
             return fluidView;

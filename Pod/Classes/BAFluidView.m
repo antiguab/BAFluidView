@@ -33,6 +33,8 @@
 @property (assign,nonatomic) int startingAmplitude;
 
 @property (strong,nonatomic) NSNumber* startElevation;
+@property (assign,nonatomic) double primativeStartElevation;
+
 @property (strong,nonatomic) NSNumber* fillLevel;
 @property (assign,nonatomic) BOOL initialFill;
 
@@ -42,6 +44,10 @@
 @property (assign,nonatomic) int finalX;
 
 @property (strong,nonatomic) CAKeyframeAnimation *waveCrestAnimation;
+
+@property (assign,nonatomic) UIDeviceOrientation orientation;
+
+@property (assign,nonatomic) NSTimer *waveCrestTimer;
 
 @end
 
@@ -105,7 +111,7 @@
     if (self)
     {
         [self initialize];
-        [self setStartElavation:aStartElevation];;
+        [self setStartElavation:aStartElevation];
     }
     return self;
 }
@@ -130,6 +136,23 @@
     
     //the view is being added
     [self startAnimation];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    //layout only if device has change orientation
+    if(self.orientation != [[UIDevice currentDevice] orientation]){
+        
+        self.orientation = [[UIDevice currentDevice] orientation];
+        
+        //I can either remove the animation and have a slight lag or the user can see one animation where the wave
+        //still has the frame of the old orientation.
+        [self.lineLayer removeAllAnimations];
+        [self stopAnimation];
+        [self reInitializeLayer];
+        [self startAnimation];
+    }
 }
 
 #pragma mark - Custom Accessors
@@ -162,6 +185,8 @@
     CGRect frame = self.lineLayer.frame;
     frame.origin.y = CGRectGetHeight(self.rootView.frame)*((1-[_startElavation floatValue]));
     self.lineLayer.frame = frame;
+    self.primativeStartElevation = [startElavation doubleValue];
+    
 }
 
 - (void)setMaxAmplitude:(int)maxAmplitude {
@@ -191,6 +216,9 @@
             self.rootView = self.rootView.superview;
         }
     }
+    
+    self.orientation = [[UIDevice currentDevice] orientation];
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     // create the wave layer and make it blue
     self.clipsToBounds = YES;
@@ -236,7 +264,7 @@
 - (void)startAnimation {
     if (!self.animating) {
         self.startingAmplitude = self.maxAmplitude;
-
+        
         //Phase Shift Animation
         CAKeyframeAnimation *horizontalAnimation =
         [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
@@ -244,7 +272,7 @@
         horizontalAnimation.duration = 1.0;
         horizontalAnimation.repeatCount = HUGE;
         [self.lineLayer addAnimation:horizontalAnimation forKey:@"horizontalAnimation"];
-
+        
         //Wave Crest Animations
         self.waveCrestAnimation = [CAKeyframeAnimation animationWithKeyPath:@"path"];
         self.waveCrestAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
@@ -253,8 +281,12 @@
         self.waveCrestAnimation.removedOnCompletion = NO;
         self.waveCrestAnimation.fillMode = kCAFillModeForwards;
         self.waveCrestAnimation.delegate = self;
-        [self updateWaveSegmentAnimation];
-
+        self.waveCrestTimer = [NSTimer scheduledTimerWithTimeInterval:self.waveCrestAnimation.duration
+                                                               target:self
+                                                             selector:@selector(updateWaveCrestAnimation)
+                                                             userInfo:nil
+                                                              repeats:YES];
+        
         //add sublayer to view
         [self.layer addSublayer:self.lineLayer];
         
@@ -263,10 +295,13 @@
 }
 
 - (void)stopAnimation {
+    if (self.waveCrestTimer) {
+        [self.waveCrestTimer invalidate];
+        self.waveCrestTimer = nil;
+    }
     [self.lineLayer removeAnimationForKey:@"horizontalAnimation"];
-    [self.lineLayer removeAnimationForKey:@"waveSegmentAnimation"];
+    [self.lineLayer removeAnimationForKey:@"waveCestAnimation"];
     self.waveCrestAnimation =  nil;
-
     self.animating = NO;
 }
 
@@ -294,7 +329,7 @@
     //fill animation
     //the animation glitches because the horizontal x of the layer is never in the same spot at the end of the animation. We can use the presentation layer to get the current x. This isn't what the presentation layer is for, but can't find a way to make a smooth transition.
     CALayer *initialLayer = self.lineLayer;
-
+    
     if (!self.initialFill) {
         initialLayer = self.lineLayer.presentationLayer;
     }
@@ -310,26 +345,54 @@
     
 }
 
-- (void)updateWaveSegmentAnimation {
+#pragma mark - Private
+
+- (void)reInitializeLayer {
+    //This method occurs when the device is rotated
+    
+    self.rootView = [self.window.subviews objectAtIndex:0];
+    if (!self.rootView) {
+        self.rootView = self;
+        while (self.rootView.superview != nil) {
+            self.rootView = self.rootView.superview;
+        }
+    }
+    
+    //values that need to be adjusted due to change in width
+    self.waveLength = CGRectGetWidth(self.rootView.frame);
+    self.finalX = 2*self.waveLength;
+    
+    //creating the linelayer frame to fit new orientation
+    self.lineLayer.anchorPoint= CGPointMake(0, 0);
+    CGRect frame = CGRectMake(0, CGRectGetHeight(self.frame), self.finalX, CGRectGetHeight(self.rootView.frame));
+    self.lineLayer.frame = frame;
+    
+    //need to grab the presentation again as a base
+    self.initialFill = YES;
+    
+    //for some reason I can't access _startElevation, but a primitive can be accessed. Right now
+    //all this does is redo the elevation adjustment due to change in height of device
+    self.startElavation = @(self.primativeStartElevation);
+    
+    
+    //the animation for fill will have to repeat as the height as changed
+    if (![self.fillLevel isEqual:@0]) {
+        [self fillTo:self.fillLevel];
+    }
+}
+
+- (void)updateWaveCrestAnimation {
     
     //Wave Crest animation
-    [CATransaction begin];
-    [self.lineLayer removeAnimationForKey:@"waveSegmentAnimation"];
+    [self.lineLayer removeAnimationForKey:@"waveCrestAnimation"];
     self.waveCrestAnimation.values = [self getBezierPathValues];
-    [CATransaction setCompletionBlock:^{
-        //keeps it repeating but also changing in wave size
-        if (self.animating) {
-            [self updateWaveSegmentAnimation];
-        }
-
-    }];
-    [self.lineLayer addAnimation:self.waveCrestAnimation forKey:@"waveSegmentAnimation"];
-    [CATransaction commit];
+    [self.lineLayer addAnimation:self.waveCrestAnimation forKey:@"waveCrestAnimation"];
+    
 }
 
 - (NSArray*)getBezierPathValues {
     //creating wave starting point
-    CGPoint startPoint;  
+    CGPoint startPoint;
     startPoint = CGPointMake(0,0);
     
     //grabbing random amplitude to shrink/grow to
