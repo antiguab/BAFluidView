@@ -204,6 +204,12 @@
     self.amplitudeArray = [self createAmplitudeOptions];
 }
 
+- (void)setFillDuration:(CFTimeInterval)fillDuration {
+    _fillDuration = fillDuration;
+}
+
+
+
 #pragma mark - Public
 
 - (void)initialize {
@@ -235,6 +241,7 @@
     self.startingAmplitude = self.maxAmplitude;
     self.waveLength = CGRectGetWidth(self.rootView.frame);
     self.startElevation = @0;
+    self.fillDuration = 7.0;
     self.finalX = 2*self.waveLength;
     
     //available amplitudes
@@ -333,9 +340,8 @@
     if (!self.initialFill) {
         initialLayer = self.lineLayer.presentationLayer;
     }
-    
     verticalAnimation.values = @[@(initialLayer.position.y),@(finalPosition)];
-    verticalAnimation.duration = 7*[fillPercentage doubleValue];
+    verticalAnimation.duration = self.fillDuration*[fillPercentage doubleValue];
     verticalAnimation.autoreverses = self.fillAutoReverse;
     verticalAnimation.repeatCount = self.fillRepeatCount;
     verticalAnimation.removedOnCompletion = NO;
