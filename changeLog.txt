@@ -1,4 +1,16 @@
-5896123 (HEAD, origin/master, origin/HEAD, master) Merge pull request #16 from antiguab/fix_tab_glitch
+891b52a (HEAD, origin/master, origin/HEAD, update_pod_spec_0.1.6, master) Merge pull request #23 from antiguab/add_speed_option
+706df6b (origin/add_speed_option) updated README
+0746127 added speed option for fill
+2dfa13e Merge pull request #22 from antiguab/bug_17_fix
+e5a47ff (origin/bug_17_fix) fixed rotation bug
+84a6573 (tag: 0.1.5) Merge pull request #21 from antiguab/update_podspec_0.1.5
+3931493 (origin/update_podspec_0.1.5) updated podspec
+a5378fc Merge pull request #18 from andreamazz/add-carthage
+2a08f80 Fix typo in readme
+01c0535 Add Carthage support
+9b11f2b Add indipendent build
+7538312 (tag: 0.1.4) Release 0.1.4
+5896123 Merge pull request #16 from antiguab/fix_tab_glitch
 c8d35ae (origin/fix_tab_glitch) moved notifications and added wllMoveToWindow method
 23c7f86 Merge pull request #15 from andreamazz/fix-background-glitch
 ef8823a Merge pull request #13 from andreamazz/master
