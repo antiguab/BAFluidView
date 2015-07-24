@@ -51,6 +51,11 @@ Changes the fill color of the wave animation
 @property(assign,nonatomic) BOOL fillAutoReverse;
 
 /**
+ CFTimeInterval to determine the total duration of a complete fill (0% - 100%)
+ */
+@property(assign,nonatomic) CFTimeInterval fillDuration;
+
+/**
  Provides a way to start the wave at a different elevation
  */
 @property(assign,nonatomic) NSNumber *startElavation;

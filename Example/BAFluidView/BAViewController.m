@@ -273,6 +273,7 @@
         {
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.0];
             fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
+            fluidView.fillDuration = 5.0;
             [fluidView fillTo:@1.0];
             [fluidView startAnimation];
             [self changeTitleColor:[UIColor whiteColor]];
