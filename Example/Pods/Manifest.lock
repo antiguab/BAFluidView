@@ -1,14 +1,14 @@
 PODS:
-  - BAFluidView (0.1.1)
+  - BAFluidView (0.1.7)
 
 DEPENDENCIES:
   - BAFluidView (from `../`)
 
 EXTERNAL SOURCES:
   BAFluidView:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  BAFluidView: d2a43d249222dabf845837e02bd30e0dba676806
+  BAFluidView: 4f5276dfac6ddd001f8627a7313e9594370840c7
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0
