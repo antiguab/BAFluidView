@@ -7,275 +7,231 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0109980A34013DC127763CFD /* Pods-BAFluidView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CEC15B8B007440288079A /* Pods-BAFluidView-dummy.m */; };
-		33F3AEB00C51547DDA814B1A /* BAFluidView.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B4F06C764AD1676B63EA70 /* BAFluidView.h */; };
-		432736AC449C9A441C1C3406 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E8122E96ACEB254EC8DF60 /* Foundation.framework */; };
-		54313B3E6DEF13AB6BD1C18A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E8122E96ACEB254EC8DF60 /* Foundation.framework */; };
-		6004B08901E17F4AF7A0BFCE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67272E29CEFFCC9199A8083F /* UIKit.framework */; };
-		6A816973228EF29F481E2684 /* UIColor+ColorWithHex.h in Headers */ = {isa = PBXBuildFile; fileRef = BF3B378F74EF253A5BA2A61D /* UIColor+ColorWithHex.h */; };
-		8EC83DE22F9F8082FD28F85D /* BAFluidView.m in Sources */ = {isa = PBXBuildFile; fileRef = 675AAB6107E000D61CEC8D53 /* BAFluidView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9608C4720C65B2CFA0525952 /* UIColor+ColorWithHex.h in Headers */ = {isa = PBXBuildFile; fileRef = BF3B378F74EF253A5BA2A61D /* UIColor+ColorWithHex.h */; };
-		A6149DB146E1B38FB6E00CA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67272E29CEFFCC9199A8083F /* UIKit.framework */; };
-		BDD951357C3B7A2E22638F8F /* BAFluidView.m in Sources */ = {isa = PBXBuildFile; fileRef = 675AAB6107E000D61CEC8D53 /* BAFluidView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		C2ED2A8B06BAD95BC5EA3B89 /* Pods-Tests-BAFluidView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDE49FDA9FFD57B07D028C5 /* Pods-Tests-BAFluidView-dummy.m */; };
-		C8AC38D8474D0E13835C7DC9 /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D8410B989AC65898656069 /* UIColor+ColorWithHex.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CAF356CD31A7933BEC3FCCD5 /* BAFluidView.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B4F06C764AD1676B63EA70 /* BAFluidView.h */; };
-		CB435FB5DE7E246437E9FCD5 /* Pods-BAFluidView-BAFluidView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAC4C2B723E0789E46664C /* Pods-BAFluidView-BAFluidView-dummy.m */; };
-		D091A244295C8050557AB759 /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED374620E72336349C18785A /* Pods-Tests-dummy.m */; };
-		DFAEC98CB9D25F6B52DCCA7F /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D8410B989AC65898656069 /* UIColor+ColorWithHex.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E6C85BEDCC56F44CF802C022 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E8122E96ACEB254EC8DF60 /* Foundation.framework */; };
-		FAA125771A364ED2115CFD59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E8122E96ACEB254EC8DF60 /* Foundation.framework */; };
+		116D0CFC98D7B8D9CBC982C5DD150540 /* BAFluidView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8128F0B720A43A1A20E4CE580858325A /* BAFluidView-dummy.m */; };
+		1CC5B122B7AC71F6621A677DB66E8ACD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
+		2AB1A9AF0873F9114199CC94BC1CD8AA /* BAFluidView.h in Headers */ = {isa = PBXBuildFile; fileRef = 18C058E593EDF012EDD0D92701E2B305 /* BAFluidView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		518DA363B11DE44C98E4352BB70B8772 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */; };
+		5F0310B077E0E1ABA85493F85F0FEC2D /* BAFluidView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D91FE03B8E4AA9038ADB8137F8CF79 /* BAFluidView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6F4F9E8AB37E430436348E7B0198C8FB /* UIColor+ColorWithHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BE9639E6FFED441A7544CFA07826A99 /* UIColor+ColorWithHex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		80004526F5D4EBA52C5AD58F17C6078F /* Pods-BAFluidView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D44BEA867128F9AA9FF8B848235BDA4E /* Pods-BAFluidView-dummy.m */; };
+		8895E88DE130EEB102353B15816E1A5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
+		B06AE28A1569172B178444B0BA7AD99D /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F89ADF1CD7C4B0103E3571480FCB5CF /* UIColor+ColorWithHex.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		DAE6C873C27310134024A6320BC45F72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
+		F5A1497E22637A772EA888EDF3F44418 /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BF9D153B3E3ACB4E105FAB7303A280 /* Pods-Tests-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		71A1CACBE6FFA1A74D52AFB5 /* PBXContainerItemProxy */ = {
+		467A6FF8C7694CB78D723035378F951C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2D0018BD15A646E54243187D /* Project object */;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C59C371727375B880EE67C96;
-			remoteInfo = "Pods-BAFluidView-BAFluidView-BAFluidView";
+			remoteGlobalIDString = E436F1C4D159DE2B39D84E4C13FA80AB;
+			remoteInfo = BAFluidView;
 		};
-		B39A79662178B1F80D0F9E6F /* PBXContainerItemProxy */ = {
+		7AB1C91283B40FE9D3925091E39C3B4B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2D0018BD15A646E54243187D /* Project object */;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 635D08D6A1AB58866B2C05CA;
-			remoteInfo = "Pods-Tests-BAFluidView-BAFluidView";
+			remoteGlobalIDString = E436F1C4D159DE2B39D84E4C13FA80AB;
+			remoteInfo = BAFluidView;
 		};
-		B5CB6B5137FF19A8BCEB94C4 /* PBXContainerItemProxy */ = {
+		F49980809F34E33714E640D019207C35 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2D0018BD15A646E54243187D /* Project object */;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 57F32B40471C20963DB2DD17;
-			remoteInfo = "Pods-Tests-BAFluidView";
-		};
-		BC3E2D48EE2B1988514AF335 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D0018BD15A646E54243187D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 48AB358C199A1629845E5CED;
-			remoteInfo = "Pods-BAFluidView-BAFluidView";
+			remoteGlobalIDString = 86D845FB4E49D9B26EFC581AA6E2874F;
+			remoteInfo = "BAFluidView-BAFluidView";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09369379D8F7B6FCB69E8C14 /* Pods-BAFluidView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BAFluidView.release.xcconfig"; sourceTree = "<group>"; };
-		1ABD380335F343496BAF0933 /* Pods-BAFluidView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BAFluidView.debug.xcconfig"; sourceTree = "<group>"; };
-		1C6DC723C313A52979D94E3A /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		26A0584B18FC3C532709013C /* BAFluidView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAFluidView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A6AE0E6F87B8518741298F0 /* libPods-BAFluidView-BAFluidView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BAFluidView-BAFluidView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C0CF8529EE933CB647C403F /* Pods-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3E5E8238F77FB2F2CDE8568B /* Pods-BAFluidView-BAFluidView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BAFluidView-BAFluidView.xcconfig"; sourceTree = "<group>"; };
-		406619C453240D1CA2F2CB46 /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
-		4099DD9E07247E0CC3BAE4CB /* libPods-Tests-BAFluidView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-BAFluidView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4509C898FCBFCD901EA3F50F /* BAFluidView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAFluidView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		53616680B36984DD7628B2AA /* libPods-BAFluidView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BAFluidView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D3CEC15B8B007440288079A /* Pods-BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BAFluidView-dummy.m"; sourceTree = "<group>"; };
-		67272E29CEFFCC9199A8083F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		675AAB6107E000D61CEC8D53 /* BAFluidView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BAFluidView.m; sourceTree = "<group>"; };
-		6D9E8CB9A7572BABFBF9FC61 /* Pods-Tests-BAFluidView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-Tests-BAFluidView-prefix.pch"; path = "../Pods-Tests-BAFluidView/Pods-Tests-BAFluidView-prefix.pch"; sourceTree = "<group>"; };
-		6DBAC4C2B723E0789E46664C /* Pods-BAFluidView-BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BAFluidView-BAFluidView-dummy.m"; sourceTree = "<group>"; };
-		8CFDFDCE816CEF223EC1C475 /* Pods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		988E976646CDADDEEFCE6C5D /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A4D8410B989AC65898656069 /* UIColor+ColorWithHex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorWithHex.m"; sourceTree = "<group>"; };
-		A811EC13EDD55BF66097C298 /* Pods-Tests-BAFluidView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-BAFluidView.xcconfig"; path = "../Pods-Tests-BAFluidView/Pods-Tests-BAFluidView.xcconfig"; sourceTree = "<group>"; };
-		ACBC1063E7014E59116B6BDE /* Pods-BAFluidView-BAFluidView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BAFluidView-BAFluidView-prefix.pch"; sourceTree = "<group>"; };
-		B7D913AEE205816388937277 /* Pods-BAFluidView-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BAFluidView-environment.h"; sourceTree = "<group>"; };
-		B8B4F06C764AD1676B63EA70 /* BAFluidView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BAFluidView.h; sourceTree = "<group>"; };
-		BABEA9300EEAB4C1F3965756 /* Pods-BAFluidView-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BAFluidView-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BE31497ABDEA8091DDAE28CF /* Pods-BAFluidView-BAFluidView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BAFluidView-BAFluidView-Private.xcconfig"; sourceTree = "<group>"; };
-		BF3B378F74EF253A5BA2A61D /* UIColor+ColorWithHex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorWithHex.h"; sourceTree = "<group>"; };
-		C35B654115EC6C2670CBBAE5 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C91109B2E12A5A21AD921902 /* Pods-BAFluidView-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BAFluidView-resources.sh"; sourceTree = "<group>"; };
-		CBDE49FDA9FFD57B07D028C5 /* Pods-Tests-BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-Tests-BAFluidView-dummy.m"; path = "../Pods-Tests-BAFluidView/Pods-Tests-BAFluidView-dummy.m"; sourceTree = "<group>"; };
-		DB99F9C46E48B1A8A9FA5163 /* Pods-BAFluidView-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BAFluidView-acknowledgements.plist"; sourceTree = "<group>"; };
-		E1A921CAC9966DF26763CC32 /* Pods-Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-environment.h"; sourceTree = "<group>"; };
-		E8E8122E96ACEB254EC8DF60 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		ED374620E72336349C18785A /* Pods-Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-dummy.m"; sourceTree = "<group>"; };
-		F61DBA78EC82E4EF3AE3A8F8 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB2044F634181344DDCFF0BA /* Pods-Tests-BAFluidView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-BAFluidView-Private.xcconfig"; path = "../Pods-Tests-BAFluidView/Pods-Tests-BAFluidView-Private.xcconfig"; sourceTree = "<group>"; };
+		01B8D8D68D348915ADD2D5E2053B8E94 /* Pods-BAFluidView-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BAFluidView-acknowledgements.markdown"; sourceTree = "<group>"; };
+		09434E5D229A4CFAB2F3D778060E9E1B /* Pods-Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-frameworks.sh"; sourceTree = "<group>"; };
+		0E4F4790D52980B7E785AC1949BB65CA /* Pods-BAFluidView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BAFluidView.release.xcconfig"; sourceTree = "<group>"; };
+		18C058E593EDF012EDD0D92701E2B305 /* BAFluidView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BAFluidView.h; sourceTree = "<group>"; };
+		20E1B8F9B92BB6C51949EFA0EE02E11B /* Pods-BAFluidView-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BAFluidView-resources.sh"; sourceTree = "<group>"; };
+		2704F4DD9153E6EAE1C065AC2E566EAC /* libBAFluidView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBAFluidView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EB5CD1902FCB6F348C7CB0FCB5C94B9 /* BAFluidView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BAFluidView-prefix.pch"; sourceTree = "<group>"; };
+		60E7A5DC4E8123C20C6608E84C4472CE /* Pods-BAFluidView-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BAFluidView-frameworks.sh"; sourceTree = "<group>"; };
+		67BF9D153B3E3ACB4E105FAB7303A280 /* Pods-Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-dummy.m"; sourceTree = "<group>"; };
+		6B9D7A23F31B622C0C9432327E21771E /* BAFluidView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAFluidView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7BE9639E6FFED441A7544CFA07826A99 /* UIColor+ColorWithHex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorWithHex.h"; sourceTree = "<group>"; };
+		8128F0B720A43A1A20E4CE580858325A /* BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BAFluidView-dummy.m"; sourceTree = "<group>"; };
+		8445CC525CA3443B417CE50461E895DC /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		914FE12885988EDD043C419E1116F601 /* Pods-BAFluidView-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BAFluidView-acknowledgements.plist"; sourceTree = "<group>"; };
+		9358194DBF327EC9C87ADFF444DA9F03 /* Pods-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9428F2CA7D71D59AB2A4D601EB31C2D7 /* Pods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		982E82068E0468B0055C31CACA84310E /* BAFluidView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BAFluidView.xcconfig; sourceTree = "<group>"; };
+		9F89ADF1CD7C4B0103E3571480FCB5CF /* UIColor+ColorWithHex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorWithHex.m"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C0D91FE03B8E4AA9038ADB8137F8CF79 /* BAFluidView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BAFluidView.m; sourceTree = "<group>"; };
+		C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D131775A84F2AE7860BD03889EC94123 /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
+		D44BEA867128F9AA9FF8B848235BDA4E /* Pods-BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BAFluidView-dummy.m"; sourceTree = "<group>"; };
+		E8E760A6D915B745CF51605835C6EE27 /* libPods-BAFluidView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BAFluidView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBF7E03E9D006F55A151F3B25C023384 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		EFFB9F803C19600DCF80D944DB132EBF /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		FFF89254D7CC86A44A5F32064FC92570 /* Pods-BAFluidView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BAFluidView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		43FD0F905C0F08218D557A15 /* Frameworks */ = {
+		34E3071F0860DFB96021449A6B2F9BF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CC5B122B7AC71F6621A677DB66E8ACD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4256596CCEC73DDE0AB643368B5D0A83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8895E88DE130EEB102353B15816E1A5A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D3D2F98606AC4D3B5987C42E5CEEE65 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		732EB94949422A173934B889 /* Frameworks */ = {
+		CBB3A2D5A8A4DAEF430EE6677397BA0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95B1DB171C2A3C9E269CE796 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FAA125771A364ED2115CFD59 /* Foundation.framework in Frameworks */,
-				A6149DB146E1B38FB6E00CA4 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B656D50ECA306DFB093758DC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				54313B3E6DEF13AB6BD1C18A /* Foundation.framework in Frameworks */,
-				6004B08901E17F4AF7A0BFCE /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D9F7208ACA0BBEC1AE57A737 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E6C85BEDCC56F44CF802C022 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB0329155660E509D473D1EC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				432736AC449C9A441C1C3406 /* Foundation.framework in Frameworks */,
+				DAE6C873C27310134024A6320BC45F72 /* Foundation.framework in Frameworks */,
+				518DA363B11DE44C98E4352BB70B8772 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04F67D8BA89577A1D90CEE79 /* Targets Support Files */ = {
+		050261151EB55CE7FE1D52D1C1DD17F5 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				102846F77BF92AFA148AF041 /* Pods-BAFluidView */,
-				15255D8B9F78994D11D255DA /* Pods-Tests */,
+				179BC0AFC8F79852E368F02F7236159E /* Classes */,
 			);
-			name = "Targets Support Files";
+			path = Pod;
 			sourceTree = "<group>";
 		};
-		102846F77BF92AFA148AF041 /* Pods-BAFluidView */ = {
+		0D2A624415B7E27BBDE74A7A86A65913 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BABEA9300EEAB4C1F3965756 /* Pods-BAFluidView-acknowledgements.markdown */,
-				DB99F9C46E48B1A8A9FA5163 /* Pods-BAFluidView-acknowledgements.plist */,
-				5D3CEC15B8B007440288079A /* Pods-BAFluidView-dummy.m */,
-				B7D913AEE205816388937277 /* Pods-BAFluidView-environment.h */,
-				C91109B2E12A5A21AD921902 /* Pods-BAFluidView-resources.sh */,
-				1ABD380335F343496BAF0933 /* Pods-BAFluidView.debug.xcconfig */,
-				09369379D8F7B6FCB69E8C14 /* Pods-BAFluidView.release.xcconfig */,
+				FB4109A2DFC008AB479B2C24EB3FEE1A /* BAFluidView */,
 			);
-			name = "Pods-BAFluidView";
-			path = "Target Support Files/Pods-BAFluidView";
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		15255D8B9F78994D11D255DA /* Pods-Tests */ = {
+		179BC0AFC8F79852E368F02F7236159E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3C0CF8529EE933CB647C403F /* Pods-Tests-acknowledgements.markdown */,
-				8CFDFDCE816CEF223EC1C475 /* Pods-Tests-acknowledgements.plist */,
-				ED374620E72336349C18785A /* Pods-Tests-dummy.m */,
-				E1A921CAC9966DF26763CC32 /* Pods-Tests-environment.h */,
-				406619C453240D1CA2F2CB46 /* Pods-Tests-resources.sh */,
-				988E976646CDADDEEFCE6C5D /* Pods-Tests.debug.xcconfig */,
-				1C6DC723C313A52979D94E3A /* Pods-Tests.release.xcconfig */,
+				18C058E593EDF012EDD0D92701E2B305 /* BAFluidView.h */,
+				C0D91FE03B8E4AA9038ADB8137F8CF79 /* BAFluidView.m */,
+				7BE9639E6FFED441A7544CFA07826A99 /* UIColor+ColorWithHex.h */,
+				9F89ADF1CD7C4B0103E3571480FCB5CF /* UIColor+ColorWithHex.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		18340F12838DEE43507667CC74401EB1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */,
+				C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		265137603FB11715E44FBAD83FE398CE /* Pods-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9358194DBF327EC9C87ADFF444DA9F03 /* Pods-Tests-acknowledgements.markdown */,
+				9428F2CA7D71D59AB2A4D601EB31C2D7 /* Pods-Tests-acknowledgements.plist */,
+				67BF9D153B3E3ACB4E105FAB7303A280 /* Pods-Tests-dummy.m */,
+				09434E5D229A4CFAB2F3D778060E9E1B /* Pods-Tests-frameworks.sh */,
+				D131775A84F2AE7860BD03889EC94123 /* Pods-Tests-resources.sh */,
+				EFFB9F803C19600DCF80D944DB132EBF /* Pods-Tests.debug.xcconfig */,
+				EBF7E03E9D006F55A151F3B25C023384 /* Pods-Tests.release.xcconfig */,
 			);
 			name = "Pods-Tests";
 			path = "Target Support Files/Pods-Tests";
 			sourceTree = "<group>";
 		};
-		2DF7967881D9C0B22E7C91DE /* iOS */ = {
+		311006380065605574192C5B084C3949 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E8E8122E96ACEB254EC8DF60 /* Foundation.framework */,
-				67272E29CEFFCC9199A8083F /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		591D91037D3B781227037E55 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4509C898FCBFCD901EA3F50F /* BAFluidView.bundle */,
-				26A0584B18FC3C532709013C /* BAFluidView.bundle */,
-				53616680B36984DD7628B2AA /* libPods-BAFluidView.a */,
-				3A6AE0E6F87B8518741298F0 /* libPods-BAFluidView-BAFluidView.a */,
-				F61DBA78EC82E4EF3AE3A8F8 /* libPods-Tests.a */,
-				4099DD9E07247E0CC3BAE4CB /* libPods-Tests-BAFluidView.a */,
+				6B9D7A23F31B622C0C9432327E21771E /* BAFluidView.bundle */,
+				2704F4DD9153E6EAE1C065AC2E566EAC /* libBAFluidView.a */,
+				E8E760A6D915B745CF51605835C6EE27 /* libPods-BAFluidView.a */,
+				8445CC525CA3443B417CE50461E895DC /* libPods-Tests.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5D034A3265CB831BAF399C38 = {
+		3FAC217984A8637C0C67A38373605791 /* Pods-BAFluidView */ = {
 			isa = PBXGroup;
 			children = (
-				C35B654115EC6C2670CBBAE5 /* Podfile */,
-				D9CC0FB396423AC64380AC1A /* Development Pods */,
-				E5908DC991A5EB2108B7A455 /* Frameworks */,
-				591D91037D3B781227037E55 /* Products */,
-				04F67D8BA89577A1D90CEE79 /* Targets Support Files */,
+				01B8D8D68D348915ADD2D5E2053B8E94 /* Pods-BAFluidView-acknowledgements.markdown */,
+				914FE12885988EDD043C419E1116F601 /* Pods-BAFluidView-acknowledgements.plist */,
+				D44BEA867128F9AA9FF8B848235BDA4E /* Pods-BAFluidView-dummy.m */,
+				60E7A5DC4E8123C20C6608E84C4472CE /* Pods-BAFluidView-frameworks.sh */,
+				20E1B8F9B92BB6C51949EFA0EE02E11B /* Pods-BAFluidView-resources.sh */,
+				FFF89254D7CC86A44A5F32064FC92570 /* Pods-BAFluidView.debug.xcconfig */,
+				0E4F4790D52980B7E785AC1949BB65CA /* Pods-BAFluidView.release.xcconfig */,
 			);
+			name = "Pods-BAFluidView";
+			path = "Target Support Files/Pods-BAFluidView";
 			sourceTree = "<group>";
 		};
-		7BB09950722FF1F8CD2A1374 /* Pod */ = {
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B0AC23C35CF8A18118E0972E /* Classes */,
-			);
-			path = Pod;
-			sourceTree = "<group>";
-		};
-		B0AC23C35CF8A18118E0972E /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				B8B4F06C764AD1676B63EA70 /* BAFluidView.h */,
-				675AAB6107E000D61CEC8D53 /* BAFluidView.m */,
-				BF3B378F74EF253A5BA2A61D /* UIColor+ColorWithHex.h */,
-				A4D8410B989AC65898656069 /* UIColor+ColorWithHex.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		D9CC0FB396423AC64380AC1A /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FF6C1067FC46B65E44BA964E /* BAFluidView */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		E5908DC991A5EB2108B7A455 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2DF7967881D9C0B22E7C91DE /* iOS */,
+				18340F12838DEE43507667CC74401EB1 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FAE25D5BF7E6F20CD8D14320 /* Support Files */ = {
+		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				3E5E8238F77FB2F2CDE8568B /* Pods-BAFluidView-BAFluidView.xcconfig */,
-				BE31497ABDEA8091DDAE28CF /* Pods-BAFluidView-BAFluidView-Private.xcconfig */,
-				6DBAC4C2B723E0789E46664C /* Pods-BAFluidView-BAFluidView-dummy.m */,
-				ACBC1063E7014E59116B6BDE /* Pods-BAFluidView-BAFluidView-prefix.pch */,
-				A811EC13EDD55BF66097C298 /* Pods-Tests-BAFluidView.xcconfig */,
-				FB2044F634181344DDCFF0BA /* Pods-Tests-BAFluidView-Private.xcconfig */,
-				CBDE49FDA9FFD57B07D028C5 /* Pods-Tests-BAFluidView-dummy.m */,
-				6D9E8CB9A7572BABFBF9FC61 /* Pods-Tests-BAFluidView-prefix.pch */,
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				0D2A624415B7E27BBDE74A7A86A65913 /* Development Pods */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				311006380065605574192C5B084C3949 /* Products */,
+				8983B4DA9CE4B06BAE9E7FD8DAE59D06 /* Targets Support Files */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Pods-BAFluidView-BAFluidView";
 			sourceTree = "<group>";
 		};
-		FF6C1067FC46B65E44BA964E /* BAFluidView */ = {
+		8983B4DA9CE4B06BAE9E7FD8DAE59D06 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7BB09950722FF1F8CD2A1374 /* Pod */,
-				FAE25D5BF7E6F20CD8D14320 /* Support Files */,
+				3FAC217984A8637C0C67A38373605791 /* Pods-BAFluidView */,
+				265137603FB11715E44FBAD83FE398CE /* Pods-Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C4C4F3F8E1977C27E96A1E7559055E04 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				982E82068E0468B0055C31CACA84310E /* BAFluidView.xcconfig */,
+				8128F0B720A43A1A20E4CE580858325A /* BAFluidView-dummy.m */,
+				5EB5CD1902FCB6F348C7CB0FCB5C94B9 /* BAFluidView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/BAFluidView";
+			sourceTree = "<group>";
+		};
+		FB4109A2DFC008AB479B2C24EB3FEE1A /* BAFluidView */ = {
+			isa = PBXGroup;
+			children = (
+				050261151EB55CE7FE1D52D1C1DD17F5 /* Pod */,
+				C4C4F3F8E1977C27E96A1E7559055E04 /* Support Files */,
 			);
 			name = BAFluidView;
 			path = ../..;
@@ -284,170 +240,118 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1FE9EF83CA3B872B941C71CF /* Headers */ = {
+		BFDD137D84FEAFC0051FFFDC6A65695D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33F3AEB00C51547DDA814B1A /* BAFluidView.h in Headers */,
-				6A816973228EF29F481E2684 /* UIColor+ColorWithHex.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D99FBEECC372DDA4FB8B1821 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CAF356CD31A7933BEC3FCCD5 /* BAFluidView.h in Headers */,
-				9608C4720C65B2CFA0525952 /* UIColor+ColorWithHex.h in Headers */,
+				2AB1A9AF0873F9114199CC94BC1CD8AA /* BAFluidView.h in Headers */,
+				6F4F9E8AB37E430436348E7B0198C8FB /* UIColor+ColorWithHex.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		48AB358C199A1629845E5CED /* Pods-BAFluidView-BAFluidView */ = {
+		86D845FB4E49D9B26EFC581AA6E2874F /* BAFluidView-BAFluidView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0838BA98D6B032674BBEA7CF /* Build configuration list for PBXNativeTarget "Pods-BAFluidView-BAFluidView" */;
+			buildConfigurationList = 2FFD15640778B3DE1FD3006E358BD7FE /* Build configuration list for PBXNativeTarget "BAFluidView-BAFluidView" */;
 			buildPhases = (
-				6D3EB26F8E22E7DD751228C7 /* Sources */,
-				95B1DB171C2A3C9E269CE796 /* Frameworks */,
-				D99FBEECC372DDA4FB8B1821 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AC4F160B9AD71506B1E475D3 /* PBXTargetDependency */,
-			);
-			name = "Pods-BAFluidView-BAFluidView";
-			productName = "Pods-BAFluidView-BAFluidView";
-			productReference = 3A6AE0E6F87B8518741298F0 /* libPods-BAFluidView-BAFluidView.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		57F32B40471C20963DB2DD17 /* Pods-Tests-BAFluidView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 235FD40F1B8C1EE73763B6E3 /* Build configuration list for PBXNativeTarget "Pods-Tests-BAFluidView" */;
-			buildPhases = (
-				E7F895D2E546F8E009E597AD /* Sources */,
-				B656D50ECA306DFB093758DC /* Frameworks */,
-				1FE9EF83CA3B872B941C71CF /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2ED98DC9EEFA07BCF384295B /* PBXTargetDependency */,
-			);
-			name = "Pods-Tests-BAFluidView";
-			productName = "Pods-Tests-BAFluidView";
-			productReference = 4099DD9E07247E0CC3BAE4CB /* libPods-Tests-BAFluidView.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		635D08D6A1AB58866B2C05CA /* Pods-Tests-BAFluidView-BAFluidView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 971AD8F110AF9CDC49F79540 /* Build configuration list for PBXNativeTarget "Pods-Tests-BAFluidView-BAFluidView" */;
-			buildPhases = (
-				E65EA8526A1A49231AEC65FE /* Sources */,
-				43FD0F905C0F08218D557A15 /* Frameworks */,
-				10556F71DE0689AB1D9F2D1A /* Resources */,
+				4BA79073923879B1BC38095FD30DAD95 /* Sources */,
+				5D3D2F98606AC4D3B5987C42E5CEEE65 /* Frameworks */,
+				D25B000B62FC3A3260F39B253F3D969C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-Tests-BAFluidView-BAFluidView";
-			productName = "Pods-Tests-BAFluidView-BAFluidView";
-			productReference = 4509C898FCBFCD901EA3F50F /* BAFluidView.bundle */;
+			name = "BAFluidView-BAFluidView";
+			productName = "BAFluidView-BAFluidView";
+			productReference = 6B9D7A23F31B622C0C9432327E21771E /* BAFluidView.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		C59C371727375B880EE67C96 /* Pods-BAFluidView-BAFluidView-BAFluidView */ = {
+		ACEF092DA2D916C2EC391E6701177EC6 /* Pods-BAFluidView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A8FAFAEA8154157A7E59001 /* Build configuration list for PBXNativeTarget "Pods-BAFluidView-BAFluidView-BAFluidView" */;
+			buildConfigurationList = C13474F5E1C71E19508009F3CB6166DE /* Build configuration list for PBXNativeTarget "Pods-BAFluidView" */;
 			buildPhases = (
-				B06AE27E03FFF80CBDFD9DB4 /* Sources */,
-				732EB94949422A173934B889 /* Frameworks */,
-				273520F99C0095D0E2A5DA93 /* Resources */,
+				448E85AF18925F9927863D8D884F7D55 /* Sources */,
+				34E3071F0860DFB96021449A6B2F9BF6 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = "Pods-BAFluidView-BAFluidView-BAFluidView";
-			productName = "Pods-BAFluidView-BAFluidView-BAFluidView";
-			productReference = 26A0584B18FC3C532709013C /* BAFluidView.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		E49349A64FFD2FEDBE23EC77 /* Pods-Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C8CA8A03AACD0DAE2690FC2C /* Build configuration list for PBXNativeTarget "Pods-Tests" */;
-			buildPhases = (
-				1B821886B27C5D47DD014B93 /* Sources */,
-				D9F7208ACA0BBEC1AE57A737 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C7ACF49596DACC671B564FFE /* PBXTargetDependency */,
-			);
-			name = "Pods-Tests";
-			productName = "Pods-Tests";
-			productReference = F61DBA78EC82E4EF3AE3A8F8 /* libPods-Tests.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		E6B2213735F8944E8BD53220 /* Pods-BAFluidView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E63BF7104564455DEEAD35E0 /* Build configuration list for PBXNativeTarget "Pods-BAFluidView" */;
-			buildPhases = (
-				27FD2AAE47202F458EBB8779 /* Sources */,
-				DB0329155660E509D473D1EC /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0DF775619F7FA3B6D81A01E5 /* PBXTargetDependency */,
+				8CD0DE50B37831BA4FAA2E22B5455FB4 /* PBXTargetDependency */,
 			);
 			name = "Pods-BAFluidView";
 			productName = "Pods-BAFluidView";
-			productReference = 53616680B36984DD7628B2AA /* libPods-BAFluidView.a */;
+			productReference = E8E760A6D915B745CF51605835C6EE27 /* libPods-BAFluidView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E436F1C4D159DE2B39D84E4C13FA80AB /* BAFluidView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B56E1C2DC3A347108A51F0B62C98434 /* Build configuration list for PBXNativeTarget "BAFluidView" */;
+			buildPhases = (
+				9F1A6BC484EA8666807B04BF3C13A3A6 /* Sources */,
+				CBB3A2D5A8A4DAEF430EE6677397BA0D /* Frameworks */,
+				BFDD137D84FEAFC0051FFFDC6A65695D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				017DAF26ED6673CA6A3658374E73DAA6 /* PBXTargetDependency */,
+			);
+			name = BAFluidView;
+			productName = BAFluidView;
+			productReference = 2704F4DD9153E6EAE1C065AC2E566EAC /* libBAFluidView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F505E10D96AD7F03037D8AA6D472F58C /* Pods-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F45E4EC4A3B941E23BACA52AF1A6D798 /* Build configuration list for PBXNativeTarget "Pods-Tests" */;
+			buildPhases = (
+				08F1FDCDBFA1D385DAB83180E8EF2426 /* Sources */,
+				4256596CCEC73DDE0AB643368B5D0A83 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9437F1251F4336231429EA59C3F4511 /* PBXTargetDependency */,
+			);
+			name = "Pods-Tests";
+			productName = "Pods-Tests";
+			productReference = 8445CC525CA3443B417CE50461E895DC /* libPods-Tests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2D0018BD15A646E54243187D /* Project object */ = {
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 			};
-			buildConfigurationList = 4BCA9E1A86A075A8CF79FCBF /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 5D034A3265CB831BAF399C38;
-			productRefGroup = 591D91037D3B781227037E55 /* Products */;
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 311006380065605574192C5B084C3949 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E6B2213735F8944E8BD53220 /* Pods-BAFluidView */,
-				48AB358C199A1629845E5CED /* Pods-BAFluidView-BAFluidView */,
-				C59C371727375B880EE67C96 /* Pods-BAFluidView-BAFluidView-BAFluidView */,
-				E49349A64FFD2FEDBE23EC77 /* Pods-Tests */,
-				57F32B40471C20963DB2DD17 /* Pods-Tests-BAFluidView */,
-				635D08D6A1AB58866B2C05CA /* Pods-Tests-BAFluidView-BAFluidView */,
+				E436F1C4D159DE2B39D84E4C13FA80AB /* BAFluidView */,
+				86D845FB4E49D9B26EFC581AA6E2874F /* BAFluidView-BAFluidView */,
+				ACEF092DA2D916C2EC391E6701177EC6 /* Pods-BAFluidView */,
+				F505E10D96AD7F03037D8AA6D472F58C /* Pods-Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		10556F71DE0689AB1D9F2D1A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		273520F99C0095D0E2A5DA93 /* Resources */ = {
+		D25B000B62FC3A3260F39B253F3D969C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -457,101 +361,66 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1B821886B27C5D47DD014B93 /* Sources */ = {
+		08F1FDCDBFA1D385DAB83180E8EF2426 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D091A244295C8050557AB759 /* Pods-Tests-dummy.m in Sources */,
+				F5A1497E22637A772EA888EDF3F44418 /* Pods-Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27FD2AAE47202F458EBB8779 /* Sources */ = {
+		448E85AF18925F9927863D8D884F7D55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0109980A34013DC127763CFD /* Pods-BAFluidView-dummy.m in Sources */,
+				80004526F5D4EBA52C5AD58F17C6078F /* Pods-BAFluidView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6D3EB26F8E22E7DD751228C7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8EC83DE22F9F8082FD28F85D /* BAFluidView.m in Sources */,
-				CB435FB5DE7E246437E9FCD5 /* Pods-BAFluidView-BAFluidView-dummy.m in Sources */,
-				DFAEC98CB9D25F6B52DCCA7F /* UIColor+ColorWithHex.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B06AE27E03FFF80CBDFD9DB4 /* Sources */ = {
+		4BA79073923879B1BC38095FD30DAD95 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E65EA8526A1A49231AEC65FE /* Sources */ = {
+		9F1A6BC484EA8666807B04BF3C13A3A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E7F895D2E546F8E009E597AD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BDD951357C3B7A2E22638F8F /* BAFluidView.m in Sources */,
-				C2ED2A8B06BAD95BC5EA3B89 /* Pods-Tests-BAFluidView-dummy.m in Sources */,
-				C8AC38D8474D0E13835C7DC9 /* UIColor+ColorWithHex.m in Sources */,
+				116D0CFC98D7B8D9CBC982C5DD150540 /* BAFluidView-dummy.m in Sources */,
+				5F0310B077E0E1ABA85493F85F0FEC2D /* BAFluidView.m in Sources */,
+				B06AE28A1569172B178444B0BA7AD99D /* UIColor+ColorWithHex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0DF775619F7FA3B6D81A01E5 /* PBXTargetDependency */ = {
+		017DAF26ED6673CA6A3658374E73DAA6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-BAFluidView-BAFluidView";
-			target = 48AB358C199A1629845E5CED /* Pods-BAFluidView-BAFluidView */;
-			targetProxy = BC3E2D48EE2B1988514AF335 /* PBXContainerItemProxy */;
+			name = "BAFluidView-BAFluidView";
+			target = 86D845FB4E49D9B26EFC581AA6E2874F /* BAFluidView-BAFluidView */;
+			targetProxy = F49980809F34E33714E640D019207C35 /* PBXContainerItemProxy */;
 		};
-		2ED98DC9EEFA07BCF384295B /* PBXTargetDependency */ = {
+		8CD0DE50B37831BA4FAA2E22B5455FB4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-Tests-BAFluidView-BAFluidView";
-			target = 635D08D6A1AB58866B2C05CA /* Pods-Tests-BAFluidView-BAFluidView */;
-			targetProxy = B39A79662178B1F80D0F9E6F /* PBXContainerItemProxy */;
+			name = BAFluidView;
+			target = E436F1C4D159DE2B39D84E4C13FA80AB /* BAFluidView */;
+			targetProxy = 7AB1C91283B40FE9D3925091E39C3B4B /* PBXContainerItemProxy */;
 		};
-		AC4F160B9AD71506B1E475D3 /* PBXTargetDependency */ = {
+		F9437F1251F4336231429EA59C3F4511 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-BAFluidView-BAFluidView-BAFluidView";
-			target = C59C371727375B880EE67C96 /* Pods-BAFluidView-BAFluidView-BAFluidView */;
-			targetProxy = 71A1CACBE6FFA1A74D52AFB5 /* PBXContainerItemProxy */;
-		};
-		C7ACF49596DACC671B564FFE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-Tests-BAFluidView";
-			target = 57F32B40471C20963DB2DD17 /* Pods-Tests-BAFluidView */;
-			targetProxy = B5CB6B5137FF19A8BCEB94C4 /* PBXContainerItemProxy */;
+			name = BAFluidView;
+			target = E436F1C4D159DE2B39D84E4C13FA80AB /* BAFluidView */;
+			targetProxy = 467A6FF8C7694CB78D723035378F951C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		02DC3E16B2E3FC8481758183 /* Debug */ = {
+		01AEE3BA9F140F7222B2B50858FBE6D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB2044F634181344DDCFF0BA /* Pods-Tests-BAFluidView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = BAFluidView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		5949834EECEFA4F24DC7FCB4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB2044F634181344DDCFF0BA /* Pods-Tests-BAFluidView-Private.xcconfig */;
+			baseConfigurationReference = 982E82068E0468B0055C31CACA84310E /* BAFluidView.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				PRODUCT_NAME = BAFluidView;
@@ -561,12 +430,13 @@
 			};
 			name = Release;
 		};
-		6DE9BCACA1217E46EB77B578 /* Release */ = {
+		071A3BB781154AEF65A75C2EC3B613EC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09369379D8F7B6FCB69E8C14 /* Pods-BAFluidView.release.xcconfig */;
+			baseConfigurationReference = 0E4F4790D52980B7E785AC1949BB65CA /* Pods-BAFluidView.release.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -577,78 +447,13 @@
 			};
 			name = Release;
 		};
-		81F9403CBADF7A54EE032F1D /* Release */ = {
+		1238884D38FBC25DFC07EDEDFCB01A8B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB2044F634181344DDCFF0BA /* Pods-Tests-BAFluidView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-Tests-BAFluidView/Pods-Tests-BAFluidView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		88536632EB368F81E8C8E181 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		897454F81BCEDBB12DCAAC18 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE31497ABDEA8091DDAE28CF /* Pods-BAFluidView-BAFluidView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-BAFluidView-BAFluidView/Pods-BAFluidView-BAFluidView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		99D5F38DCDFF4CDAD3683E70 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 988E976646CDADDEEFCE6C5D /* Pods-Tests.debug.xcconfig */;
+			baseConfigurationReference = FFF89254D7CC86A44A5F32064FC92570 /* Pods-BAFluidView.debug.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -659,25 +464,9 @@
 			};
 			name = Debug;
 		};
-		A902A8BD3C3FA8EF35953905 /* Debug */ = {
+		1C339911986F27D59306C07F80CC5EC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB2044F634181344DDCFF0BA /* Pods-Tests-BAFluidView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-Tests-BAFluidView/Pods-Tests-BAFluidView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		C1DB2CD8D2247E052A52CFA9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE31497ABDEA8091DDAE28CF /* Pods-BAFluidView-BAFluidView-Private.xcconfig */;
+			baseConfigurationReference = 982E82068E0468B0055C31CACA84310E /* BAFluidView.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				PRODUCT_NAME = BAFluidView;
@@ -687,7 +476,41 @@
 			};
 			name = Debug;
 		};
-		C53D036A92F87AB7FCA9DD71 /* Debug */ = {
+		48323387F1EA6FC2EBD3F56CF5F18575 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFFB9F803C19600DCF80D944DB132EBF /* Pods-Tests.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5FFC69C5F6A84BB71FB7B9CBBE56FAB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBF7E03E9D006F55A151F3B25C023384 /* Pods-Tests.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -726,133 +549,125 @@
 			};
 			name = Debug;
 		};
-		C5F5A64863769255A4648ED8 /* Debug */ = {
+		E30A194A8052FF4528EC6B477C9C711B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1ABD380335F343496BAF0933 /* Pods-BAFluidView.debug.xcconfig */;
+			baseConfigurationReference = 982E82068E0468B0055C31CACA84310E /* BAFluidView.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BAFluidView/BAFluidView-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		DACA6A16A7981623F8473E46 /* Release */ = {
+		E66BF2893CE30B000B9998C7E4701369 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE31497ABDEA8091DDAE28CF /* Pods-BAFluidView-BAFluidView-Private.xcconfig */;
+			baseConfigurationReference = 982E82068E0468B0055C31CACA84310E /* BAFluidView.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-BAFluidView-BAFluidView/Pods-BAFluidView-BAFluidView-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/BAFluidView/BAFluidView-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		E25F07A68C4DF57FC5479763 /* Release */ = {
+		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C6DC723C313A52979D94E3A /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		F94BEEABE5A1764C7288813B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE31497ABDEA8091DDAE28CF /* Pods-BAFluidView-BAFluidView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = BAFluidView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0838BA98D6B032674BBEA7CF /* Build configuration list for PBXNativeTarget "Pods-BAFluidView-BAFluidView" */ = {
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				897454F81BCEDBB12DCAAC18 /* Debug */,
-				DACA6A16A7981623F8473E46 /* Release */,
+				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
+				FB45FFD90572718D82AB9092B750F0CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0A8FAFAEA8154157A7E59001 /* Build configuration list for PBXNativeTarget "Pods-BAFluidView-BAFluidView-BAFluidView" */ = {
+		2FFD15640778B3DE1FD3006E358BD7FE /* Build configuration list for PBXNativeTarget "BAFluidView-BAFluidView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C1DB2CD8D2247E052A52CFA9 /* Debug */,
-				F94BEEABE5A1764C7288813B /* Release */,
+				1C339911986F27D59306C07F80CC5EC6 /* Debug */,
+				01AEE3BA9F140F7222B2B50858FBE6D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		235FD40F1B8C1EE73763B6E3 /* Build configuration list for PBXNativeTarget "Pods-Tests-BAFluidView" */ = {
+		3B56E1C2DC3A347108A51F0B62C98434 /* Build configuration list for PBXNativeTarget "BAFluidView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A902A8BD3C3FA8EF35953905 /* Debug */,
-				81F9403CBADF7A54EE032F1D /* Release */,
+				E30A194A8052FF4528EC6B477C9C711B /* Debug */,
+				E66BF2893CE30B000B9998C7E4701369 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4BCA9E1A86A075A8CF79FCBF /* Build configuration list for PBXProject "Pods" */ = {
+		C13474F5E1C71E19508009F3CB6166DE /* Build configuration list for PBXNativeTarget "Pods-BAFluidView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C53D036A92F87AB7FCA9DD71 /* Debug */,
-				88536632EB368F81E8C8E181 /* Release */,
+				1238884D38FBC25DFC07EDEDFCB01A8B /* Debug */,
+				071A3BB781154AEF65A75C2EC3B613EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		971AD8F110AF9CDC49F79540 /* Build configuration list for PBXNativeTarget "Pods-Tests-BAFluidView-BAFluidView" */ = {
+		F45E4EC4A3B941E23BACA52AF1A6D798 /* Build configuration list for PBXNativeTarget "Pods-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				02DC3E16B2E3FC8481758183 /* Debug */,
-				5949834EECEFA4F24DC7FCB4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C8CA8A03AACD0DAE2690FC2C /* Build configuration list for PBXNativeTarget "Pods-Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				99D5F38DCDFF4CDAD3683E70 /* Debug */,
-				E25F07A68C4DF57FC5479763 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E63BF7104564455DEEAD35E0 /* Build configuration list for PBXNativeTarget "Pods-BAFluidView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C5F5A64863769255A4648ED8 /* Debug */,
-				6DE9BCACA1217E46EB77B578 /* Release */,
+				48323387F1EA6FC2EBD3F56CF5F18575 /* Debug */,
+				5FFC69C5F6A84BB71FB7B9CBBE56FAB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 2D0018BD15A646E54243187D /* Project object */;
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 }
