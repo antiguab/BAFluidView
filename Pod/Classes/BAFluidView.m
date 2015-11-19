@@ -414,7 +414,7 @@
             UIBezierPath* line = [UIBezierPath bezierPath];
             [line moveToPoint:startPoint];
             int tempAmplitude = j;
-            for (int i = self.waveLength/2; i <= self.finalX; i+=self.waveLength/2) {
+            for (int i = self.waveLength/2; i < self.finalX; i+=self.waveLength/2) {
                 [line addQuadCurveToPoint:CGPointMake(startPoint.x + i,startPoint.y) controlPoint:CGPointMake(startPoint.x + i -(self.waveLength/4),startPoint.y + tempAmplitude)];
                 tempAmplitude = -tempAmplitude;
             }
@@ -436,7 +436,7 @@
             [line moveToPoint:startPoint];
             
             int tempAmplitude = j;
-            for (int i = self.waveLength/2; i <= self.finalX; i+=self.waveLength/2) {
+            for (int i = self.waveLength/2; i < self.finalX; i+=self.waveLength/2) {
                 [line addQuadCurveToPoint:CGPointMake(startPoint.x + i,startPoint.y) controlPoint:CGPointMake(startPoint.x + i -(self.waveLength/4),startPoint.y + tempAmplitude)];
                 tempAmplitude = -tempAmplitude;
             }
