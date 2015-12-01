@@ -25,9 +25,6 @@
 #import "UIColor+ColorWithHex.h"
 
 @interface BAViewController ()
-{
-    float fillval;
-}
 
 @property (strong,nonatomic) UIDynamicAnimator *animator;
 @property (strong,nonatomic) UIAttachmentBehavior *attachmentBehavior;
@@ -56,7 +53,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    fillval = 0.5;
+
     self.activity = NO;
     self.firstTimeLoading = YES;
     

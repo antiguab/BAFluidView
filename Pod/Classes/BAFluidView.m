@@ -276,7 +276,7 @@
         CAKeyframeAnimation *horizontalAnimation =
         [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
         
-        //added 10 for a slight margin of error on animation transition (slight glitch on right hand side)
+        //added 10pt to allow for a margin of error on animation transition (slight glitch on right hand side)
         horizontalAnimation.values = @[@(self.lineLayer.position.x),@(-self.finalX + self.waveLength + 10)];
         horizontalAnimation.duration = 1.0;
         horizontalAnimation.repeatCount = HUGE;
@@ -418,9 +418,8 @@
             //create a UIBezierPath along distance
             UIBezierPath* line = [UIBezierPath bezierPath];
             [line moveToPoint:startPoint];
+            
             int tempAmplitude = j;
-            
-            
             for (int i = self.waveLength/2; i <= self.finalX; i+=self.waveLength/2) {
                 [line addQuadCurveToPoint:CGPointMake(startPoint.x + i,startPoint.y) controlPoint:CGPointMake(startPoint.x + i -(self.waveLength/4),startPoint.y + tempAmplitude)];
                 tempAmplitude = -tempAmplitude;
