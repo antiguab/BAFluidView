@@ -275,7 +275,9 @@
         //Phase Shift Animation
         CAKeyframeAnimation *horizontalAnimation =
         [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
-        horizontalAnimation.values = @[@(self.lineLayer.position.x),@(-self.finalX + self.waveLength)];
+        
+        //added 10pt to allow for a margin of error on animation transition (slight glitch on right hand side)
+        horizontalAnimation.values = @[@(self.lineLayer.position.x),@(-self.finalX + self.waveLength + 10)];
         horizontalAnimation.duration = 1.0;
         horizontalAnimation.repeatCount = HUGE;
         [self.lineLayer addAnimation:horizontalAnimation forKey:@"horizontalAnimation"];
@@ -313,10 +315,13 @@
 }
 
 - (void)keepStationary {
+    self.fillRepeatCount = 0;
+    self.fillAutoReverse = NO;
     [self.lineLayer removeAnimationForKey:@"verticalAnimation"];
 }
 
 - (void)fillTo:(NSNumber*)fillPercentage {
+    float fillDifference = fabs([fillPercentage floatValue]-[self.fillLevel floatValue]);
     self.fillLevel = fillPercentage;
     
     CAKeyframeAnimation *verticalAnimation =
@@ -340,15 +345,15 @@
     if (!self.initialFill) {
         initialLayer = self.lineLayer.presentationLayer;
     }
+    
     verticalAnimation.values = @[@(initialLayer.position.y),@(finalPosition)];
-    verticalAnimation.duration = self.fillDuration*[fillPercentage doubleValue];
+    verticalAnimation.duration = self.fillDuration*fillDifference;
     verticalAnimation.autoreverses = self.fillAutoReverse;
     verticalAnimation.repeatCount = self.fillRepeatCount;
     verticalAnimation.removedOnCompletion = NO;
     verticalAnimation.fillMode = kCAFillModeForwards;
     [self.lineLayer addAnimation:verticalAnimation forKey:@"verticalAnimation"];
     self.initialFill = NO;
-    
 }
 
 #pragma mark - Private
@@ -413,8 +418,9 @@
             //create a UIBezierPath along distance
             UIBezierPath* line = [UIBezierPath bezierPath];
             [line moveToPoint:startPoint];
+            
             int tempAmplitude = j;
-            for (int i = self.waveLength/2; i < self.finalX; i+=self.waveLength/2) {
+            for (int i = self.waveLength/2; i <= self.finalX; i+=self.waveLength/2) {
                 [line addQuadCurveToPoint:CGPointMake(startPoint.x + i,startPoint.y) controlPoint:CGPointMake(startPoint.x + i -(self.waveLength/4),startPoint.y + tempAmplitude)];
                 tempAmplitude = -tempAmplitude;
             }
@@ -436,7 +442,7 @@
             [line moveToPoint:startPoint];
             
             int tempAmplitude = j;
-            for (int i = self.waveLength/2; i < self.finalX; i+=self.waveLength/2) {
+            for (int i = self.waveLength/2; i <= self.finalX; i+=self.waveLength/2) {
                 [line addQuadCurveToPoint:CGPointMake(startPoint.x + i,startPoint.y) controlPoint:CGPointMake(startPoint.x + i -(self.waveLength/4),startPoint.y + tempAmplitude)];
                 tempAmplitude = -tempAmplitude;
             }
