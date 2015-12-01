@@ -25,6 +25,9 @@
 #import "UIColor+ColorWithHex.h"
 
 @interface BAViewController ()
+{
+    float fillval;
+}
 
 @property (strong,nonatomic) UIDynamicAnimator *animator;
 @property (strong,nonatomic) UIAttachmentBehavior *attachmentBehavior;
@@ -53,7 +56,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    fillval = 0.5;
     self.activity = NO;
     self.firstTimeLoading = YES;
     
@@ -236,6 +239,7 @@
     BAFluidView *nextFluidViewExample = [self nextBAFluidViewExample];
     [nextFluidViewExample addGestureRecognizer:self.gestureRecognizer];
     nextFluidViewExample.alpha = 0.0;
+    
     [self.view insertSubview:nextFluidViewExample belowSubview:self.swipeForNextExampleLabel];
     
     [UIView animateWithDuration:0.5 animations:^{
@@ -243,6 +247,7 @@
     } completion:^(BOOL finished) {
         [self.exampleContainerView removeFromSuperview];
         self.exampleContainerView = nextFluidViewExample;
+        self.exampleContainerView.layer.allowsEdgeAntialiasing = YES;
     }];
     
 }
@@ -267,7 +272,7 @@
             [fluidView.layer setMask:maskingLayer];
             
             [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
-            
+
             return fluidView;
         }
             
@@ -284,6 +289,7 @@
             
         case 2://Example with a different color and stationary
         {
+
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             fluidView.strokeColor = [UIColor whiteColor];
             fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
@@ -312,5 +318,4 @@
     
     return nil;
 }
-
 @end
