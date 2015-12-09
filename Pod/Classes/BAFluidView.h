@@ -136,6 +136,11 @@ This method lets you choose to what level you want the fluidVIew to increase or 
 - (void)startAnimation;
 
 /**
+ This methods starts motion animations that use CMMotion to tilt the wave crest based on device data
+ */
+- (void)addMotionAnimation;
+
+/**
  This methods stops all the desired animations
  */
 - (void)stopAnimation;

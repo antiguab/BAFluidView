@@ -23,6 +23,7 @@
 #import "BAViewController.h"
 #import "BAFluidView.h"
 #import "UIColor+ColorWithHex.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface BAViewController ()
 
@@ -43,6 +44,8 @@
 
 @property(assign,nonatomic) CAGradientLayer *gradient;
 
+@property (strong,nonatomic) CMMotionManager *motionManager;
+
 @end
 
 @implementation BAViewController
@@ -53,7 +56,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
+    
     self.activity = NO;
     self.firstTimeLoading = YES;
     
@@ -252,24 +255,54 @@
 -(BAFluidView*) nextBAFluidViewExample {
     BAFluidView *fluidView;
     
+    if(self.motionManager){
+        //stop motion manager if on
+        [self.motionManager stopAccelerometerUpdates];
+        self.motionManager = nil;
+    }
+    
     switch (self.currentExample) {
         case 0://Example with a mask
         {
             
-            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
+            //            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
+            //
+            //            fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
+            //            [fluidView fillTo:@0.9];
+            //            [fluidView startAnimation];
+            //
+            //            UIImage *maskingImage = [UIImage imageNamed:@"icon"];
+            //            CALayer *maskingLayer = [CALayer layer];
+            //            maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
+            //            [maskingLayer setContents:(id)[maskingImage CGImage]];
+            //            [fluidView.layer setMask:maskingLayer];
+            //
+            //            [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
             
-            fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
-            [fluidView fillTo:@0.9];
+            //==============================================
+            self.motionManager = [[CMMotionManager alloc] init];
+            
+            if (self.motionManager.deviceMotionAvailable) {
+                self.motionManager.deviceMotionUpdateInterval = 0.3f;
+                [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
+                                                        withHandler:^(CMDeviceMotion *data, NSError *error) {
+                                                            NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+                                                            NSDictionary* userInfo = @{@"roll": @(data.attitude.roll)};
+                                                            [nc postNotificationName:@"BAFluidViewCMMotionUpdate" object:self userInfo:userInfo];
+                                                        }];
+            }
+            
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
+            fluidView.strokeColor = [UIColor whiteColor];
+            fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
+            [fluidView keepStationary];
             [fluidView startAnimation];
+            [fluidView addMotionAnimation];
+            [self changeTitleColor:[UIColor whiteColor]];
+                        fluidView.backgroundColor = [UIColor redColor];
+                        fluidView.clipsToBounds = NO;
+                        fluidView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
             
-            UIImage *maskingImage = [UIImage imageNamed:@"icon"];
-            CALayer *maskingLayer = [CALayer layer];
-            maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
-            [maskingLayer setContents:(id)[maskingImage CGImage]];
-            [fluidView.layer setMask:maskingLayer];
-            
-            [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
-
             return fluidView;
         }
             
@@ -286,7 +319,7 @@
             
         case 2://Example with a different color and stationary
         {
-
+            
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             fluidView.strokeColor = [UIColor whiteColor];
             fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
@@ -306,6 +339,19 @@
             [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
             return fluidView;
         }
+            
+            //        case 4://Example with acceleramoter
+            //        {
+            //            self.motionManager = [[CMMotionManager alloc] init];
+            //            if (self.motionManager.deviceMotionAvailable) {
+            //                self.motionManager.deviceMotionUpdateInterval = 0.3f;
+            //                [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
+            //                                                        withHandler:^(CMDeviceMotion *data, NSError *error) {
+            //                                                            NSLog(@"roll: %f",data.attitude.roll);
+            //                                                        }];
+            //            }
+            //        }
+            
         default:
         {
             self.currentExample = 0;

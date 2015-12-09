@@ -16,6 +16,7 @@
 		80004526F5D4EBA52C5AD58F17C6078F /* Pods-BAFluidView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D44BEA867128F9AA9FF8B848235BDA4E /* Pods-BAFluidView-dummy.m */; };
 		8895E88DE130EEB102353B15816E1A5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
 		B06AE28A1569172B178444B0BA7AD99D /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F89ADF1CD7C4B0103E3571480FCB5CF /* UIColor+ColorWithHex.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D09C358B1C17EC1F000E74E4 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = D09C35891C17EC1F000E74E4 /* Constants.h */; };
 		DAE6C873C27310134024A6320BC45F72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
 		F5A1497E22637A772EA888EDF3F44418 /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BF9D153B3E3ACB4E105FAB7303A280 /* Pods-Tests-dummy.m */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C0D91FE03B8E4AA9038ADB8137F8CF79 /* BAFluidView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BAFluidView.m; sourceTree = "<group>"; };
 		C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D09C35891C17EC1F000E74E4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		D131775A84F2AE7860BD03889EC94123 /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
 		D44BEA867128F9AA9FF8B848235BDA4E /* Pods-BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BAFluidView-dummy.m"; sourceTree = "<group>"; };
 		E8E760A6D915B745CF51605835C6EE27 /* libPods-BAFluidView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BAFluidView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 			children = (
 				18C058E593EDF012EDD0D92701E2B305 /* BAFluidView.h */,
 				C0D91FE03B8E4AA9038ADB8137F8CF79 /* BAFluidView.m */,
+				D09C35891C17EC1F000E74E4 /* Constants.h */,
 				7BE9639E6FFED441A7544CFA07826A99 /* UIColor+ColorWithHex.h */,
 				9F89ADF1CD7C4B0103E3571480FCB5CF /* UIColor+ColorWithHex.m */,
 			);
@@ -246,6 +249,7 @@
 			files = (
 				2AB1A9AF0873F9114199CC94BC1CD8AA /* BAFluidView.h in Headers */,
 				6F4F9E8AB37E430436348E7B0198C8FB /* UIColor+ColorWithHex.h in Headers */,
+				D09C358B1C17EC1F000E74E4 /* Constants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,7 @@
 
 #import "BAFluidView.h"
 #import "UIColor+ColorWithHex.h"
+#import "Constants.h"
 
 @interface BAFluidView()
 
@@ -48,6 +49,10 @@
 @property (assign,nonatomic) UIDeviceOrientation orientation;
 
 @property (assign,nonatomic) NSTimer *waveCrestTimer;
+
+@property (assign,nonatomic) BOOL rollSignPositive;
+
+@property (assign,nonatomic) BOOL switchingHorizontalAnimation;
 
 @end
 
@@ -131,6 +136,7 @@
     if(newWindow == nil){
         //the view is being removed
         [self stopAnimation];
+        
         return;
     }
     
@@ -154,6 +160,7 @@
         [self startAnimation];
     }
 }
+
 
 #pragma mark - Custom Accessors
 
@@ -242,7 +249,7 @@
     self.waveLength = CGRectGetWidth(self.rootView.frame);
     self.startElevation = @0;
     self.fillDuration = 7.0;
-    self.finalX = 2*self.waveLength;
+    self.finalX = 5*self.waveLength;
     
     //available amplitudes
     self.amplitudeArray = [NSArray arrayWithArray:[self createAmplitudeOptions]];
@@ -251,6 +258,7 @@
     self.lineLayer.anchorPoint= CGPointMake(0, 0);
     CGRect frame = CGRectMake(0, CGRectGetHeight(self.frame), self.finalX, CGRectGetHeight(self.rootView.frame));
     self.lineLayer.frame = frame;
+    //    self.lineLayer.transform = CATransform3DMakeScale(1.02, 1.02, 1);
     
     //fill level
     self.initialFill = YES;
@@ -268,6 +276,13 @@
                                                object:nil];
 }
 
+- (void)addMotionAnimation {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(startMotionAnimation:)
+                                                 name:kBAFluidViewCMMotionUpdate
+                                               object:nil];
+}
+
 - (void)startAnimation {
     if (!self.animating) {
         self.startingAmplitude = self.maxAmplitude;
@@ -276,10 +291,13 @@
         CAKeyframeAnimation *horizontalAnimation =
         [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
         
-        //added 10pt to allow for a margin of error on animation transition (slight glitch on right hand side)
-        horizontalAnimation.values = @[@(self.lineLayer.position.x),@(-self.finalX + self.waveLength + 10)];
+        horizontalAnimation.values = @[@(self.lineLayer.position.x-self.waveLength*2),@(self.lineLayer.position.x-self.waveLength)];
+        
+        
         horizontalAnimation.duration = 1.0;
         horizontalAnimation.repeatCount = HUGE;
+        horizontalAnimation.removedOnCompletion = NO;
+        horizontalAnimation.fillMode = kCAFillModeForwards;
         [self.lineLayer addAnimation:horizontalAnimation forKey:@"horizontalAnimation"];
         
         //Wave Crest Animations
@@ -398,6 +416,63 @@
     [self.lineLayer removeAnimationForKey:@"waveCrestAnimation"];
     self.waveCrestAnimation.values = [self getBezierPathValues];
     [self.lineLayer addAnimation:self.waveCrestAnimation forKey:@"waveCrestAnimation"];
+    
+}
+
+- (void)startMotionAnimation:(NSNotification *)note {
+    self.switchingHorizontalAnimation = NO;
+    NSNumber *roll = [[note userInfo] valueForKey:@"roll"];
+    NSLog(@"roll: %f", [roll floatValue]);
+    
+    BOOL newRollSignPositive = (roll.floatValue > -0.12) ? true:false;
+    if((newRollSignPositive != self.rollSignPositive) && !self.switchingHorizontalAnimation){
+        self.rollSignPositive = newRollSignPositive;
+        self.switchingHorizontalAnimation = YES;
+        [self updateHorizontalAnimation];
+    }
+//        self.lineLayer.transform = CATransform3DMakeRotation(roll.floatValue*0.1,0,0,1);
+    
+}
+- (void)updateHorizontalAnimation {
+   
+    //shift from current position to start of reverse direction
+    CABasicAnimation *initialHorizontalAnimation =
+    [CABasicAnimation animationWithKeyPath:@"position.x"];
+    
+    CALayer* presentationLayer = self.lineLayer.presentationLayer;
+    initialHorizontalAnimation.fromValue =@(presentationLayer.position.x);
+    initialHorizontalAnimation.toValue = @(-self.waveLength*2);
+    initialHorizontalAnimation.removedOnCompletion = NO;
+    initialHorizontalAnimation.fillMode = kCAFillModeForwards;
+
+    CGFloat timePercentage =(self.waveLength+presentationLayer.position.x)/self.waveLength;
+
+    NSLog(@"wavelength: %d | finalX: %d", self.finalX,self.waveLength);
+    NSLog(@"rsp: %@ | ppx: %f|  lpx: %f | tp %f",self.rollSignPositive?@"true":@"false",presentationLayer.position.x,self.lineLayer.position.x,timePercentage);
+    initialHorizontalAnimation.duration = 0.5;
+
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        self.switchingHorizontalAnimation = NO;
+        //Phase Shift Animation
+        CABasicAnimation *repeatingHorizontalAnimation =
+        [CABasicAnimation animationWithKeyPath:@"position.x"];
+        repeatingHorizontalAnimation.fromValue =@(self.lineLayer.position.x-self.waveLength*2);
+        if(self.rollSignPositive){
+            repeatingHorizontalAnimation.toValue = @(self.lineLayer.position.x-self.waveLength);
+
+        } else {
+            repeatingHorizontalAnimation.toValue = @(self.lineLayer.position.x-self.waveLength*3);
+        }
+        
+        repeatingHorizontalAnimation.duration = 1.0;
+        repeatingHorizontalAnimation.repeatCount = HUGE;
+        repeatingHorizontalAnimation.removedOnCompletion = NO;
+        repeatingHorizontalAnimation.fillMode = kCAFillModeForwards;
+        [self.lineLayer addAnimation:repeatingHorizontalAnimation forKey:@"horizontalAnimation"];
+    }];
+    [self.lineLayer addAnimation:initialHorizontalAnimation forKey:@"horizontalAnimation"];
+    [CATransaction commit];
     
 }
 
