@@ -54,6 +54,12 @@
 
 @property (assign,nonatomic) BOOL switchingHorizontalAnimation;
 
+@property (assign,nonatomic) CGFloat roll;
+
+@property (strong,nonatomic) CALayer *rollLayer;
+
+
+
 @end
 
 @implementation BAFluidView
@@ -277,6 +283,11 @@
 }
 
 - (void)addMotionAnimation {
+    self.rollLayer = CALayer.layer;
+    self.rollLayer.frame = self.frame;
+    [self.rollLayer addSublayer:self.lineLayer];
+    [self.layer addSublayer:self.rollLayer];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(startMotionAnimation:)
                                                  name:kBAFluidViewCMMotionUpdate
@@ -389,7 +400,7 @@
     
     //values that need to be adjusted due to change in width
     self.waveLength = CGRectGetWidth(self.rootView.frame);
-    self.finalX = 2*self.waveLength;
+    self.finalX = 5*self.waveLength;
     
     //creating the linelayer frame to fit new orientation
     self.lineLayer.anchorPoint= CGPointMake(0, 0);
@@ -421,17 +432,29 @@
 
 - (void)startMotionAnimation:(NSNotification *)note {
     self.switchingHorizontalAnimation = NO;
-    NSNumber *roll = [[note userInfo] valueForKey:@"roll"];
-    NSLog(@"roll: %f", [roll floatValue]);
-    
-    BOOL newRollSignPositive = (roll.floatValue > -0.12) ? true:false;
+    NSNumber *rollVal = [[note userInfo] valueForKey:@"roll"];
+    self.roll = rollVal.floatValue;
+    NSLog(@"roll: %f",self.roll);
+    BOOL newRollSignPositive = (self.roll > -0.2) ? true:false;
     if((newRollSignPositive != self.rollSignPositive) && !self.switchingHorizontalAnimation){
         self.rollSignPositive = newRollSignPositive;
         self.switchingHorizontalAnimation = YES;
         [self updateHorizontalAnimation];
     }
-//        self.lineLayer.transform = CATransform3DMakeRotation(roll.floatValue*0.1,0,0,1);
-    
+    [self addTiltAnimation];
+}
+
+- (void) addTiltAnimation {
+    CALayer *presentationLayer = self.rollLayer.presentationLayer;
+    CATransform3D zRotation = CATransform3DMakeRotation(-self.roll*0.7, 0, 0, 1.0);
+    CABasicAnimation *animateZRotation;
+    animateZRotation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    animateZRotation.fromValue = [NSValue valueWithCATransform3D:presentationLayer.transform];
+    animateZRotation.toValue = [NSValue valueWithCATransform3D:zRotation];
+    animateZRotation.duration = 0.4;
+    animateZRotation.fillMode = kCAFillModeForwards;
+    animateZRotation.removedOnCompletion = NO;
+    [self.rollLayer addAnimation:animateZRotation forKey:@"tiltAnimation"];
 }
 - (void)updateHorizontalAnimation {
    
@@ -458,7 +481,7 @@
         CABasicAnimation *repeatingHorizontalAnimation =
         [CABasicAnimation animationWithKeyPath:@"position.x"];
         repeatingHorizontalAnimation.fromValue =@(self.lineLayer.position.x-self.waveLength*2);
-        if(self.rollSignPositive){
+        if(!self.rollSignPositive){
             repeatingHorizontalAnimation.toValue = @(self.lineLayer.position.x-self.waveLength);
 
         } else {
@@ -486,27 +509,26 @@
     
     int finalAmplitude = [[self.amplitudeArray objectAtIndex:[index intValue]] intValue];
     NSMutableArray *values = [[NSMutableArray alloc] init];
-    
+
     //shrinking
     if (self.startingAmplitude >= finalAmplitude) {
         for (int j = self.startingAmplitude; j >= finalAmplitude; j-=self.amplitudeIncrement) {
             //create a UIBezierPath along distance
             UIBezierPath* line = [UIBezierPath bezierPath];
-            [line moveToPoint:startPoint];
+            [line moveToPoint:CGPointMake(startPoint.x, startPoint.y)];
             
             int tempAmplitude = j;
             for (int i = self.waveLength/2; i <= self.finalX; i+=self.waveLength/2) {
-                [line addQuadCurveToPoint:CGPointMake(startPoint.x + i,startPoint.y) controlPoint:CGPointMake(startPoint.x + i -(self.waveLength/4),startPoint.y + tempAmplitude)];
+                [line addQuadCurveToPoint:CGPointMake(startPoint.x + i,startPoint.y) controlPoint:CGPointMake(startPoint.x + i - (self.waveLength/4),startPoint.y + tempAmplitude)];
                 tempAmplitude = -tempAmplitude;
             }
             
-            [line addLineToPoint:CGPointMake(self.finalX, 2*CGRectGetHeight(self.rootView.frame) - self.maxAmplitude)];
-            [line addLineToPoint:CGPointMake(0, 2*CGRectGetHeight(self.rootView.frame) - self.maxAmplitude)];
+            [line addLineToPoint:CGPointMake(self.finalX, 5*CGRectGetHeight(self.rootView.frame) - self.maxAmplitude)];
+            [line addLineToPoint:CGPointMake(0, 5*CGRectGetHeight(self.rootView.frame) - self.maxAmplitude)];
             [line closePath];
             
             [values addObject:(id)line.CGPath];
         }
-        
     }
     
     //growing
@@ -514,7 +536,7 @@
         for (int j = self.startingAmplitude; j <= finalAmplitude; j+=self.amplitudeIncrement) {
             //create a UIBezierPath along distance
             UIBezierPath* line = [UIBezierPath bezierPath];
-            [line moveToPoint:startPoint];
+            [line moveToPoint:CGPointMake(startPoint.x, startPoint.y)];
             
             int tempAmplitude = j;
             for (int i = self.waveLength/2; i <= self.finalX; i+=self.waveLength/2) {
@@ -522,8 +544,8 @@
                 tempAmplitude = -tempAmplitude;
             }
             
-            [line addLineToPoint:CGPointMake(self.finalX, 2*CGRectGetHeight(self.rootView.frame) - self.maxAmplitude)];
-            [line addLineToPoint:CGPointMake(0, 2*CGRectGetHeight(self.rootView.frame) - self.maxAmplitude)];
+            [line addLineToPoint:CGPointMake(self.finalX, 5*CGRectGetHeight(self.rootView.frame) - self.maxAmplitude)];
+            [line addLineToPoint:CGPointMake(0, 5*CGRectGetHeight(self.rootView.frame) - self.maxAmplitude)];
             [line closePath];
             
             [values addObject:(id)line.CGPath];

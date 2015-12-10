@@ -298,11 +298,7 @@
             [fluidView keepStationary];
             [fluidView startAnimation];
             [fluidView addMotionAnimation];
-            [self changeTitleColor:[UIColor whiteColor]];
-                        fluidView.backgroundColor = [UIColor redColor];
-                        fluidView.clipsToBounds = NO;
-                        fluidView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
-            
+            [self changeTitleColor:[UIColor whiteColor]];            
             return fluidView;
         }
             
