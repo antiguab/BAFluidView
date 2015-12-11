@@ -287,7 +287,8 @@
                 [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
                                                         withHandler:^(CMDeviceMotion *data, NSError *error) {
                                                             NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-                                                            NSDictionary* userInfo = @{@"roll": @(data.attitude.roll)};
+                                                            NSDictionary* userInfo = [NSDictionary dictionaryWithObject:
+                                                                                      data forKey:@"data"];
                                                             [nc postNotificationName:@"BAFluidViewCMMotionUpdate" object:self userInfo:userInfo];
                                                         }];
             }
@@ -297,8 +298,8 @@
             fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
             [fluidView keepStationary];
             [fluidView startAnimation];
-            [fluidView addMotionAnimation];
-            [self changeTitleColor:[UIColor whiteColor]];            
+            [fluidView startTiltAnimation];
+            [self changeTitleColor:[UIColor whiteColor]];
             return fluidView;
         }
             
@@ -336,17 +337,30 @@
             return fluidView;
         }
             
-            //        case 4://Example with acceleramoter
-            //        {
-            //            self.motionManager = [[CMMotionManager alloc] init];
-            //            if (self.motionManager.deviceMotionAvailable) {
-            //                self.motionManager.deviceMotionUpdateInterval = 0.3f;
-            //                [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
-            //                                                        withHandler:^(CMDeviceMotion *data, NSError *error) {
-            //                                                            NSLog(@"roll: %f",data.attitude.roll);
-            //                                                        }];
-            //            }
-            //        }
+        case 4://Example with acceleramoter
+        {
+            self.motionManager = [[CMMotionManager alloc] init];
+            
+            if (self.motionManager.deviceMotionAvailable) {
+                self.motionManager.deviceMotionUpdateInterval = 0.3f;
+                [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
+                                                        withHandler:^(CMDeviceMotion *data, NSError *error) {
+                                                            NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+                                                            NSDictionary* userInfo = [NSDictionary dictionaryWithObject:
+                                                                                      data forKey:@"data"];
+                                                            [nc postNotificationName:@"BAFluidViewCMMotionUpdate" object:self userInfo:userInfo];
+                                                        }];
+            }
+            
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
+            fluidView.strokeColor = [UIColor whiteColor];
+            fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
+            [fluidView keepStationary];
+            [fluidView startAnimation];
+            [fluidView startTiltAnimation];
+            [self changeTitleColor:[UIColor whiteColor]];
+            return fluidView;
+        }
             
         default:
         {
@@ -357,4 +371,5 @@
     
     return nil;
 }
+
 @end

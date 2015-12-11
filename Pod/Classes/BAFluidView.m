@@ -23,6 +23,9 @@
 #import "BAFluidView.h"
 #import "UIColor+ColorWithHex.h"
 #import "Constants.h"
+#import <CoreMotion/CoreMotion.h>
+
+typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
 
 @interface BAFluidView()
 
@@ -52,9 +55,9 @@
 
 @property (assign,nonatomic) BOOL rollSignPositive;
 
-@property (assign,nonatomic) BOOL switchingHorizontalAnimation;
-
 @property (assign,nonatomic) CGFloat roll;
+
+@property (assign,nonatomic) CGFloat rollOrientationAdjustment;
 
 @property (strong,nonatomic) CALayer *rollLayer;
 
@@ -74,7 +77,7 @@
     if (self)
     {
         [self initialize];
-        
+
         //setting custom wave properties
         self.maxAmplitude = aMaxAmplitude;
         self.minAmplitude = aMinAmplitude;
@@ -146,8 +149,12 @@
         return;
     }
     
-    //the view is being added
+    //the view is being added and need to adjust tilt since CMMotion only has orinigal refernece frame
+    if(self.roll){
+        [self adjustRollBasedOnOrientation];
+    }
     [self startAnimation];
+    
 }
 
 - (void)layoutSubviews {
@@ -160,9 +167,12 @@
         
         //I can either remove the animation and have a slight lag or the user can see one animation where the wave
         //still has the frame of the old orientation.
+        self.rollLayer.backgroundColor = [UIColor redColor].CGColor;
         [self.lineLayer removeAllAnimations];
+        [self.rollLayer removeAllAnimations];
         [self stopAnimation];
         [self reInitializeLayer];
+        [self adjustRollBasedOnOrientation];
         [self startAnimation];
     }
 }
@@ -282,14 +292,21 @@
                                                object:nil];
 }
 
-- (void)addMotionAnimation {
-    self.rollLayer = CALayer.layer;
-    self.rollLayer.frame = self.frame;
-    [self.rollLayer addSublayer:self.lineLayer];
-    [self.layer addSublayer:self.rollLayer];
+- (void)startTiltAnimation {
+    if(!self.rollLayer){
+        //creating layer which will rotate
+        self.rollLayer = CALayer.layer;
+        
+        //add linelayer to this layer now
+        [self.rollLayer addSublayer:self.lineLayer];
+        [self.layer addSublayer:self.rollLayer];
+    }
     
+    self.rollLayer.frame = self.frame;
+    
+    //listen for the device manager
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(startMotionAnimation:)
+                                             selector:@selector(addTiltAnimation:)
                                                  name:kBAFluidViewCMMotionUpdate
                                                object:nil];
 }
@@ -325,8 +342,12 @@
                                                              userInfo:nil
                                                               repeats:YES];
         
-        //add sublayer to view
-        [self.layer addSublayer:self.lineLayer];
+        //check if we're adding tiltAnimations
+        if(self.roll){
+            [self startTiltAnimation];
+        } else {
+            [self.layer addSublayer:self.lineLayer];
+        }
         
         self.animating = YES;
     }
@@ -339,6 +360,12 @@
     }
     [self.lineLayer removeAnimationForKey:@"horizontalAnimation"];
     [self.lineLayer removeAnimationForKey:@"waveCestAnimation"];
+    if(self.roll){
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:kBAFluidViewCMMotionUpdate
+                                                      object:nil];
+        [self.rollLayer removeAnimationForKey:@"tiltAnimation"];
+    }
     self.waveCrestAnimation =  nil;
     self.animating = NO;
 }
@@ -402,11 +429,11 @@
     self.waveLength = CGRectGetWidth(self.rootView.frame);
     self.finalX = 5*self.waveLength;
     
-    //creating the linelayer frame to fit new orientation
+    //creating the linelayer/rollLayer frame to fit new orientation
     self.lineLayer.anchorPoint= CGPointMake(0, 0);
     CGRect frame = CGRectMake(0, CGRectGetHeight(self.frame), self.finalX, CGRectGetHeight(self.rootView.frame));
     self.lineLayer.frame = frame;
-    
+
     //need to grab the presentation again as a base
     self.initialFill = YES;
     
@@ -430,23 +457,37 @@
     
 }
 
-- (void)startMotionAnimation:(NSNotification *)note {
-    self.switchingHorizontalAnimation = NO;
-    NSNumber *rollVal = [[note userInfo] valueForKey:@"roll"];
-    self.roll = rollVal.floatValue;
+- (void)addTiltAnimation:(NSNotification *)note {
+    
+    //make sure we don't constantly witch horizontal animation if in progress
+    CMDeviceMotion *data = [[note userInfo] valueForKey:@"data"];
+    CMQuaternion quat = data.attitude.quaternion;
+
+    CGFloat roll = atan2(2*(quat.y*quat.w - quat.x*quat.z), 1 - 2*quat.y*quat.y - 2*quat.z*quat.z);
+    
+    //setting extremes
+    if((roll + self.rollOrientationAdjustment)< -1){
+        roll = -1;
+    } else if((roll + self.rollOrientationAdjustment)	 > 1){
+        roll = 1;
+    }
+    self.roll = roll;
+    
     NSLog(@"roll: %f",self.roll);
+    NSLog(@"roll(adjusted): %f",self.roll+self.rollOrientationAdjustment);
+
     BOOL newRollSignPositive = (self.roll > -0.2) ? true:false;
-    if((newRollSignPositive != self.rollSignPositive) && !self.switchingHorizontalAnimation){
+    if((newRollSignPositive != self.rollSignPositive)){
         self.rollSignPositive = newRollSignPositive;
-        self.switchingHorizontalAnimation = YES;
         [self updateHorizontalAnimation];
     }
-    [self addTiltAnimation];
+    
+    [self addRotationAnimation];
 }
 
-- (void) addTiltAnimation {
+- (void) addRotationAnimation {
     CALayer *presentationLayer = self.rollLayer.presentationLayer;
-    CATransform3D zRotation = CATransform3DMakeRotation(-self.roll*0.7, 0, 0, 1.0);
+    CATransform3D zRotation = CATransform3DMakeRotation(-(self.roll+self.rollOrientationAdjustment)*0.7, 0, 0, 1.0);
     CABasicAnimation *animateZRotation;
     animateZRotation = [CABasicAnimation animationWithKeyPath:@"transform"];
     animateZRotation.fromValue = [NSValue valueWithCATransform3D:presentationLayer.transform];
@@ -457,7 +498,7 @@
     [self.rollLayer addAnimation:animateZRotation forKey:@"tiltAnimation"];
 }
 - (void)updateHorizontalAnimation {
-   
+    
     //shift from current position to start of reverse direction
     CABasicAnimation *initialHorizontalAnimation =
     [CABasicAnimation animationWithKeyPath:@"position.x"];
@@ -467,23 +508,22 @@
     initialHorizontalAnimation.toValue = @(-self.waveLength*2);
     initialHorizontalAnimation.removedOnCompletion = NO;
     initialHorizontalAnimation.fillMode = kCAFillModeForwards;
-
+    
     CGFloat timePercentage =(self.waveLength+presentationLayer.position.x)/self.waveLength;
-
+    
     NSLog(@"wavelength: %d | finalX: %d", self.finalX,self.waveLength);
     NSLog(@"rsp: %@ | ppx: %f|  lpx: %f | tp %f",self.rollSignPositive?@"true":@"false",presentationLayer.position.x,self.lineLayer.position.x,timePercentage);
     initialHorizontalAnimation.duration = 0.5;
-
+    
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{
-        self.switchingHorizontalAnimation = NO;
         //Phase Shift Animation
         CABasicAnimation *repeatingHorizontalAnimation =
         [CABasicAnimation animationWithKeyPath:@"position.x"];
         repeatingHorizontalAnimation.fromValue =@(self.lineLayer.position.x-self.waveLength*2);
         if(!self.rollSignPositive){
             repeatingHorizontalAnimation.toValue = @(self.lineLayer.position.x-self.waveLength);
-
+            
         } else {
             repeatingHorizontalAnimation.toValue = @(self.lineLayer.position.x-self.waveLength*3);
         }
@@ -509,7 +549,7 @@
     
     int finalAmplitude = [[self.amplitudeArray objectAtIndex:[index intValue]] intValue];
     NSMutableArray *values = [[NSMutableArray alloc] init];
-
+    
     //shrinking
     if (self.startingAmplitude >= finalAmplitude) {
         for (int j = self.startingAmplitude; j >= finalAmplitude; j-=self.amplitudeIncrement) {
@@ -559,6 +599,31 @@
     return [NSArray arrayWithArray:values];
     
 }
+
+- (void)adjustRollBasedOnOrientation {
+
+    switch (self.orientation) {
+        case UIDeviceOrientationPortrait:
+        {
+            self.rollOrientationAdjustment = 0;
+            break;
+        }
+        case UIDeviceOrientationLandscapeLeft:
+        {
+            self.rollOrientationAdjustment = M_PI/2 ;
+            break;
+        }
+        case UIDeviceOrientationLandscapeRight:
+        {
+            self.rollOrientationAdjustment = -M_PI/2;
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 
 - (NSArray*)createAmplitudeOptions {
     NSMutableArray *tempAmplitudeArray = [[NSMutableArray alloc] init];
