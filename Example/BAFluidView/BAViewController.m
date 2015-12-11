@@ -28,23 +28,28 @@
 @interface BAViewController ()
 
 @property (strong,nonatomic) UIDynamicAnimator *animator;
+
 @property (strong,nonatomic) UIAttachmentBehavior *attachmentBehavior;
 
 @property (strong,nonatomic) UIPanGestureRecognizer *gestureRecognizer;
+
 @property (strong,nonatomic) CABasicAnimation *fadeIn;
+
 @property (strong,nonatomic) CABasicAnimation *fadeOut;
 
 @property (strong,nonatomic) NSMutableArray *examplesArray;
 
 @property (assign,nonatomic) int currentExample;
+
 @property (assign,nonatomic) BOOL activity;
+
 @property (assign,nonatomic) NSTimer *timer;
 
 @property (assign,nonatomic) BOOL firstTimeLoading;
 
 @property(assign,nonatomic) CAGradientLayer *gradient;
 
-@property (strong,nonatomic) CMMotionManager *motionManager;
+@property(strong,nonatomic) CMMotionManager *motionManager;
 
 @end
 
@@ -103,6 +108,23 @@
     }
     
     [self setUpBackground];
+
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         //only need to snap back afterwards
+         
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         [self.animator removeAllBehaviors];
+         UISnapBehavior *snapBehavior =[[UISnapBehavior alloc] initWithItem:self.exampleContainerView snapToPoint:self.view.center];
+         [self.animator addBehavior:snapBehavior];
+         
+     }];
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,7 +157,7 @@
     
     CGPoint locationInContainer = [gesture locationInView:gesture.view];
     CGPoint locationinSuperView = [gesture locationInView:self.view];
-    
+
     if (gesture.state == UIGestureRecognizerStateBegan) {
         //assign the attachment behavior as the view is starting to move
         [self.animator removeAllBehaviors];
@@ -157,7 +179,6 @@
         [self.animator removeAllBehaviors];
         UISnapBehavior *snapBehavior =[[UISnapBehavior alloc] initWithItem:self.exampleContainerView snapToPoint:self.view.center];
         [self.animator addBehavior:snapBehavior];
-        
         if([gesture translationInView:self.view].y > 150 ) {
             [self transitionToNextExample];
         }
@@ -265,7 +286,7 @@
         case 0://Example with a mask
         {
             
-            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             
             fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
             [fluidView fillTo:@0.9];
@@ -273,10 +294,9 @@
             
             UIImage *maskingImage = [UIImage imageNamed:@"iconImage"];
             CALayer *maskingLayer = [CALayer layer];
-            maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
+            maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 180, maskingImage.size.width, maskingImage.size.height);
             [maskingLayer setContents:(id)[maskingImage CGImage]];
             [fluidView.layer setMask:maskingLayer];
-            
             [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
             
             return fluidView;

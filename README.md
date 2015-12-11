@@ -169,6 +169,51 @@ Sweet! check it out:
 ![example6](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example6.gif)
 
 
+## ChangeLog
+
+#### Version 0.1.8 (11.30.2015)
+- Code Clean up
+- fixed `fillTo` and shrinking/growing error
+
+#### Version 0.1.7 (11.18.2015)
+- (BUG FIX) Fixed memory leak for `getBezierPaths`
+
+#### Version 0.1.6 (07.23.2015)
+- (BUG FIX) Fixed rotation bug
+- Added speed option for fill
+
+#### Version 0.1.5 (07.21.2015)
+- Added Carthage support
+
+#### Version 0.1.4 (07.14.2015)
+- Expose `minAmplitude`, `maxAmplitude`, and `amplitudeIncrement`
+- (BUG FIX) Fix background glitch [Issue 14]
+
+#### Version 0.1.3 (07.09.2015)
+- Improved README syntax
+- Updated demo [Issue 15]
+- `colorWithHex` now a category of `UIColor`
+
+#### Version 0.1.2 (07.08.2015)
+- Added missing headers 
+- Added new init methods, elevation feature, and updated fillTo
+- updated timer function for swipe label
+- added ability to change line width
+- updated demo (example 1 and 6)
+
+#### Version 0.1.1 (03.31.2015)
+- Updated Demo
+
+#### Version 0.1.0 (12.11.2015)
+- Initial release
+
+#### Further informations
+-  N/A
+
+#### Known issues
+- Demo for the masking example misaligns on device orientation change.
+
+
 
 ## Author
 
