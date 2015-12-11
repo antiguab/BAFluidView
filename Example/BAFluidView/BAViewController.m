@@ -265,42 +265,44 @@
         case 0://Example with a mask
         {
             
-            //            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
-            //
-            //            fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
-            //            [fluidView fillTo:@0.9];
-            //            [fluidView startAnimation];
-            //
-            //            UIImage *maskingImage = [UIImage imageNamed:@"icon"];
-            //            CALayer *maskingLayer = [CALayer layer];
-            //            maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
-            //            [maskingLayer setContents:(id)[maskingImage CGImage]];
-            //            [fluidView.layer setMask:maskingLayer];
-            //
-            //            [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
+            
+            fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
+            [fluidView fillTo:@0.9];
+            [fluidView startAnimation];
+            
+            UIImage *maskingImage = [UIImage imageNamed:@"iconImage"];
+            CALayer *maskingLayer = [CALayer layer];
+            maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
+            [maskingLayer setContents:(id)[maskingImage CGImage]];
+            [fluidView.layer setMask:maskingLayer];
+            
+            [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
+            
+            return fluidView;
             
             //==============================================
-            self.motionManager = [[CMMotionManager alloc] init];
-            
-            if (self.motionManager.deviceMotionAvailable) {
-                self.motionManager.deviceMotionUpdateInterval = 0.3f;
-                [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
-                                                        withHandler:^(CMDeviceMotion *data, NSError *error) {
-                                                            NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-                                                            NSDictionary* userInfo = [NSDictionary dictionaryWithObject:
-                                                                                      data forKey:@"data"];
-                                                            [nc postNotificationName:@"BAFluidViewCMMotionUpdate" object:self userInfo:userInfo];
-                                                        }];
-            }
-            
-            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
-            fluidView.strokeColor = [UIColor whiteColor];
-            fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
-            [fluidView keepStationary];
-            [fluidView startAnimation];
-            [fluidView startTiltAnimation];
-            [self changeTitleColor:[UIColor whiteColor]];
-            return fluidView;
+//            self.motionManager = [[CMMotionManager alloc] init];
+//            
+//            if (self.motionManager.deviceMotionAvailable) {
+//                self.motionManager.deviceMotionUpdateInterval = 0.3f;
+//                [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
+//                                                        withHandler:^(CMDeviceMotion *data, NSError *error) {
+//                                                            NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+//                                                            NSDictionary* userInfo = [NSDictionary dictionaryWithObject:
+//                                                                                      data forKey:@"data"];
+//                                                            [nc postNotificationName:@"BAFluidViewCMMotionUpdate" object:self userInfo:userInfo];
+//                                                        }];
+//            }
+//            
+//            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
+//            fluidView.strokeColor = [UIColor whiteColor];
+//            fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
+//            [fluidView keepStationary];
+//            [fluidView startAnimation];
+//            [fluidView startTiltAnimation];
+//            [self changeTitleColor:[UIColor whiteColor]];
+//            return fluidView;
         }
             
         case 1://example with a fill of the screen
@@ -359,6 +361,16 @@
             [fluidView startAnimation];
             [fluidView startTiltAnimation];
             [self changeTitleColor:[UIColor whiteColor]];
+            
+            UILabel *tiltLabel = [[UILabel alloc] init];
+            tiltLabel.font =[UIFont fontWithName:@"LoveloBlack" size:36];
+            tiltLabel.text = @"Tilt Phone!";
+            tiltLabel.textColor = [UIColor whiteColor];
+            [fluidView addSubview:tiltLabel];
+            
+            tiltLabel.translatesAutoresizingMaskIntoConstraints = NO;
+            [fluidView addConstraint:[NSLayoutConstraint constraintWithItem:tiltLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:fluidView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
+            [fluidView addConstraint:[NSLayoutConstraint constraintWithItem:tiltLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:fluidView attribute:NSLayoutAttributeTop multiplier:1.0 constant:80]];
             return fluidView;
         }
             

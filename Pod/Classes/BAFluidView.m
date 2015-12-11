@@ -53,15 +53,13 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
 
 @property (assign,nonatomic) NSTimer *waveCrestTimer;
 
-@property (assign,nonatomic) BOOL rollSignPositive;
+@property (assign,nonatomic) BAFLUIDVIEWHORIZONTALDIRECTION waveDirection;
 
 @property (assign,nonatomic) CGFloat roll;
 
 @property (assign,nonatomic) CGFloat rollOrientationAdjustment;
 
 @property (strong,nonatomic) CALayer *rollLayer;
-
-
 
 @end
 
@@ -77,7 +75,7 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     if (self)
     {
         [self initialize];
-
+        
         //setting custom wave properties
         self.maxAmplitude = aMaxAmplitude;
         self.minAmplitude = aMinAmplitude;
@@ -149,9 +147,10 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
         return;
     }
     
-    //the view is being added and need to adjust tilt since CMMotion only has orinigal refernece frame
+    //the view is being added
+    //may also need to adjust tilt since CMMotion only has orinigal refernece frame
     if(self.roll){
-        [self adjustRollBasedOnOrientation];
+        [self updateRollAdjustmentBasedOnOrientation];
     }
     [self startAnimation];
     
@@ -167,12 +166,9 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
         
         //I can either remove the animation and have a slight lag or the user can see one animation where the wave
         //still has the frame of the old orientation.
-        self.rollLayer.backgroundColor = [UIColor redColor].CGColor;
-        [self.lineLayer removeAllAnimations];
-        [self.rollLayer removeAllAnimations];
         [self stopAnimation];
         [self reInitializeLayer];
-        [self adjustRollBasedOnOrientation];
+        [self updateRollAdjustmentBasedOnOrientation];
         [self startAnimation];
     }
 }
@@ -293,6 +289,9 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
 }
 
 - (void)startTiltAnimation {
+    
+    //linelayer can't be manipulated without changing it's anchor point
+    //instead we put the linelayer in a layer we can change the anchor point on
     if(!self.rollLayer){
         //creating layer which will rotate
         self.rollLayer = CALayer.layer;
@@ -306,7 +305,7 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     
     //listen for the device manager
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(addTiltAnimation:)
+                                             selector:@selector(addTiltAnimations:)
                                                  name:kBAFluidViewCMMotionUpdate
                                                object:nil];
 }
@@ -342,7 +341,7 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
                                                              userInfo:nil
                                                               repeats:YES];
         
-        //check if we're adding tiltAnimations
+        //check if we're adding tiltAnimations, otherwise add straight to view
         if(self.roll){
             [self startTiltAnimation];
         } else {
@@ -433,7 +432,7 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     self.lineLayer.anchorPoint= CGPointMake(0, 0);
     CGRect frame = CGRectMake(0, CGRectGetHeight(self.frame), self.finalX, CGRectGetHeight(self.rootView.frame));
     self.lineLayer.frame = frame;
-
+    
     //need to grab the presentation again as a base
     self.initialFill = YES;
     
@@ -457,15 +456,16 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     
 }
 
-- (void)addTiltAnimation:(NSNotification *)note {
+- (void)addTiltAnimations:(NSNotification *)note {
     
-    //make sure we don't constantly witch horizontal animation if in progress
+    //grab data for roll from the notification
+    //computing roll leads to a more stable value
+    //http://stackoverflow.com/q/19239482/1408431
     CMDeviceMotion *data = [[note userInfo] valueForKey:@"data"];
     CMQuaternion quat = data.attitude.quaternion;
-
     CGFloat roll = atan2(2*(quat.y*quat.w - quat.x*quat.z), 1 - 2*quat.y*quat.y - 2*quat.z*quat.z);
     
-    //setting extremes
+    //limiting tilt
     if((roll + self.rollOrientationAdjustment)< -1){
         roll = -1;
     } else if((roll + self.rollOrientationAdjustment)	 > 1){
@@ -473,12 +473,10 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     }
     self.roll = roll;
     
-    NSLog(@"roll: %f",self.roll);
-    NSLog(@"roll(adjusted): %f",self.roll+self.rollOrientationAdjustment);
-
-    BOOL newRollSignPositive = (self.roll > -0.2) ? true:false;
-    if((newRollSignPositive != self.rollSignPositive)){
-        self.rollSignPositive = newRollSignPositive;
+    //change wave direction if we're tilting in a different direction
+    BAFLUIDVIEWHORIZONTALDIRECTION oldDirection = self.waveDirection;
+    self.waveDirection = (self.roll > -0.2) ? BAFLUIDVIEWHORIZONTALDIRECTIONRIGHT:BAFLUIDVIEWHORIZONTALDIRECTIONLEFT;
+    if((self.waveDirection != oldDirection)){
         [self updateHorizontalAnimation];
     }
     
@@ -486,6 +484,8 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
 }
 
 - (void) addRotationAnimation {
+    
+    //tilt relative to the phone
     CALayer *presentationLayer = self.rollLayer.presentationLayer;
     CATransform3D zRotation = CATransform3DMakeRotation(-(self.roll+self.rollOrientationAdjustment)*0.7, 0, 0, 1.0);
     CABasicAnimation *animateZRotation;
@@ -497,6 +497,7 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     animateZRotation.removedOnCompletion = NO;
     [self.rollLayer addAnimation:animateZRotation forKey:@"tiltAnimation"];
 }
+
 - (void)updateHorizontalAnimation {
     
     //shift from current position to start of reverse direction
@@ -508,20 +509,16 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     initialHorizontalAnimation.toValue = @(-self.waveLength*2);
     initialHorizontalAnimation.removedOnCompletion = NO;
     initialHorizontalAnimation.fillMode = kCAFillModeForwards;
-    
-    CGFloat timePercentage =(self.waveLength+presentationLayer.position.x)/self.waveLength;
-    
-    NSLog(@"wavelength: %d | finalX: %d", self.finalX,self.waveLength);
-    NSLog(@"rsp: %@ | ppx: %f|  lpx: %f | tp %f",self.rollSignPositive?@"true":@"false",presentationLayer.position.x,self.lineLayer.position.x,timePercentage);
-    initialHorizontalAnimation.duration = 0.5;
+    initialHorizontalAnimation.duration = (self.waveLength+presentationLayer.position.x)/self.waveLength;
     
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{
-        //Phase Shift Animation
+        
+        //phaseshift repeating animation
         CABasicAnimation *repeatingHorizontalAnimation =
         [CABasicAnimation animationWithKeyPath:@"position.x"];
         repeatingHorizontalAnimation.fromValue =@(self.lineLayer.position.x-self.waveLength*2);
-        if(!self.rollSignPositive){
+        if(self.waveDirection==BAFLUIDVIEWHORIZONTALDIRECTIONLEFT){
             repeatingHorizontalAnimation.toValue = @(self.lineLayer.position.x-self.waveLength);
             
         } else {
@@ -600,8 +597,8 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     
 }
 
-- (void)adjustRollBasedOnOrientation {
-
+- (void)updateRollAdjustmentBasedOnOrientation {
+    
     switch (self.orientation) {
         case UIDeviceOrientationPortrait:
         {

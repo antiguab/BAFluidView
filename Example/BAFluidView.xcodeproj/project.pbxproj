@@ -24,7 +24,6 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		D0342DF51ACA627B0019824E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0342DF41ACA627B0019824E /* LaunchScreen.xib */; };
-		D05FEF361ACB9FC0009FD340 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D05FEF351ACB9FC0009FD340 /* icon.png */; };
 		D05FEF391ACBAD91009FD340 /* Lovelo Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D05FEF371ACBAD91009FD340 /* Lovelo Black.otf */; };
 		D05FEF3A1ACBAD91009FD340 /* Lovelo Line Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D05FEF381ACBAD91009FD340 /* Lovelo Line Light.otf */; };
 /* End PBXBuildFile section */
@@ -69,7 +68,6 @@
 		9E536DF18C9233AF9B84B115 /* libPods-BAFluidView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BAFluidView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14F30B31005B1BB8762AE07 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D0342DF41ACA627B0019824E /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		D05FEF351ACB9FC0009FD340 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D05FEF371ACBAD91009FD340 /* Lovelo Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Black.otf"; sourceTree = "<group>"; };
 		D05FEF381ACBAD91009FD340 /* Lovelo Line Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Light.otf"; sourceTree = "<group>"; };
 		EDEA307726DE4A9E87967039 /* Pods-BAFluidView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BAFluidView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BAFluidView/Pods-BAFluidView.debug.xcconfig"; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				D09838B11AFAC5A900EF1798 /* Fonts */,
-				D05FEF351ACB9FC0009FD340 /* icon.png */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 			);
 			name = Resources;
@@ -305,7 +302,6 @@
 			files = (
 				D0342DF51ACA627B0019824E /* LaunchScreen.xib in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				D05FEF361ACB9FC0009FD340 /* icon.png in Resources */,
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				D05FEF3A1ACBAD91009FD340 /* Lovelo Line Light.otf in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
