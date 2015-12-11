@@ -23,25 +23,33 @@
 #import "BAViewController.h"
 #import "BAFluidView.h"
 #import "UIColor+ColorWithHex.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface BAViewController ()
 
 @property (strong,nonatomic) UIDynamicAnimator *animator;
+
 @property (strong,nonatomic) UIAttachmentBehavior *attachmentBehavior;
 
 @property (strong,nonatomic) UIPanGestureRecognizer *gestureRecognizer;
+
 @property (strong,nonatomic) CABasicAnimation *fadeIn;
+
 @property (strong,nonatomic) CABasicAnimation *fadeOut;
 
 @property (strong,nonatomic) NSMutableArray *examplesArray;
 
 @property (assign,nonatomic) int currentExample;
+
 @property (assign,nonatomic) BOOL activity;
+
 @property (assign,nonatomic) NSTimer *timer;
 
 @property (assign,nonatomic) BOOL firstTimeLoading;
 
 @property(assign,nonatomic) CAGradientLayer *gradient;
+
+@property(strong,nonatomic) CMMotionManager *motionManager;
 
 @end
 
@@ -53,7 +61,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
+    
     self.activity = NO;
     self.firstTimeLoading = YES;
     
@@ -100,6 +108,23 @@
     }
     
     [self setUpBackground];
+
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         //only need to snap back afterwards
+         
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         [self.animator removeAllBehaviors];
+         UISnapBehavior *snapBehavior =[[UISnapBehavior alloc] initWithItem:self.exampleContainerView snapToPoint:self.view.center];
+         [self.animator addBehavior:snapBehavior];
+         
+     }];
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -132,7 +157,7 @@
     
     CGPoint locationInContainer = [gesture locationInView:gesture.view];
     CGPoint locationinSuperView = [gesture locationInView:self.view];
-    
+
     if (gesture.state == UIGestureRecognizerStateBegan) {
         //assign the attachment behavior as the view is starting to move
         [self.animator removeAllBehaviors];
@@ -154,7 +179,6 @@
         [self.animator removeAllBehaviors];
         UISnapBehavior *snapBehavior =[[UISnapBehavior alloc] initWithItem:self.exampleContainerView snapToPoint:self.view.center];
         [self.animator addBehavior:snapBehavior];
-        
         if([gesture translationInView:self.view].y > 150 ) {
             [self transitionToNextExample];
         }
@@ -252,24 +276,29 @@
 -(BAFluidView*) nextBAFluidViewExample {
     BAFluidView *fluidView;
     
+    if(self.motionManager){
+        //stop motion manager if on
+        [self.motionManager stopAccelerometerUpdates];
+        self.motionManager = nil;
+    }
+        
     switch (self.currentExample) {
         case 0://Example with a mask
         {
             
-            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.3];
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             
             fluidView.fillColor = [UIColor colorWithHex:0x397ebe];
             [fluidView fillTo:@0.9];
             [fluidView startAnimation];
             
-            UIImage *maskingImage = [UIImage imageNamed:@"icon"];
+            UIImage *maskingImage = [UIImage imageNamed:@"iconImage"];
             CALayer *maskingLayer = [CALayer layer];
-            maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
+            maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 180, maskingImage.size.width, maskingImage.size.height);
             [maskingLayer setContents:(id)[maskingImage CGImage]];
             [fluidView.layer setMask:maskingLayer];
-            
             [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
-
+            
             return fluidView;
         }
             
@@ -286,7 +315,7 @@
             
         case 2://Example with a different color and stationary
         {
-
+            
             fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
             fluidView.strokeColor = [UIColor whiteColor];
             fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
@@ -306,6 +335,42 @@
             [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
             return fluidView;
         }
+            
+        case 4://Example with accelerometer
+        {
+            self.motionManager = [[CMMotionManager alloc] init];
+            
+            if (self.motionManager.deviceMotionAvailable) {
+                self.motionManager.deviceMotionUpdateInterval = 0.3f;
+                [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
+                                                        withHandler:^(CMDeviceMotion *data, NSError *error) {
+                                                            NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+                                                            NSDictionary* userInfo = [NSDictionary dictionaryWithObject:
+                                                                                      data forKey:@"data"];
+                                                            [nc postNotificationName:kBAFluidViewCMMotionUpdate object:self userInfo:userInfo];
+                                                        }];
+            }
+            
+            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
+            fluidView.strokeColor = [UIColor whiteColor];
+            fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
+            [fluidView keepStationary];
+            [fluidView startAnimation];
+            [fluidView startTiltAnimation];
+            [self changeTitleColor:[UIColor whiteColor]];
+            
+            UILabel *tiltLabel = [[UILabel alloc] init];
+            tiltLabel.font =[UIFont fontWithName:@"LoveloBlack" size:36];
+            tiltLabel.text = @"Tilt Phone!";
+            tiltLabel.textColor = [UIColor whiteColor];
+            [fluidView addSubview:tiltLabel];
+            
+            tiltLabel.translatesAutoresizingMaskIntoConstraints = NO;
+            [fluidView addConstraint:[NSLayoutConstraint constraintWithItem:tiltLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:fluidView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
+            [fluidView addConstraint:[NSLayoutConstraint constraintWithItem:tiltLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:fluidView attribute:NSLayoutAttributeTop multiplier:1.0 constant:80]];
+            return fluidView;
+        }
+            
         default:
         {
             self.currentExample = 0;
@@ -315,4 +380,5 @@
     
     return nil;
 }
+
 @end

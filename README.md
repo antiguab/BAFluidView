@@ -169,6 +169,66 @@ Sweet! check it out:
 ![example6](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example6.gif)
 
 
+#### Adding Tilt Animation
+
+The `startTiltAnimation` allows the `BAFluidView` to listen to a notification that can be broadcasted from a CMMotionManager. Apple [recommends](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/motion_event_basics/motion_event_basics.html) only having one `CMMotionManager` per application. You'll have to instantiate your own `CMotionManager` and broadcast the `kBAFluidViewCMMotionUpdate` notification with the data object provided by `CMotionManager` (for more information look at example case 4 in the demo). Once the CMMotionManager is set up, you can add tilt animation in the following manner:
+
+
+```objc
+ BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
+[fluidView keepStationary]; //optional
+[fluidView startAnimation];
+[fluidView startTiltAnimation];
+```
+
+This produces the following animation:
+![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
+
+## ChangeLog
+
+#### Version 0.1.8 (11.30.2015)
+- Code Clean up
+- fixed `fillTo` and shrinking/growing error
+
+#### Version 0.1.7 (11.18.2015)
+- (BUG FIX) Fixed memory leak for `getBezierPaths`
+
+#### Version 0.1.6 (07.23.2015)
+- (BUG FIX) Fixed rotation bug
+- Added speed option for fill
+
+#### Version 0.1.5 (07.21.2015)
+- Added Carthage support
+
+#### Version 0.1.4 (07.14.2015)
+- Expose `minAmplitude`, `maxAmplitude`, and `amplitudeIncrement`
+- (BUG FIX) Fix background glitch [Issue 14]
+
+#### Version 0.1.3 (07.09.2015)
+- Improved README syntax
+- Updated demo [Issue 15]
+- `colorWithHex` now a category of `UIColor`
+
+#### Version 0.1.2 (07.08.2015)
+- Added missing headers 
+- Added new init methods, elevation feature, and updated fillTo
+- updated timer function for swipe label
+- added ability to change line width
+- updated demo (example 1 and 6)
+
+#### Version 0.1.1 (03.31.2015)
+- Updated Demo
+
+#### Version 0.1.0 (12.11.2015)
+- Initial release
+
+#### Further informations
+-  N/A
+
+#### Known issues
+- Demo for the masking example misaligns on device orientation change.
+
+
 
 ## Author
 

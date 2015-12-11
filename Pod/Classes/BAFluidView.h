@@ -20,6 +20,7 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
+#import "Constants.h"
 #import <UIKit/UIKit.h>
 
 @interface BAFluidView : UIView
@@ -74,6 +75,11 @@ Changes the fill color of the wave animation
  Changes the minimum wave crest
  */
 @property (assign,nonatomic) int minAmplitude;
+
+/**
+ Notification message string for tilt animations
+ */
+extern NSString * const kBAFluidViewCMMotionUpdate;
 
 /**
  Returns an object that can create the fluid animation with the given wave properties. This init function lets you adjust the wave crest properties.
@@ -134,6 +140,11 @@ This method lets you choose to what level you want the fluidVIew to increase or 
  This methods starts all the desired animations
  */
 - (void)startAnimation;
+
+/**
+ This methods starts tils animations using accelerometer data
+ */
+- (void)startTiltAnimation;
 
 /**
  This methods stops all the desired animations

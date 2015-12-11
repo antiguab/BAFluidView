@@ -70,28 +70,24 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="c0g-MY-pdY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="1uI-2k-4AE"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="yEk-uu-9pC" secondAttribute="bottom" constant="150" id="2E5-TG-Ect"/>
-                            <constraint firstItem="hp0-Cw-PYx" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="bottom" id="3kd-QE-ZjS"/>
+                            <constraint firstItem="hp0-Cw-PYx" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="3tx-I3-aOc"/>
                             <constraint firstItem="PIM-Yj-Cbr" firstAttribute="leading" secondItem="iDm-fe-JpZ" secondAttribute="trailing" id="ADA-1p-VgI"/>
-                            <constraint firstItem="hp0-Cw-PYx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="DEN-iw-YK1"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="iDm-fe-JpZ" secondAttribute="bottom" constant="150" id="Eq7-T0-lph"/>
+                            <constraint firstAttribute="trailing" secondItem="c0g-MY-pdY" secondAttribute="trailing" id="Ksp-5o-a4T"/>
                             <constraint firstAttribute="centerX" secondItem="2NC-Ud-FpW" secondAttribute="centerX" id="Ll4-PY-SgV"/>
-                            <constraint firstAttribute="centerY" secondItem="hp0-Cw-PYx" secondAttribute="centerY" id="MZW-DF-fRc"/>
-                            <constraint firstAttribute="centerY" secondItem="c0g-MY-pdY" secondAttribute="centerY" id="NXy-yQ-iXs"/>
-                            <constraint firstItem="c0g-MY-pdY" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Ouc-0A-mf3"/>
                             <constraint firstItem="iDm-fe-JpZ" firstAttribute="centerY" secondItem="PIM-Yj-Cbr" secondAttribute="centerY" id="SKs-en-0gV"/>
-                            <constraint firstAttribute="trailing" secondItem="hp0-Cw-PYx" secondAttribute="trailing" id="THv-LI-pRI"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="PIM-Yj-Cbr" secondAttribute="bottom" constant="150" id="Uag-UJ-Yf9"/>
-                            <constraint firstAttribute="centerX" secondItem="c0g-MY-pdY" secondAttribute="centerX" id="ZHA-vJ-9fa"/>
-                            <constraint firstAttribute="centerX" secondItem="hp0-Cw-PYx" secondAttribute="centerX" id="bxL-rS-RlQ"/>
-                            <constraint firstItem="hp0-Cw-PYx" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="g8K-vF-Ccr"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="hp0-Cw-PYx" secondAttribute="bottom" id="Upq-5c-SwQ"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="c0g-MY-pdY" secondAttribute="bottom" id="aPu-Xt-pSi"/>
+                            <constraint firstItem="c0g-MY-pdY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="cOE-Xk-m8g"/>
                             <constraint firstAttribute="centerX" secondItem="PIM-Yj-Cbr" secondAttribute="centerX" constant="24" id="kuY-EJ-zgM"/>
-                            <constraint firstAttribute="trailing" secondItem="c0g-MY-pdY" secondAttribute="trailing" id="pmi-fH-Fkl"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="c0g-MY-pdY" secondAttribute="bottom" id="tCx-2C-GHC"/>
+                            <constraint firstAttribute="trailing" secondItem="hp0-Cw-PYx" secondAttribute="trailing" id="rkK-Ch-dig"/>
+                            <constraint firstItem="hp0-Cw-PYx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="tvk-p1-1tZ"/>
                             <constraint firstItem="2NC-Ud-FpW" firstAttribute="top" secondItem="iDm-fe-JpZ" secondAttribute="bottom" constant="30" id="uf0-0r-1B3"/>
                             <constraint firstItem="yEk-uu-9pC" firstAttribute="leading" secondItem="PIM-Yj-Cbr" secondAttribute="trailing" id="vr4-Pa-b6s"/>
                             <constraint firstItem="yEk-uu-9pC" firstAttribute="centerY" secondItem="PIM-Yj-Cbr" secondAttribute="centerY" id="ypl-qz-iCg"/>
+                            <constraint firstItem="c0g-MY-pdY" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="zrY-E8-Xmz"/>
                         </constraints>
                     </view>
                     <connections>
