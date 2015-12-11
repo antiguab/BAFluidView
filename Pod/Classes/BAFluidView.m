@@ -143,7 +143,6 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     if(newWindow == nil){
         //the view is being removed
         [self stopAnimation];
-        
         return;
     }
     
@@ -202,9 +201,9 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
 - (void)setStartElavation:(NSNumber *)startElavation {
     _startElavation = startElavation;
     CGRect frame = self.lineLayer.frame;
-    frame.origin.y = CGRectGetHeight(self.rootView.frame)*((1-[_startElavation floatValue]));
+    frame.origin.y = CGRectGetHeight(self.rootView.frame)*((1-_startElavation.floatValue));
     self.lineLayer.frame = frame;
-    self.primativeStartElevation = [startElavation doubleValue];
+    self.primativeStartElevation = startElavation.doubleValue;
     
 }
 
@@ -376,19 +375,22 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
 }
 
 - (void)fillTo:(NSNumber*)fillPercentage {
-    float fillDifference = fabs([fillPercentage floatValue]-[self.fillLevel floatValue]);
+    float fillDifference = fabs(fillPercentage.floatValue-self.fillLevel.floatValue);
+    if(fillDifference == 0){
+        //no change
+        return;
+    }
     self.fillLevel = fillPercentage;
-    
     CAKeyframeAnimation *verticalAnimation =
     [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
     float finalPosition;
-    finalPosition = (1.0 - [fillPercentage doubleValue])*CGRectGetHeight(self.frame);
+    finalPosition = (1.0 - fillPercentage.doubleValue)*CGRectGetHeight(self.frame);
     
     //bit hard to define a hard endpoint with the dynamic waves
     if ([self.fillLevel  isEqual: @1.0]){
         finalPosition = finalPosition - 2*self.maxAmplitude;
     }
-    else if ([self.fillLevel doubleValue] > 0.98) {
+    else if (self.fillLevel.doubleValue > 0.98) {
         finalPosition = finalPosition - self.maxAmplitude;
     }
     
@@ -544,7 +546,7 @@ typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
     //grabbing random amplitude to shrink/grow to
     NSNumber *index = [NSNumber numberWithInt:arc4random_uniform(7)];
     
-    int finalAmplitude = [[self.amplitudeArray objectAtIndex:[index intValue]] intValue];
+    int finalAmplitude = [[self.amplitudeArray objectAtIndex:index.intValue] intValue];
     NSMutableArray *values = [[NSMutableArray alloc] init];
     
     //shrinking

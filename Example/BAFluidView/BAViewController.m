@@ -260,7 +260,7 @@
         [self.motionManager stopAccelerometerUpdates];
         self.motionManager = nil;
     }
-    
+        
     switch (self.currentExample) {
         case 0://Example with a mask
         {
@@ -280,29 +280,6 @@
             [self changeTitleColor:[UIColor colorWithHex:0x2e353d]];
             
             return fluidView;
-            
-            //==============================================
-//            self.motionManager = [[CMMotionManager alloc] init];
-//            
-//            if (self.motionManager.deviceMotionAvailable) {
-//                self.motionManager.deviceMotionUpdateInterval = 0.3f;
-//                [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
-//                                                        withHandler:^(CMDeviceMotion *data, NSError *error) {
-//                                                            NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-//                                                            NSDictionary* userInfo = [NSDictionary dictionaryWithObject:
-//                                                                                      data forKey:@"data"];
-//                                                            [nc postNotificationName:@"BAFluidViewCMMotionUpdate" object:self userInfo:userInfo];
-//                                                        }];
-//            }
-//            
-//            fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
-//            fluidView.strokeColor = [UIColor whiteColor];
-//            fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
-//            [fluidView keepStationary];
-//            [fluidView startAnimation];
-//            [fluidView startTiltAnimation];
-//            [self changeTitleColor:[UIColor whiteColor]];
-//            return fluidView;
         }
             
         case 1://example with a fill of the screen
@@ -339,7 +316,7 @@
             return fluidView;
         }
             
-        case 4://Example with acceleramoter
+        case 4://Example with accelerometer
         {
             self.motionManager = [[CMMotionManager alloc] init];
             
