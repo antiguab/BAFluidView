@@ -182,6 +182,7 @@ The `startTiltAnimation` allows the `BAFluidView` to listen to a notification th
 ```
 
 This produces the following animation:
+
 ![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
 
 ## ChangeLog
