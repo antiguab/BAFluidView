@@ -347,7 +347,7 @@
                                                             NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
                                                             NSDictionary* userInfo = [NSDictionary dictionaryWithObject:
                                                                                       data forKey:@"data"];
-                                                            [nc postNotificationName:@"BAFluidViewCMMotionUpdate" object:self userInfo:userInfo];
+                                                            [nc postNotificationName:kBAFluidViewCMMotionUpdate object:self userInfo:userInfo];
                                                         }];
             }
             

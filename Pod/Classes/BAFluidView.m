@@ -25,7 +25,7 @@
 #import "Constants.h"
 #import <CoreMotion/CoreMotion.h>
 
-typedef enum myTypes {VALUE_A, VALUE_B, VALUE_C} MyTypes;
+NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
 
 @interface BAFluidView()
 

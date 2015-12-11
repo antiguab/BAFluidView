@@ -169,6 +169,21 @@ Sweet! check it out:
 ![example6](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example6.gif)
 
 
+#### Adding Tilt Animation
+
+The `startTiltAnimation` allows the `BAFluidView` to listen to a notification that can be broadcasted from a CMMotionManager. Apple [recommends](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/motion_event_basics/motion_event_basics.html) only having one `CMMotionManager` per application. You'll have to instantiate your own `CMotionManager` and broadcast the `kBAFluidViewCMMotionUpdate` notification with the data object provided by `CMotionManager` (for more information look at example case 4 in the demo). Once the CMMotionManager is set up, you can add tilt animation in the following manner:
+
+
+```objc
+ BAFluidView *fluidView = [[BAFluidView alloc] initWithFrame:self.view.frame startElevation:@0.5];
+[fluidView keepStationary]; //optional
+[fluidView startAnimation];
+[fluidView startTiltAnimation];
+```
+
+This produces the following animation:
+![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
+
 ## ChangeLog
 
 #### Version 0.1.8 (11.30.2015)

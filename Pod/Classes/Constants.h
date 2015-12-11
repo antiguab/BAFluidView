@@ -23,12 +23,6 @@
 #import <Foundation/Foundation.h>
 
 /**
- Notification message string for tilt animations
- */
-#define kBAFluidViewCMMotionUpdate @"BAFluidViewCMMotionUpdate"
-
-
-/**
  Enum for direction of waves (changes based on tilt)
  */
 typedef enum {
