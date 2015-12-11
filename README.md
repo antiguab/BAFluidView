@@ -8,7 +8,7 @@
 
 ## Overview
 ![example6](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example6.gif)
-![example1](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example1.gif)
+![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
 
 This view and its layer create a 2D fluid animation that can be used to simulate a filling effect.
 
