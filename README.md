@@ -46,6 +46,7 @@ BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
 [view fillTo:@1.0];
 view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
+[parentView addSubview:view];
 ```
 
 This creates the following view:
@@ -69,6 +70,7 @@ view.fillRepeatCount = 1;
 [view fillTo:@1.0];
 view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
+[parentView addSubview:view];
 ```
 #### Animate Only Once (End in new state)
 You can also create the same effect as above, but stay in the filled state by editing the `fillAutoReverse` property:
@@ -80,6 +82,7 @@ view.fillAutoReverse = NO;
 view.fillRepeatCount = 1;
 [view fillTo:@1.0];
 [view startAnimation];
+[parentView addSubview:view];
 ```
 
 This creates the following view:
@@ -95,6 +98,7 @@ BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
 [view fillTo:@0.5];
 view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
+[parentView addSubview:view];
 ```
 This creates the following view:
 
@@ -110,6 +114,7 @@ view.fillDuration = 5.0;
 [view fillTo:@0.5];
 view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
+[parentView addSubview:view];
 ```
 **Note: `fillDuration` needs to be set before you call `fillTo:` method!**
 This creates the following view:
@@ -125,6 +130,7 @@ fluidView.strokeColor = [UIColor whiteColor];
 fluidView.fillColor = [UIColor colorWithHex:0x2e353d];
 [fluidView keepStationary];
 [fluidView startAnimation];
+[parentView addSubview:view];
 ```
 **Note: `keepStationary` keeps the fluid at the starting level!**
 This creates the following view:
@@ -141,6 +147,7 @@ fluidView.fillColor = [UIColor clearColor];
 fluidView.strokeColor = [UIColor whiteColor];
 [fluidView keepStationary];
 [fluidView startAnimation];
+[parentView addSubview:view];
 ```
 
 This creates the following view:
@@ -162,6 +169,8 @@ CALayer *maskingLayer = [CALayer layer];
 maskingLayer.frame = CGRectMake(CGRectGetMidX(fluidView.frame) - maskingImage.size.width/2, 70, maskingImage.size.width, maskingImage.size.height);
 [maskingLayer setContents:(id)[maskingImage CGImage]];
 [fluidView.layer setMask:maskingLayer];
+
+[parentView addSubview:fluidView];
 ```
 
 Sweet! check it out:
@@ -179,6 +188,7 @@ The `startTiltAnimation` allows the `BAFluidView` to listen to a notification th
 [fluidView keepStationary]; //optional
 [fluidView startAnimation];
 [fluidView startTiltAnimation];
+[parentView addSubview:fluidView];
 ```
 
 This produces the following animation:
@@ -186,6 +196,8 @@ This produces the following animation:
 ![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
 
 ## ChangeLog
+#### Version 2.0.0 (12.11.2015)
+- added tilt functionality
 
 #### Version 0.1.8 (11.30.2015)
 - Code clean up
