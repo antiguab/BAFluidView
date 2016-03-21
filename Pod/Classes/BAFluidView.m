@@ -544,7 +544,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     startPoint = CGPointMake(0,0);
     
     //grabbing random amplitude to shrink/grow to
-    NSNumber *index = [NSNumber numberWithInt:arc4random_uniform(7)];
+    NSNumber *index = [NSNumber numberWithInt:arc4random_uniform((u_int32_t)self.amplitudeArray.count)];
     
     int finalAmplitude = [[self.amplitudeArray objectAtIndex:index.intValue] intValue];
     NSMutableArray *values = [[NSMutableArray alloc] init];
