@@ -55,7 +55,7 @@ This creates the following view:
 
 
 ### Advanced Usage
-Listed below are examples of several properties that you can control. 
+Listed below are examples of several properties that you can control.
 
 #### Init
 You can use `initWithFrame:maxAmplitude:minAmplitude:amplitudeIncrement:` to control how high/low you want the wave to go. The increment method helps control the variation between the peaks. If you're only concerned is where the fluid starts, `initWithFrame:(CGRect)aRect startElevation:(NSNumber*)aStartElevation` creates a fluid view with default values, but lets you choose the starting elevation. To control all init values, use the method `(id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement startElevation:(NSNumber*)aStartElevation` which is a combination of the two above.
@@ -110,7 +110,7 @@ You can set the duration of a fill with the `fillDuration` property. The duratio
 
 ```objc
 BAFluidView *view = [[BAFluidView alloc] initWithFrame:self.view.frame];
-view.fillDuration = 5.0; 
+view.fillDuration = 5.0;
 [view fillTo:@0.5];
 view.fillColor = [UIColor colorWithHex:0x397ebe];
 [view startAnimation];
@@ -196,6 +196,9 @@ This produces the following animation:
 ![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
 
 ## ChangeLog
+#### Version 2.0.1 (3.21.2016)
+- (BUG FIX) fixed amplitude array out of bounds bug (PR by @AndrewPetrov)
+
 #### Version 2.0.0 (12.11.2015)
 - added tilt functionality
 
@@ -215,15 +218,15 @@ This produces the following animation:
 
 #### Version 0.1.4 (07.14.2015)
 - Expose `minAmplitude`, `maxAmplitude`, and `amplitudeIncrement`
-- (BUG FIX) Fix background glitch [Issue 14]
+- (BUG FIX) Fix background glitch [Issue 14] (PR by @andreamazz)
 
 #### Version 0.1.3 (07.09.2015)
-- Improved README syntax
+- Improved README syntax (PR by @andreamazz)
 - Updated demo [Issue 15]
-- `colorWithHex` now a category of `UIColor`
+- `colorWithHex` now a category of `UIColor` (PR by @stonesam92)
 
 #### Version 0.1.2 (07.08.2015)
-- Added missing headers 
+- Added missing headers
 - Added new init methods, elevation feature, and updated fillTo
 - updated timer function for swipe label
 - added ability to change line width
@@ -251,6 +254,3 @@ Bryan Antigua, antigua.B@gmail.com - [bryanantigua.com](bryanantigua.com)
 ## License
 
 BAFluidView is available under the MIT license. See the LICENSE file for more info.
-
-
-
