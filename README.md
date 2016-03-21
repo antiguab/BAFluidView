@@ -196,7 +196,7 @@ This produces the following animation:
 ![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
 
 ## ChangeLog
-#### Version 2.0.1 (3.21.2016)
+#### Version 0.2.1 (3.21.2016)
 - (BUG FIX) fixed amplitude array out of bounds bug (PR by @AndrewPetrov)
 
 #### Version 0.2.0 (12.11.2015)
