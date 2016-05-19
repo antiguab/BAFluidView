@@ -196,6 +196,12 @@ This produces the following animation:
 ![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
 
 ## ChangeLog
+#### Version 0.2.2 (5.19.2016)
+- fixed startElevation variable name
+- removed startElevation setter method since it's a private var
+- added unit testing with Specta/Expecta
+- fixes travis CI so it runs unit tests on every push
+
 #### Version 0.2.1 (3.21.2016)
 - (BUG FIX) fixed amplitude array out of bounds bug (PR by @AndrewPetrov)
 
