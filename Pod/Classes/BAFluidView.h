@@ -57,11 +57,6 @@ Changes the fill color of the wave animation
 @property(assign,nonatomic) CFTimeInterval fillDuration;
 
 /**
- Provides a way to start the wave at a different elevation
- */
-@property(assign,nonatomic) NSNumber *startElavation;
-
-/**
  Changes the interval between Max and Min the random function will use
  */
 @property (assign,nonatomic) int amplitudeIncrement;

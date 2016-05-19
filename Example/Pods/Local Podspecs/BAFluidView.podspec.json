@@ -25,10 +25,5 @@
   "social_media_url": "https://twitter.com/brantigua",
   "source_files": "Pod/Classes",
   "public_header_files": "Pod/Classes/**/*.h",
-  "frameworks": "UIKit",
-  "dependencies": {
-    "Masonry": [
-
-    ]
-  }
+  "frameworks": "UIKit"
 }
