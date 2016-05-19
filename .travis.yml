@@ -1,12 +1,5 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
 language: objective-c
-# cache: cocoapods
-# podfile: Example/Podfile
-# before_install: cd Example && pod install && cd -
-install:
-- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+podfile: Example/Podfile
+osx_image: xcode7.3
 script:
-- set -o pipefail && xcodebuild test -workspace Example/BAFluidView.xcworkspace -scheme BAFluidView-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- set -o pipefail && xcodebuild test -workspace Example/BAFluidView.xcworkspace -scheme BAFluidView-Example -sdk iphonesimulator -destination 'name=iPhone 6 Plus' ONLY_ACTIVE_ARCH=NO | xcpretty

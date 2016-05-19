@@ -6,6 +6,7 @@
 
 #ifdef __OBJC__
 
-  
+#import <Specta/Specta.h>
+#import "Expecta.h"
 
 #endif

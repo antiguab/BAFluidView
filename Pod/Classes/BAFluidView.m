@@ -98,7 +98,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
         self.minAmplitude = aMinAmplitude;
         self.amplitudeIncrement = aAmplitudeIncrement;
         self.amplitudeArray = [self createAmplitudeOptions];
-        [self setStartElavation:aStartElevation];;
+        [self updateStartElevation:aStartElevation];;
     }
     return self;
 }
@@ -123,7 +123,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     if (self)
     {
         [self initialize];
-        [self setStartElavation:aStartElevation];
+        [self updateStartElevation:aStartElevation];
     }
     return self;
 }
@@ -196,15 +196,6 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
 
 - (void)setFillRepeatCount:(CGFloat)fillRepeatCount {
     _fillRepeatCount= fillRepeatCount;
-}
-
-- (void)setStartElavation:(NSNumber *)startElavation {
-    _startElavation = startElavation;
-    CGRect frame = self.lineLayer.frame;
-    frame.origin.y = CGRectGetHeight(self.rootView.frame)*((1-_startElavation.floatValue));
-    self.lineLayer.frame = frame;
-    self.primativeStartElevation = startElavation.doubleValue;
-    
 }
 
 - (void)setMaxAmplitude:(int)maxAmplitude {
@@ -415,6 +406,15 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
 
 #pragma mark - Private
 
+- (void)updateStartElevation:(NSNumber *)startElevation {
+    self.startElevation = startElevation;
+    CGRect frame = self.lineLayer.frame;
+    frame.origin.y = CGRectGetHeight(self.rootView.frame)*((1-startElevation.floatValue));
+    self.lineLayer.frame = frame;
+    self.primativeStartElevation = startElevation.doubleValue;
+    
+}
+
 - (void)reInitializeLayer {
     //This method occurs when the device is rotated
     
@@ -440,7 +440,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     
     //for some reason I can't access _startElevation, but a primitive can be accessed. Right now
     //all this does is redo the elevation adjustment due to change in height of device
-    self.startElavation = @(self.primativeStartElevation);
+    self.startElevation = @(self.primativeStartElevation);
     
     
     //the animation for fill will have to repeat as the height as changed
