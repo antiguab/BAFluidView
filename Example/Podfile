@@ -1,11 +1,10 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
-target 'BAFluidView', :exclusive => true do
-  pod "BAFluidView", :path => "../"
-end
-
-target 'Tests', :exclusive => true do
+target 'BAFluidView' do
   pod "BAFluidView", :path => "../"
 
-  
+  target 'BAFluidView_Tests' do
+    inherit! :search_paths
+
+    pod 'Specta'
+    pod 'Expecta'
+  end
 end
