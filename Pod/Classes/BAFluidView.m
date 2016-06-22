@@ -330,7 +330,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
                                                              selector:@selector(updateWaveCrestAnimation)
                                                              userInfo:nil
                                                               repeats:YES];
-        
+        [self.waveCrestTimer fire];
         //check if we're adding tiltAnimations, otherwise add straight to view
         if(self.roll){
             [self startTiltAnimation];
