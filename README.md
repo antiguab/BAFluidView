@@ -196,6 +196,9 @@ This produces the following animation:
 ![example7](https://github.com/antiguab/BAFluidView/blob/master/readmeAssets/example7.gif)
 
 ## ChangeLog
+#### Version 0.2.3 (6.21.2016)
+- (BUG FIX) Wave crest animation didn't started immediately (PR by @oscart)
+
 #### Version 0.2.2 (5.19.2016)
 - fixed startElevation variable name
 - removed startElevation setter method since it's a private var
