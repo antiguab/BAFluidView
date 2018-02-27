@@ -96,7 +96,7 @@ extern NSString * const kBAFluidViewCMMotionUpdate;
  
  @param aRect
  Frame for the fluid object to fill
- @param startElevation
+ @param aStartElevation
  The starting point of the fluid animation
  @return a fluid view object with the properties defined
  */
@@ -107,13 +107,13 @@ extern NSString * const kBAFluidViewCMMotionUpdate;
  
  @param aRect
  Frame for the fluid object to fill
- @param maxAmplitude
+ @param aMaxAmplitude
  Max wave crest
- @param minAmplitude
+ @param aMinAmplitude
  Min wave crest
- @param amplitudeIncrement
+ @param aAmplitudeIncrement
  Lets you chose the interval between Max and Min the random function will use
- @param startElevation
+ @param aStartElevation
  The starting point of the fluid animation
  @return a fluid view object with the properties defined
  */
