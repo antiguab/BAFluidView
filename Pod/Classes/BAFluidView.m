@@ -27,7 +27,7 @@
 
 NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
 
-@interface BAFluidView()
+@interface BAFluidView() <CAAnimationDelegate>
 
 @property (strong,nonatomic) UIView *rootView;
 
