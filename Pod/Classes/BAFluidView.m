@@ -262,7 +262,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     
     //creating a linelayer frame
     self.lineLayer.anchorPoint= CGPointMake(0, 0);
-    CGRect frame = CGRectMake(0, CGRectGetHeight(self.frame), self.finalX, CGRectGetHeight(self.rootView.frame));
+    CGRect frame = CGRectMake(0, CGRectGetHeight(self.bounds), self.finalX, CGRectGetHeight(self.rootView.frame));
     self.lineLayer.frame = frame;
     //    self.lineLayer.transform = CATransform3DMakeScale(1.02, 1.02, 1);
     
@@ -295,7 +295,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
         [self.layer addSublayer:self.rollLayer];
     }
     
-    self.rollLayer.frame = self.frame;
+    self.rollLayer.frame = self.bounds;
     
     //listen for the device manager
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -379,7 +379,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     CAKeyframeAnimation *verticalAnimation =
     [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
     float finalPosition;
-    finalPosition = (1.0 - fillPercentage.doubleValue)*CGRectGetHeight(self.frame);
+    finalPosition = (1.0 - fillPercentage.doubleValue)*CGRectGetHeight(self.bounds);
     
     //bit hard to define a hard endpoint with the dynamic waves
     if ([self.fillLevel  isEqual: @1.0]){
@@ -400,6 +400,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     
     verticalAnimation.values = @[@(initialLayer.position.y),@(finalPosition)];
     verticalAnimation.duration = self.fillDuration*fillDifference;
+    verticalAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     verticalAnimation.autoreverses = self.fillAutoReverse;
     verticalAnimation.repeatCount = self.fillRepeatCount;
     verticalAnimation.removedOnCompletion = NO;
@@ -436,7 +437,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     
     //creating the linelayer/rollLayer frame to fit new orientation
     self.lineLayer.anchorPoint= CGPointMake(0, 0);
-    CGRect frame = CGRectMake(0, CGRectGetHeight(self.frame), self.finalX, CGRectGetHeight(self.rootView.frame));
+    CGRect frame = CGRectMake(0, CGRectGetHeight(self.bounds), self.finalX, CGRectGetHeight(self.rootView.frame));
     self.lineLayer.frame = frame;
     
     //need to grab the presentation again as a base
