@@ -27,7 +27,11 @@
 
 NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 100000
 @interface BAFluidView()
+#else
+@interface BAFluidView() <CAAnimationDelegate>
+#endif
 
 @property (strong,nonatomic) UIView *rootView;
 
