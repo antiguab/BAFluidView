@@ -468,8 +468,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     //computing roll leads to a more stable value
     //http://stackoverflow.com/q/19239482/1408431
     CMDeviceMotion *data = [[note userInfo] valueForKey:@"data"];
-    CMQuaternion quat = data.attitude.quaternion;
-    CGFloat roll = atan2(2*(quat.y*quat.w - quat.x*quat.z), 1 - 2*quat.y*quat.y - 2*quat.z*quat.z);
+    CGFloat roll = atan2(data.gravity.y, data.gravity.x) + (90 * M_PI) / 180;
     
     //limiting tilt
     if((roll + self.rollOrientationAdjustment)< -1){
