@@ -72,14 +72,12 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
 
 #pragma mark - Lifecycle
 
--  (id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement
+-  (instancetype)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement
 {
-    self = [super initWithFrame:aRect];
+    self = [self initWithFrame:aRect];
     
     if (self)
     {
-        [self initialize];
-        
         //setting custom wave properties
         self.maxAmplitude = aMaxAmplitude;
         self.minAmplitude = aMinAmplitude;
@@ -89,50 +87,42 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     return self;
 }
 
--  (id)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement startElevation:(NSNumber*)aStartElevation
+-  (instancetype)initWithFrame:(CGRect)aRect maxAmplitude:(int)aMaxAmplitude minAmplitude:(int)aMinAmplitude amplitudeIncrement:(int)aAmplitudeIncrement startElevation:(NSNumber*)aStartElevation
 {
-    self = [super initWithFrame:aRect];
+    self = [self initWithFrame:aRect maxAmplitude:aMaxAmplitude minAmplitude:aMinAmplitude amplitudeIncrement:aAmplitudeIncrement];
     
     if (self)
     {
-        [self initialize];
-        
-        //setting custom wave properties
-        self.maxAmplitude = aMaxAmplitude;
-        self.minAmplitude = aMinAmplitude;
-        self.amplitudeIncrement = aAmplitudeIncrement;
-        self.amplitudeArray = [self createAmplitudeOptions];
-        [self updateStartElevation:aStartElevation];;
-    }
-    return self;
-}
-
-
--  (id)initWithFrame:(CGRect)aRect
-{
-    self = [super initWithFrame:aRect];
-    
-    if (self)
-    {
-        [self initialize];
-        
-    }
-    return self;
-}
-
--  (id)initWithFrame:(CGRect)aRect startElevation:(NSNumber*)aStartElevation
-{
-    self = [super initWithFrame:aRect];
-    
-    if (self)
-    {
-        [self initialize];
         [self updateStartElevation:aStartElevation];
     }
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+
+-  (instancetype)initWithFrame:(CGRect)aRect
+{
+    self = [super initWithFrame:aRect];
+    
+    if (self)
+    {
+        [self initialize];
+        
+    }
+    return self;
+}
+
+-  (instancetype)initWithFrame:(CGRect)aRect startElevation:(NSNumber*)aStartElevation
+{
+    self = [self initWithFrame:aRect];
+    
+    if (self)
+    {
+        [self updateStartElevation:aStartElevation];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     self = [super initWithCoder:aDecoder];
     
