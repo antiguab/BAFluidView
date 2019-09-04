@@ -25,6 +25,6 @@
 
 @interface UIColor (ColorFromHex)
 
-+(UIColor*)colorWithHex:(int)hex;
++(UIColor*)colorWithHex:(unsigned long)hex;
 
 @end

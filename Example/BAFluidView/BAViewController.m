@@ -74,21 +74,8 @@
     self.currentExample = 0;
     
     //For fading in swipe labels and timing it's appearance
-    self.fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    self.fadeIn.duration = 2.0;
-    self.fadeIn.fromValue = @0.0f;
-    self.fadeIn.toValue = @1.0f;
-    self.fadeIn.removedOnCompletion = NO;
-    self.fadeIn.fillMode = kCAFillModeForwards;
-    self.fadeIn.additive = NO;
-    
-    self.fadeOut = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    self.fadeOut.duration = 0.5f;
-    self.fadeOut.fromValue = @1.0f;
-    self.fadeOut.toValue = @0.0f;
-    self.fadeOut.removedOnCompletion = NO;
-    self.fadeOut.fillMode = kCAFillModeForwards;
-    self.fadeOut.additive = NO;
+    self.fadeIn = [BAViewController createOpacityAnimationWithDuration:2.0f fromValue:@0.0f toValue:@1.0f];
+    self.fadeOut = [BAViewController createOpacityAnimationWithDuration:0.5f fromValue:@1.0f toValue:@0.0f];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                                   target:self
@@ -96,6 +83,17 @@
                                                 userInfo:nil
                                                  repeats:YES];
     
+}
+
++ (CABasicAnimation*)createOpacityAnimationWithDuration:(NSTimeInterval)aDuration fromValue:(id)aFromValue toValue:(id)aToValue {
+    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.duration = aDuration;
+    animation.fromValue = aFromValue;
+    animation.toValue = aToValue;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.additive = NO;
+    return animation;
 }
 
 - (void)viewDidLayoutSubviews {

@@ -31,8 +31,15 @@ describe(@"UIColor", ^{
     
     //(UIColor*)colorWithHex:(int)hex;
     it(@"should create a UIColor with a given hex", ^{
-        UIColor* testColor = [UIColor colorWithHex:0x0000000];
+        UIColor* testColor = [UIColor colorWithHex:0x123456];
         expect(testColor).to.beKindOf([UIColor class]);
+        const CGFloat *testColorComponents = CGColorGetComponents(testColor.CGColor);
+        CGFloat testRedComponent = (CGFloat)0x12/(CGFloat)0xFF;
+        expect(testColorComponents[0]).to.equal(testRedComponent);
+        CGFloat testGreenComponent = (CGFloat)0x34/(CGFloat)0xFF;
+        expect(testColorComponents[1]).to.equal(testGreenComponent);
+        CGFloat testBlueComponent = (CGFloat)0x56/(CGFloat)0xFF;
+        expect(testColorComponents[2]).to.equal(testBlueComponent);
     });
     
 });

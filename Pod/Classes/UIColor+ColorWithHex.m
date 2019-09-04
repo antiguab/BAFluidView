@@ -28,7 +28,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation UIColor (ColorFromHex)
 
-+(UIColor*)colorWithHex:(int)hex
++(UIColor*)colorWithHex:(unsigned long)hex
 {
     return UIColorFromRGB(hex);
 }
