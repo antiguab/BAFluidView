@@ -1,9 +1,9 @@
 # BAFluidView
 
 [![CI Status](http://img.shields.io/travis/antiguab/BAFluidView.svg?style=flat)](https://travis-ci.org/antiguab/BAFluidView)
-[![Version](https://img.shields.io/cocoapods/v/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
-[![License](https://img.shields.io/cocoapods/l/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
-[![Platform](https://img.shields.io/cocoapods/p/BAFluidView.svg?style=flat)](http://cocoadocs.org/docsets/BAFluidView)
+[![Version](https://img.shields.io/cocoapods/v/BAFluidView.svg?style=flat)](https://cocoapods.org/pods/BAFluidView)
+[![License](https://img.shields.io/cocoapods/l/BAFluidView.svg?style=flat)](https://cocoapods.org/pods/BAFluidView)
+[![Platform](https://img.shields.io/cocoapods/p/BAFluidView.svg?style=flat)](https://cocoapods.org/pods/BAFluidView)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Overview
