@@ -1,0 +1,6 @@
+framework module BAFluidView {
+  umbrella header "BAFluidView-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,4 +1,8 @@
+platform :ios, '8.0'
+
 target 'BAFluidView' do
+  use_frameworks!
+
   pod "BAFluidView", :path => "../"
 
   target 'BAFluidView_Tests' do

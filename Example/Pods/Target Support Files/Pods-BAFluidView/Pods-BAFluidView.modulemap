@@ -1,0 +1,6 @@
+framework module Pods_BAFluidView {
+  umbrella header "Pods-BAFluidView-umbrella.h"
+
+  export *
+  module * { export * }
+}

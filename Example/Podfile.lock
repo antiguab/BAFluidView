@@ -1,5 +1,5 @@
 PODS:
-  - BAFluidView (0.2.4)
+  - BAFluidView (0.2.5)
   - Expecta (1.0.6)
   - Specta (1.0.7)
 
@@ -9,7 +9,7 @@ DEPENDENCIES:
   - Specta
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Expecta
     - Specta
 
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BAFluidView: 148b2c7a988c61be1ead843ca3fcf9e12a92c9ba
+  BAFluidView: 55d2c34636fe58432188baad9f82258d6299fda4
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 0c1db53f06ffa171373868029bec803ac2fc2898
+PODFILE CHECKSUM: dad8e6352f2e46b05f8c4b378cc809179a19354f
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
